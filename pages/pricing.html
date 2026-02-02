@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PipelinePro pricing plans for pipeline inspection services. Choose the plan that fits your needs.">
+    <title>Pricing | PipelinePro - Service Plans</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                            <path d="M14 2v6h6" />
+                            <path d="M2 15h10" />
+                            <path d="M5 12v6" />
+                            <path d="M9 12v6" />
+                        </svg>
+                    </div>
+                    <span>Pipeline<span style="color: var(--color-primary-600);">Pro</span></span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="rtl-toggle btn btn-ghost" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL" style="width:36px;height:36px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="7" y1="12" x2="17" y2="12" />
+                            <polyline points="10 9 7 12 10 15" />
+                            <polyline points="14 9 17 12 14 15" />
+                        </svg>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+                <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+                <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-16);">
+            <div class="hero-pattern"></div>
+            <div class="container">
+                <div class="text-center reveal">
+                    <span class="section-label" style="justify-content: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        Pricing
+                    </span>
+                    <h1 class="hero-title" style="max-width: 800px; margin-left: auto; margin-right: auto;">Simple,
+                        Transparent Pricing</h1>
+                    <p class="hero-description" style="margin-left: auto; margin-right: auto;">Choose the plan that best
+                        fits your pipeline inspection needs. All plans include our core technology and expert support.
+                    </p>
+
+                    <!-- Toggle -->
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-top: var(--space-8);">
+                        <span style="font-weight: var(--font-medium);" id="monthlyLabel">Monthly</span>
+                        <button class="toggle-switch" id="billingToggle" aria-label="Toggle billing period"
+                            style="width: 56px; height: 28px; background-color: var(--color-primary-600); border-radius: var(--radius-full); position: relative; cursor: pointer; border: none;">
+                            <span
+                                style="position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; background-color: white; border-radius: var(--radius-full); transition: transform var(--transition-base);"
+                                id="toggleDot"></span>
+                        </button>
+                        <span style="font-weight: var(--font-medium); color: var(--text-tertiary);"
+                            id="annualLabel">Annual <span
+                                style="color: var(--color-success); font-size: var(--text-sm);">(Save 20%)</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Cards -->
+        <section class="section">
+            <div class="container">
+                <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); align-items: start;">
+                    <!-- Basic Plan -->
+                    <div class="card reveal" style="border: 2px solid var(--border-primary);">
+                        <div style="padding: var(--space-8);">
+                            <h3
+                                style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">
+                                Basic</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">For small operators
+                                with occasional inspection needs.</p>
+
+                            <div style="margin-bottom: var(--space-6);">
+                                <span style="font-size: var(--text-5xl); font-weight: var(--font-bold);"
+                                    class="pricing-amount" data-monthly="$2,500" data-annual="$2,000">$2,500</span>
+                                <span style="color: var(--text-tertiary);">/inspection</span>
+                            </div>
+
+                            <a href="contact.html" class="btn btn-outline"
+                                style="width: 100%; margin-bottom: var(--space-8);">Get Started</a>
+
+                            <ul style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>MFL Inspection</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Basic Data Report</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>4-Week Turnaround</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Email Support</span>
+                                </li>
+                                <li
+                                    style="display: flex; align-items: center; gap: var(--space-3); color: var(--text-tertiary);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                    <span>Advanced Analytics</span>
+                                </li>
+                                <li
+                                    style="display: flex; align-items: center; gap: var(--space-3); color: var(--text-tertiary);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                    <span>Dedicated Account Manager</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Standard Plan -->
+                    <div class="card reveal"
+                        style="border: 2px solid var(--color-primary-500); position: relative; transform: scale(1.05);">
+                        <div
+                            style="position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700)); color: white; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: var(--font-semibold);">
+                            Most Popular
+                        </div>
+                        <div style="padding: var(--space-8);">
+                            <h3
+                                style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">
+                                Standard</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">For mid-size
+                                operators with regular inspection programs.</p>
+
+                            <div style="margin-bottom: var(--space-6);">
+                                <span style="font-size: var(--text-5xl); font-weight: var(--font-bold);"
+                                    class="pricing-amount" data-monthly="$4,500" data-annual="$3,600">$4,500</span>
+                                <span style="color: var(--text-tertiary);">/inspection</span>
+                            </div>
+
+                            <a href="contact.html" class="btn btn-primary"
+                                style="width: 100%; margin-bottom: var(--space-8);">Get Started</a>
+
+                            <ul style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>MFL + UT Inspection</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Detailed Analysis Report</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>3-Week Turnaround</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Priority Email & Phone Support</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Advanced Analytics Dashboard</span>
+                                </li>
+                                <li
+                                    style="display: flex; align-items: center; gap: var(--space-3); color: var(--text-tertiary);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                    <span>Dedicated Account Manager</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="card reveal" style="border: 2px solid var(--border-primary);">
+                        <div style="padding: var(--space-8);">
+                            <h3
+                                style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">
+                                Premium</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">For large operators
+                                requiring comprehensive services.</p>
+
+                            <div style="margin-bottom: var(--space-6);">
+                                <span style="font-size: var(--text-5xl); font-weight: var(--font-bold);"
+                                    class="pricing-amount" data-monthly="$7,500" data-annual="$6,000">$7,500</span>
+                                <span style="color: var(--text-tertiary);">/inspection</span>
+                            </div>
+
+                            <a href="contact.html" class="btn btn-outline"
+                                style="width: 100%; margin-bottom: var(--space-8);">Contact Sales</a>
+
+                            <ul style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>All Technologies (MFL/UT/EMAT)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Comprehensive Analysis + Dig Support</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>2-Week Turnaround</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>24/7 Priority Support</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Custom Analytics & API Access</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-success)" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>Dedicated Account Manager</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise CTA -->
+        <section class="section" style="background-color: var(--bg-secondary);">
+            <div class="container">
+                <div class="card reveal" style="text-align: center; padding: var(--space-12);">
+                    <h2 style="font-size: var(--text-3xl); margin-bottom: var(--space-4);">Need a Custom Solution?</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto var(--space-6);">For
+                        enterprise clients with complex requirements, we offer customized service packages tailored to
+                        your specific needs.</p>
+                    <a href="contact.html" class="btn btn-primary btn-lg">Contact Our Sales Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        FAQ
+                    </span>
+                    <h2 class="section-title">Pricing Questions</h2>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="card reveal" style="margin-bottom: var(--space-4);">
+                        <div style="padding: var(--space-6);">
+                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">What's included in the
+                                inspection price?</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">All prices include tool
+                                deployment, data acquisition, processing, and reporting. Travel costs for remote
+                                locations may be additional.</p>
+                        </div>
+                    </div>
+
+                    <div class="card reveal" style="margin-bottom: var(--space-4);">
+                        <div style="padding: var(--space-6);">
+                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">Can I upgrade my plan
+                                later?</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">Yes, you can upgrade at any time.
+                                We'll prorate the difference and apply it to your next inspection.</p>
+                        </div>
+                    </div>
+
+                    <div class="card reveal" style="margin-bottom: var(--space-4);">
+                        <div style="padding: var(--space-6);">
+                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">Are there any setup
+                                fees?</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">No, there are no setup fees. You
+                                only pay for the inspections you schedule.</p>
+                        </div>
+                    </div>
+
+                    <div class="card reveal">
+                        <div style="padding: var(--space-6);">
+                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">Do you offer volume
+                                discounts?</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">Yes, clients scheduling 10+
+                                inspections per year qualify for volume discounts. Contact our sales team for a custom
+                                quote.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                                <path d="M14 2v6h6" />
+                                <path d="M2 15h10" />
+                                <path d="M5 12v6" />
+                                <path d="M9 12v6" />
+                            </svg>
+                        </div>
+                        <span>Pipeline<span style="color: var(--color-primary-400);">Pro</span></span>
+                    </a>
+                    <p class="footer-description">Leading provider of industrial pipeline inspection services.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service-details.html">Inline Inspection</a></li>
+                        <li><a href="service-details.html">Dig Reports</a></li>
+                        <li><a href="service-details.html">Integrity Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form" data-validate>
+                        <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Pricing toggle
+        const billingToggle = document.getElementById('billingToggle');
+        const toggleDot = document.getElementById('toggleDot');
+        const monthlyLabel = document.getElementById('monthlyLabel');
+        const annualLabel = document.getElementById('annualLabel');
+        const pricingAmounts = document.querySelectorAll('.pricing-amount');
+        let isAnnual = false;
+
+        billingToggle.addEventListener('click', function () {
+            isAnnual = !isAnnual;
+
+            if (isAnnual) {
+                toggleDot.style.transform = 'translateX(28px)';
+                monthlyLabel.style.color = 'var(--text-tertiary)';
+                monthlyLabel.style.fontWeight = '400';
+                annualLabel.style.color = 'var(--text-primary)';
+                annualLabel.style.fontWeight = '500';
+            } else {
+                toggleDot.style.transform = 'translateX(0)';
+                monthlyLabel.style.color = 'var(--text-primary)';
+                monthlyLabel.style.fontWeight = '500';
+                annualLabel.style.color = 'var(--text-tertiary)';
+                annualLabel.style.fontWeight = '400';
+            }
+
+            pricingAmounts.forEach(amount => {
+                amount.textContent = isAnnual ? amount.dataset.annual : amount.dataset.monthly;
+            });
+        });
+    </script>
+</body>
+
+</html>

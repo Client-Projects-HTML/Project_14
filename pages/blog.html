@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Latest insights on pipeline inspection, integrity management, and industry trends from PipelinePro experts.">
+    <meta name="keywords" content="pipeline blog, ILI insights, integrity management, pipeline industry news">
+    <title>Blog | PipelinePro - Industry Insights & News</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                            <path d="M14 2v6h6" />
+                            <path d="M2 15h10" />
+                            <path d="M5 12v6" />
+                            <path d="M9 12v6" />
+                        </svg>
+                    </div>
+                    <span>Pipeline<span style="color: var(--color-primary-600);">Pro</span></span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="rtl-toggle btn btn-ghost" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL" style="width:36px;height:36px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 12h16M4 12l4-4m-4 4l4 4" />
+                        </svg>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+                <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+                <li><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-16);">
+            <div class="hero-pattern"></div>
+            <div class="container">
+                <div class="text-center reveal">
+                    <span class="section-label" style="justify-content: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                        Blog
+                    </span>
+                    <h1 class="hero-title" style="max-width: 800px; margin-left: auto; margin-right: auto;">Industry
+                        Insights & Resources</h1>
+                    <p class="hero-description" style="margin-left: auto; margin-right: auto;">Stay updated with the
+                        latest trends, technologies, and best practices in pipeline inspection.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Content -->
+        <section class="section">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 320px; gap: var(--space-8);">
+                    <!-- Main Content -->
+                    <div>
+                        <!-- Filter Bar -->
+                        <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-8); flex-wrap: wrap;"
+                            class="reveal">
+                            <button class="btn btn-primary btn-sm" style="min-height: 36px;">All</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 36px;">Technology</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 36px;">Regulations</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 36px;">Best Practices</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 36px;">Case Studies</button>
+                        </div>
+
+                        <!-- Blog Grid -->
+                        <div class="blog-grid" style="grid-template-columns: 1fr;">
+                            <!-- Featured Post -->
+                            <article class="card reveal"
+                                style="display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;">
+                                <div style="position: relative; min-height: 300px;">
+                                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop"
+                                        alt="Smart pigging technology"
+                                        style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"
+                                        loading="lazy">
+                                    <span class="badge badge-primary"
+                                        style="position: absolute; top: var(--space-4); left: var(--space-4);">Featured</span>
+                                </div>
+                                <div
+                                    style="padding: var(--space-8); display: flex; flex-direction: column; justify-content: center;">
+                                    <div class="blog-meta" style="margin-bottom: var(--space-3);">
+                                        <span>Technology</span>
+                                        <span>•</span>
+                                        <span>Jan 28, 2026</span>
+                                        <span>•</span>
+                                        <span>8 min read</span>
+                                    </div>
+                                    <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">
+                                        <a href="blog-details.html" style="color: var(--text-primary);">The Future of
+                                            Smart Pigging: AI-Powered Defect Recognition</a>
+                                    </h2>
+                                    <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">Explore how
+                                        artificial intelligence and machine learning are revolutionizing inline
+                                        inspection data analysis, enabling faster and more accurate defect
+                                        identification than ever before.</p>
+                                    <a href="blog-details.html" class="service-link">Read Article <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+
+                            <!-- Regular Posts -->
+                            <article class="blog-card reveal">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop"
+                                        alt="Pipeline regulations" loading="lazy">
+                                    <span class="badge badge-secondary blog-category">Regulations</span>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span>Jan 25, 2026</span>
+                                        <span>•</span>
+                                        <span>6 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="blog-details.html">PHMSA Updates: New Requirements for 2026</a>
+                                    </h3>
+                                    <p class="blog-excerpt">A comprehensive breakdown of the latest regulatory changes
+                                        affecting pipeline operators and how to ensure compliance.</p>
+                                    <a href="blog-details.html" class="service-link">Read More <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+
+                            <article class="blog-card reveal">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"
+                                        alt="Pipeline maintenance" loading="lazy">
+                                    <span class="badge badge-primary blog-category">Best Practices</span>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span>Jan 22, 2026</span>
+                                        <span>•</span>
+                                        <span>5 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="blog-details.html">Optimizing Your Dig Program: A Risk-Based
+                                            Approach</a>
+                                    </h3>
+                                    <p class="blog-excerpt">Learn how to prioritize excavation activities using
+                                        risk-based assessment to maximize safety and minimize costs.</p>
+                                    <a href="blog-details.html" class="service-link">Read More <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+
+                            <article class="blog-card reveal">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+                                        alt="Case study" loading="lazy">
+                                    <span class="badge badge-success blog-category">Case Study</span>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span>Jan 18, 2026</span>
+                                        <span>•</span>
+                                        <span>10 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="blog-details.html">Case Study: Major Pipeline Integrity Assessment</a>
+                                    </h3>
+                                    <p class="blog-excerpt">How we helped a major operator assess 500km of pipeline and
+                                        identify critical integrity threats before they became incidents.</p>
+                                    <a href="blog-details.html" class="service-link">Read More <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+
+                            <article class="blog-card reveal">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=400&fit=crop"
+                                        alt="Corrosion protection" loading="lazy">
+                                    <span class="badge badge-primary blog-category">Technology</span>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span>Jan 15, 2026</span>
+                                        <span>•</span>
+                                        <span>7 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="blog-details.html">Advanced Corrosion Detection Techniques</a>
+                                    </h3>
+                                    <p class="blog-excerpt">Comparing traditional methods with emerging technologies for
+                                        detecting and monitoring pipeline corrosion.</p>
+                                    <a href="blog-details.html" class="service-link">Read More <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+
+                            <article class="blog-card reveal">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop"
+                                        alt="Data analytics" loading="lazy">
+                                    <span class="badge badge-warning blog-category">Best Practices</span>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span>Jan 12, 2026</span>
+                                        <span>•</span>
+                                        <span>6 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="blog-details.html">Leveraging Big Data for Pipeline Integrity</a>
+                                    </h3>
+                                    <p class="blog-excerpt">How modern data analytics tools are transforming the way
+                                        operators manage pipeline integrity programs.</p>
+                                    <a href="blog-details.html" class="service-link">Read More <svg width="16"
+                                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div style="display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-12);"
+                            class="reveal">
+                            <button class="btn btn-ghost btn-sm" disabled style="min-height: 40px; width: 40px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button class="btn btn-primary btn-sm" style="min-height: 40px; width: 40px;">1</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 40px; width: 40px;">2</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 40px; width: 40px;">3</button>
+                            <span style="display: flex; align-items: center; color: var(--text-tertiary);">...</span>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 40px; width: 40px;">8</button>
+                            <button class="btn btn-ghost btn-sm" style="min-height: 40px; width: 40px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside style="display: none;" class="lg:block">
+                        <!-- Search -->
+                        <div class="card reveal" style="margin-bottom: var(--space-6);">
+                            <div style="padding: var(--space-6);">
+                                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Search</h3>
+                                <div style="position: relative;">
+                                    <input type="text" class="form-input" placeholder="Search articles..."
+                                        style="padding-left: var(--space-10);">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2"
+                                        style="position: absolute; left: var(--space-3); top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
+                                        <circle cx="11" cy="11" r="8" />
+                                        <path d="M21 21l-4.35-4.35" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="card reveal" style="margin-bottom: var(--space-6);">
+                            <div style="padding: var(--space-6);">
+                                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Categories</h3>
+                                <ul style="display: flex; flex-direction: column; gap: var(--space-3);">
+                                    <li><a href="#"
+                                            style="display: flex; justify-content: space-between; color: var(--text-secondary);">Technology
+                                            <span style="color: var(--text-tertiary);">(12)</span></a></li>
+                                    <li><a href="#"
+                                            style="display: flex; justify-content: space-between; color: var(--text-secondary);">Regulations
+                                            <span style="color: var(--text-tertiary);">(8)</span></a></li>
+                                    <li><a href="#"
+                                            style="display: flex; justify-content: space-between; color: var(--text-secondary);">Best
+                                            Practices <span style="color: var(--text-tertiary);">(15)</span></a></li>
+                                    <li><a href="#"
+                                            style="display: flex; justify-content: space-between; color: var(--text-secondary);">Case
+                                            Studies <span style="color: var(--text-tertiary);">(6)</span></a></li>
+                                    <li><a href="#"
+                                            style="display: flex; justify-content: space-between; color: var(--text-secondary);">Industry
+                                            News <span style="color: var(--text-tertiary);">(10)</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Popular Posts -->
+                        <div class="card reveal" style="margin-bottom: var(--space-6);">
+                            <div style="padding: var(--space-6);">
+                                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Popular Posts</h3>
+                                <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                    <a href="#" style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=80&h=80&fit=crop"
+                                            alt=""
+                                            style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
+                                        <div>
+                                            <h4
+                                                style="font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-1); line-height: var(--leading-snug);">
+                                                Understanding MFL Inspection Data</h4>
+                                            <span style="font-size: var(--text-xs); color: var(--text-tertiary);">Jan 5,
+                                                2026</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=80&h=80&fit=crop"
+                                            alt=""
+                                            style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
+                                        <div>
+                                            <h4
+                                                style="font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-1); line-height: var(--leading-snug);">
+                                                2026 Regulatory Compliance Guide</h4>
+                                            <span style="font-size: var(--text-xs); color: var(--text-tertiary);">Dec
+                                                28, 2025</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop"
+                                            alt=""
+                                            style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
+                                        <div>
+                                            <h4
+                                                style="font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-1); line-height: var(--leading-snug);">
+                                                5 Tips for Better Dig Programs</h4>
+                                            <span style="font-size: var(--text-xs); color: var(--text-tertiary);">Dec
+                                                20, 2025</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="card reveal"
+                            style="background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700)); color: white;">
+                            <div style="padding: var(--space-6);">
+                                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2);">Newsletter</h3>
+                                <p
+                                    style="color: rgba(255,255,255,0.9); font-size: var(--text-sm); margin-bottom: var(--space-4);">
+                                    Get the latest articles delivered to your inbox.</p>
+                                <form data-validate>
+                                    <input type="email" class="form-input" placeholder="Your email" required
+                                        style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white; margin-bottom: var(--space-3);">
+                                    <button type="submit" class="btn btn-white" style="width: 100%;">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                                <path d="M14 2v6h6" />
+                                <path d="M2 15h10" />
+                                <path d="M5 12v6" />
+                                <path d="M9 12v6" />
+                            </svg>
+                        </div>
+                        <span>Pipeline<span style="color: var(--color-primary-400);">Pro</span></span>
+                    </a>
+                    <p class="footer-description">Leading provider of industrial pipeline inspection services.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service-details.html">Inline Inspection</a></li>
+                        <li><a href="service-details.html">Dig Reports</a></li>
+                        <li><a href="service-details.html">Integrity Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form" data-validate>
+                        <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

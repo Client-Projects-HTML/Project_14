@@ -1,0 +1,887 @@
+/*
+ * Pipeline Inspection Services - RTL Stylesheet
+ * ==============================================
+ * Right-to-Left layout support for Arabic, Hebrew, and other RTL languages
+ */
+
+/* ============================================
+   RTL Base Styles
+   ============================================ */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] body {
+    direction: rtl;
+}
+
+/* ============================================
+   Layout & Grid RTL
+   ============================================ */
+[dir="rtl"] .container {
+    text-align: right;
+}
+
+[dir="rtl"] .flex {
+    direction: rtl;
+}
+
+[dir="rtl"] .grid {
+    direction: rtl;
+}
+
+/* ============================================
+   Header & Navigation RTL
+   ============================================ */
+[dir="rtl"] .header-inner {
+    direction: rtl;
+}
+
+[dir="rtl"] .logo {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-list {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-link::after {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .header-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .mobile-nav {
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-nav.active {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-nav-list {
+    direction: rtl;
+}
+
+/* ============================================
+   Hero Section RTL
+   ============================================ */
+[dir="rtl"] .hero-content {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .hero-title {
+    direction: rtl;
+}
+
+[dir="rtl"] .hero-description {
+    direction: rtl;
+}
+
+[dir="rtl"] .hero-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .hero-stats {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-item {
+    text-align: right;
+}
+
+/* ============================================
+   Section Headers RTL
+   ============================================ */
+[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+[dir="rtl"] .section-label {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-title {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-description {
+    direction: rtl;
+}
+
+/* ============================================
+   Services RTL
+   ============================================ */
+[dir="rtl"] .services-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .service-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .service-icon {
+    margin-right: 0;
+    margin-left: var(--space-6);
+}
+
+[dir="rtl"] .service-link {
+    direction: rtl;
+}
+
+[dir="rtl"] .service-link svg {
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .service-link:hover svg {
+    transform: rotate(180deg) translateX(-4px);
+}
+
+/* ============================================
+   Features RTL
+   ============================================ */
+[dir="rtl"] .features-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .feature-item {
+    direction: rtl;
+}
+
+[dir="rtl"] .feature-icon {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+[dir="rtl"] .feature-content {
+    text-align: right;
+}
+
+/* ============================================
+   About Section RTL
+   ============================================ */
+[dir="rtl"] .about-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .about-content {
+    text-align: right;
+}
+
+[dir="rtl"] .about-image-badge {
+    right: auto;
+    left: -24px;
+}
+
+/* ============================================
+   Testimonials RTL
+   ============================================ */
+[dir="rtl"] .testimonials-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .testimonial-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .testimonial-rating {
+    direction: rtl;
+}
+
+[dir="rtl"] .testimonial-author {
+    direction: rtl;
+}
+
+[dir="rtl"] .testimonial-avatar {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+/* ============================================
+   CTA Section RTL
+   ============================================ */
+[dir="rtl"] .cta-content {
+    direction: rtl;
+}
+
+[dir="rtl"] .cta-actions {
+    direction: rtl;
+}
+
+/* ============================================
+   Blog RTL
+   ============================================ */
+[dir="rtl"] .blog-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .blog-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .blog-category {
+    left: auto;
+    right: var(--space-4);
+}
+
+[dir="rtl"] .blog-meta {
+    direction: rtl;
+}
+
+/* ============================================
+   Contact RTL
+   ============================================ */
+[dir="rtl"] .contact-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .contact-info {
+    direction: rtl;
+}
+
+[dir="rtl"] .contact-item {
+    direction: rtl;
+}
+
+[dir="rtl"] .contact-icon {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+[dir="rtl"] .contact-item h3,
+[dir="rtl"] .contact-item p {
+    text-align: right;
+}
+
+[dir="rtl"] .contact-form-wrapper {
+    direction: rtl;
+}
+
+[dir="rtl"] .form-group {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .form-label {
+    text-align: right;
+}
+
+[dir="rtl"] .form-check {
+    direction: rtl;
+}
+
+[dir="rtl"] .form-check-input {
+    margin-right: 0;
+    margin-left: var(--space-2);
+}
+
+/* ============================================
+   Footer RTL
+   ============================================ */
+[dir="rtl"] .footer-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-brand {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .footer-logo {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-description {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-social {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-links {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .footer-links ul {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-newsletter {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .newsletter-form {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-bottom {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-legal {
+    direction: rtl;
+}
+
+/* ============================================
+   Dashboard RTL Enhanced
+   ============================================ */
+[dir="rtl"] .dashboard-layout {
+    display: flex;
+    direction: rtl;
+}
+
+[dir="rtl"] .sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--border-primary);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+}
+
+[dir="rtl"] .sidebar.active {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .main-content {
+    margin-left: 0;
+    margin-right: 280px;
+    flex: 1;
+    min-height: 100vh;
+}
+
+[dir="rtl"] .sidebar-header {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .sidebar-nav {
+    direction: rtl;
+}
+
+[dir="rtl"] .sidebar-section-title {
+    text-align: right;
+}
+
+[dir="rtl"] .sidebar-link {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .sidebar-link svg:first-child {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .sidebar-toggle {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .dashboard-header {
+    direction: rtl;
+}
+
+[dir="rtl"] .header-search {
+    direction: rtl;
+}
+
+[dir="rtl"] .header-search svg {
+    left: auto;
+    right: var(--space-3);
+}
+
+[dir="rtl"] .header-search input {
+    padding-left: var(--space-4);
+    padding-right: var(--space-10);
+}
+
+[dir="rtl"] .header-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .notification-btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .notification-badge {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .user-menu {
+    direction: rtl;
+}
+
+[dir="rtl"] .user-avatar {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .page-header {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .stats-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .stat-icon {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+[dir="rtl"] .stat-trend {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-trend svg {
+    margin-right: 0;
+    margin-left: var(--space-1);
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .content-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-card {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-header-flex {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-title-sm {
+    text-align: right;
+}
+
+[dir="rtl"] .chart-container {
+    direction: rtl;
+}
+
+[dir="rtl"] .table-container {
+    direction: rtl;
+    overflow-x: auto;
+}
+
+[dir="rtl"] .data-table {
+    direction: rtl;
+}
+
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+    text-align: right;
+}
+
+[dir="rtl"] .table-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .action-btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .activity-list {
+    direction: rtl;
+}
+
+[dir="rtl"] .activity-item {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .activity-icon {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+[dir="rtl"] .activity-content {
+    text-align: right;
+}
+
+/* Dropdown RTL */
+[dir="rtl"] .notification-dropdown,
+[dir="rtl"] .user-menu-dropdown {
+    right: auto !important;
+    left: 10px !important;
+    text-align: right;
+}
+
+[dir="rtl"] .notification-dropdown .activity-item,
+[dir="rtl"] .user-menu-dropdown .sidebar-link {
+    flex-direction: row-reverse;
+}
+
+/* Responsive RTL */
+@media (max-width: 1024px) {
+    [dir="rtl"] .sidebar {
+        transform: translateX(100%);
+    }
+
+    [dir="rtl"] .sidebar.active {
+        transform: translateX(0);
+    }
+
+    [dir="rtl"] .main-content {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .notification-dropdown,
+    [dir="rtl"] .user-menu-dropdown {
+        left: 10px !important;
+        right: 10px !important;
+        width: calc(100vw - 20px) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    [dir="rtl"] .header-search {
+        display: none;
+    }
+}
+
+[dir="rtl"] .sidebar-link svg:last-child {
+    margin-left: 0;
+    margin-right: auto;
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .dashboard-header {
+    direction: rtl;
+}
+
+[dir="rtl"] .header-search {
+    direction: rtl;
+}
+
+[dir="rtl"] .header-search svg {
+    left: auto;
+    right: var(--space-3);
+}
+
+[dir="rtl"] .header-search input {
+    padding-left: var(--space-4);
+    padding-right: var(--space-10);
+}
+
+[dir="rtl"] .header-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .notification-btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .notification-badge {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .user-menu {
+    direction: rtl;
+}
+
+[dir="rtl"] .user-avatar {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .dropdown-menu {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .dropdown-item {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .dropdown-item svg {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .page-header {
+    direction: rtl;
+}
+
+[dir="rtl"] .stats-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .stat-icon {
+    margin-right: 0;
+    margin-left: var(--space-4);
+}
+
+[dir="rtl"] .stat-trend {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-trend svg {
+    margin-right: 0;
+    margin-left: var(--space-1);
+}
+
+[dir="rtl"] .content-section {
+    direction: rtl;
+}
+
+[dir="rtl"] .section-header-flex {
+    direction: rtl;
+}
+
+[dir="rtl"] .data-table {
+    direction: rtl;
+}
+
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+    text-align: right;
+}
+
+[dir="rtl"] .table-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .action-btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .pagination {
+    direction: rtl;
+}
+
+[dir="rtl"] .pagination-btn svg {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   Auth Pages RTL
+   ============================================ */
+[dir="rtl"] .auth-wrapper {
+    direction: rtl;
+}
+
+[dir="rtl"] .auth-container {
+    direction: rtl;
+}
+
+[dir="rtl"] .auth-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .auth-header {
+    direction: rtl;
+}
+
+[dir="rtl"] .auth-form {
+    direction: rtl;
+}
+
+[dir="rtl"] .form-options {
+    direction: rtl;
+}
+
+[dir="rtl"] .forgot-password {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+[dir="rtl"] .auth-separator {
+    direction: rtl;
+}
+
+[dir="rtl"] .social-login {
+    direction: rtl;
+}
+
+[dir="rtl"] .auth-footer {
+    direction: rtl;
+}
+
+/* ============================================
+   Pricing Page RTL
+   ============================================ */
+[dir="rtl"] .pricing-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .pricing-card {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .pricing-features li {
+    direction: rtl;
+}
+
+[dir="rtl"] .pricing-features li svg {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .pricing-toggle {
+    direction: rtl;
+}
+
+[dir="rtl"] .toggle-label:first-child {
+    margin-right: 0;
+    margin-left: var(--space-3);
+}
+
+[dir="rtl"] .toggle-label:last-child {
+    margin-left: 0;
+    margin-right: var(--space-3);
+}
+
+/* ============================================
+   404 Page RTL
+   ============================================ */
+[dir="rtl"] .error-page {
+    direction: rtl;
+}
+
+[dir="rtl"] .error-content {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ============================================
+   Components RTL
+   ============================================ */
+[dir="rtl"] .btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .btn svg:first-child {
+    margin-right: 0;
+    margin-left: var(--space-2);
+}
+
+[dir="rtl"] .btn svg:last-child {
+    margin-left: 0;
+    margin-right: var(--space-2);
+}
+
+[dir="rtl"] .alert {
+    direction: rtl;
+    text-align: right;
+    border-left: none;
+    border-right: 4px solid;
+}
+
+[dir="rtl"] .badge {
+    direction: rtl;
+}
+
+[dir="rtl"] .card {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ============================================
+   Utilities RTL
+   ============================================ */
+[dir="rtl"] .text-left {
+    text-align: right;
+}
+
+[dir="rtl"] .text-right {
+    text-align: left;
+}
+
+[dir="rtl"] .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+[dir="rtl"] .pl-4 {
+    padding-left: 0;
+    padding-right: var(--space-4);
+}
+
+[dir="rtl"] .pr-4 {
+    padding-right: 0;
+    padding-left: var(--space-4);
+}
+
+/* ============================================
+   Animations RTL
+   ============================================ */
+@keyframes slideInLeftRTL {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRightRTL {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+[dir="rtl"] .animate-slideInLeft {
+    animation-name: slideInLeftRTL;
+}
+
+[dir="rtl"] .animate-slideInRight {
+    animation-name: slideInRightRTL;
+}
+
+/* ============================================
+   Responsive RTL
+   ============================================ */
+@media (max-width: 767px) {
+    [dir="rtl"] .mobile-nav {
+        transform: translateX(-100%);
+    }
+
+    [dir="rtl"] .mobile-nav.active {
+        transform: translateX(0);
+    }
+}
