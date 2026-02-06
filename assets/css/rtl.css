@@ -346,7 +346,6 @@
     right: 0;
     border-right: none;
     border-left: 1px solid var(--border-primary);
-    transform: translateX(100%);
     transition: transform var(--transition-slow);
 }
 
@@ -547,6 +546,7 @@
 }
 
 @media (max-width: 768px) {
+
     [dir="rtl"] .notification-dropdown,
     [dir="rtl"] .user-menu-dropdown {
         left: 10px !important;
