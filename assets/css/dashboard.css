@@ -3,7 +3,7 @@
    =================================== */
 
 .dashboard-layout {
-    display: flex;
+    position: relative;
     min-height: 100vh;
 }
 
@@ -68,9 +68,13 @@
 
 /* Main Content */
 .main-content {
-    flex: 1;
     margin-left: 280px;
+    width: auto;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bg-secondary);
 }
 
 /* Dashboard Header */
@@ -165,11 +169,11 @@
 
 /* Dashboard Content */
 .dashboard-content {
-    padding: var(--space-8);
+    padding: var(--space-4);
 }
 
 .page-header {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-4);
 }
 
 .page-title {

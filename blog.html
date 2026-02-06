@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/dark-mode.css">
-    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
 <body>
@@ -49,9 +49,14 @@
                 </nav>
 
                 <div class="header-actions">
-                    <button class="rtl-toggle btn btn-ghost" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL" style="width:36px;height:36px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 12h16M4 12l4-4m-4 4l4 4" />
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 11 21 7 17 3"></polyline>
+                            <line x1="21" y1="7" x2="9" y2="7"></line>
+                            <polyline points="7 21 3 17 7 13"></polyline>
+                            <line x1="3" y1="17" x2="15" y2="17"></line>
                         </svg>
                     </button>
                     <button class="theme-toggle" aria-label="Toggle dark mode">
@@ -486,7 +491,7 @@
         </div>
     </footer>
 
-    <script src="../assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
