@@ -15,8 +15,23 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/dashboard-custom.css">
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+
+    <script>
+        (function () {
+            // RTL Initialization
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+
+            const role = localStorage.getItem('userRole');
+            if (!role) {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -43,7 +58,7 @@
             <nav class="sidebar-nav">
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Main</p>
-                    <a href="client-dashboard.html" class="sidebar-link">
+                    <a href="admin-dashboard.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <rect x="3" y="3" width="7" height="7" />
@@ -59,7 +74,8 @@
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                         </svg>
-                        Inspections
+                        <span data-role="admin">All Inspections</span>
+                        <span data-role="client">Inspections</span>
                     </a>
                     <a href="reports.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -72,7 +88,8 @@
                         </svg>
                         Reports
                     </a>
-                    <a href="client-orders.html" class="sidebar-link">
+                    <!-- Client Only -->
+                    <a href="client-orders.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="9" cy="21" r="1" />
@@ -81,7 +98,7 @@
                         </svg>
                         My Orders
                     </a>
-                    <a href="client-messages.html" class="sidebar-link">
+                    <a href="client-messages.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -89,12 +106,40 @@
                         </svg>
                         Messages
                     </a>
+                </div>
 
+                <div class="sidebar-section" data-role="admin">
+                    <p class="sidebar-section-title">Management</p>
+                    <a href="admin-users.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Users
+                    </a>
+                    <a href="admin-orders.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        Orders
+                    </a>
+                    <a href="admin-messages.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Messages
+                    </a>
                 </div>
 
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Data</p>
-
                     <a href="analytics.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -104,7 +149,6 @@
                         </svg>
                         Analytics
                     </a>
-
                 </div>
 
                 <div class="sidebar-section">
@@ -117,20 +161,8 @@
                         </svg>
                         Profile
                     </a>
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle sidebar-link" id="rtlToggle" aria-label="Toggle RTL direction"
-                        title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
-                        RTL Mode
-                    </button>
 
-                    <a href="login.html" class="sidebar-link">
+                    <a href="#" onclick="handleLogout(event)" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -156,50 +188,27 @@
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
-                    <div class="header-search">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.35-4.35" />
-                        </svg>
-                        <input type="text" placeholder="Search inspections..." aria-label="Search inspections">
-                    </div>
                 </div>
 
                 <div class="header-actions">
-                    <!-- Theme Toggle -->
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                         </svg>
                         <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL mode" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                            <path d="M3 3v5h5" />
-                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-                            <path d="M16 21h5v-5" />
-                        </svg>
-                    </button>
-
                     <!-- Notifications -->
-                    <button class="notification-btn" aria-label="Notifications">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -210,10 +219,10 @@
 
                     <!-- User Menu -->
                     <div class="user-menu">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff"
+                        <img src="https://ui-avatars.com/api/?name=John+Smith&background=3b82f6&color=fff"
                             alt="User avatar" class="user-avatar">
                         <div>
-                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">John Doe</p>
+                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">John Smith</p>
                             <p style="font-size: var(--text-xs); color: var(--text-tertiary);">Admin</p>
                         </div>
                     </div>
@@ -238,8 +247,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>248</h3>
                             <p>Total Inspections</p>
+                            <h3>248</h3>
                             <div class="stat-trend up">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -260,8 +269,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>186</h3>
                             <p>Completed</p>
+                            <h3>186</h3>
                             <div class="stat-trend up">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -282,8 +291,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>42</h3>
                             <p>In Progress</p>
+                            <h3>42</h3>
                             <div class="stat-trend">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -306,8 +315,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>20</h3>
                             <p>Scheduled</p>
+                            <h3>20</h3>
                             <div class="stat-trend">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -327,22 +336,23 @@
                     <div class="section-header-flex">
                         <h2 class="section-title-sm">All Inspections</h2>
                         <div class="flex gap-3">
-                            <select class="form-select"
-                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary);">
+                            <select id="statusFilter" class="form-select"
+                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);">
                                 <option value="">All Status</option>
                                 <option value="completed">Completed</option>
                                 <option value="in-progress">In Progress</option>
                                 <option value="scheduled">Scheduled</option>
                             </select>
-                            <select class="form-select"
-                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary);">
+                            <select id="typeFilter" class="form-select"
+                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);">
                                 <option value="">All Types</option>
                                 <option value="pigging">Smart Pigging</option>
                                 <option value="visual">Visual Inspection</option>
                                 <option value="mfl">MFL</option>
                                 <option value="ultrasonic">Ultrasonic</option>
                             </select>
-                            <button class="btn btn-primary" style="padding: var(--space-2) var(--space-4);">
+                            <button id="exportInspectionsBtn" class="btn btn-primary"
+                                style="padding: var(--space-2) var(--space-4);">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -376,22 +386,11 @@
                                     <td><span class="status-badge completed">Completed</span></td>
                                     <td>Mike Johnson</td>
                                     <td>
-                                        <button class="action-btn" title="View Details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="action-btn" title="Download Report">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                    </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                                 </tr>
                                 <tr>
                                     <td><strong>INS-2024-002</strong></td>
@@ -401,22 +400,11 @@
                                     <td><span class="status-badge in-progress">In Progress</span></td>
                                     <td>Sarah Williams</td>
                                     <td>
-                                        <button class="action-btn" title="View Details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="action-btn" title="Download Report">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                    </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                                 </tr>
                                 <tr>
                                     <td><strong>INS-2024-003</strong></td>
@@ -426,22 +414,11 @@
                                     <td><span class="status-badge scheduled">Scheduled</span></td>
                                     <td>David Chen</td>
                                     <td>
-                                        <button class="action-btn" title="View Details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="action-btn" title="Download Report">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                    </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                                 </tr>
                                 <tr>
                                     <td><strong>INS-2024-004</strong></td>
@@ -451,22 +428,11 @@
                                     <td><span class="status-badge completed">Completed</span></td>
                                     <td>Mike Johnson</td>
                                     <td>
-                                        <button class="action-btn" title="View Details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="action-btn" title="Download Report">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                    </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                                 </tr>
                                 <tr>
                                     <td><strong>INS-2024-005</strong></td>
@@ -476,22 +442,11 @@
                                     <td><span class="status-badge pending">Pending</span></td>
                                     <td>Sarah Williams</td>
                                     <td>
-                                        <button class="action-btn" title="View Details">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="action-btn" title="Download Report">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                    </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -501,22 +456,22 @@
                     <div
                         style="padding: var(--space-4) var(--space-6); border-top: 1px solid var(--border-primary); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);">
                         <p style="font-size: var(--text-sm); color: var(--text-tertiary); margin: 0;">
-                            Showing 1-5 of 248 inspections
+                            <span id="paginationInfo">Showing 1-5 of 248 inspections</span>
                         </p>
                         <div class="flex gap-2">
-                            <button class="btn btn-ghost"
+                            <button id="prevPageBtn" class="btn btn-ghost"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);"
                                 disabled>Previous</button>
-                            <button class="btn btn-primary"
+                            <button data-page="1" class="page-btn btn btn-primary"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);">1</button>
-                            <button class="btn btn-ghost"
+                            <button data-page="2" class="page-btn btn btn-ghost"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);">2</button>
-                            <button class="btn btn-ghost"
+                            <button data-page="3" class="page-btn btn btn-ghost"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);">3</button>
-                            <span style="color: var(--text-tertiary);">...</span>
-                            <button class="btn btn-ghost"
+                            <span id="pageEllipsis" style="color: var(--text-tertiary);">...</span>
+                            <button data-page="50" class="page-btn btn btn-ghost"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);">50</button>
-                            <button class="btn btn-ghost"
+                            <button id="nextPageBtn" class="btn btn-ghost"
                                 style="padding: var(--space-2) var(--space-3); font-size: var(--text-sm);">Next</button>
                         </div>
                     </div>
@@ -525,6 +480,311 @@
         </main>
     </div>
 
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Initialize inspections page functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            initInspectionsPage();
+        });
+
+        function initInspectionsPage() {
+            // Status filter
+            const statusFilter = document.getElementById('statusFilter');
+            if (statusFilter) {
+                statusFilter.addEventListener('change', filterInspections);
+            }
+
+            // Type filter
+            const typeFilter = document.getElementById('typeFilter');
+            if (typeFilter) {
+                typeFilter.addEventListener('change', filterInspections);
+            }
+
+            // Export button
+            const exportBtn = document.getElementById('exportInspectionsBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', exportInspections);
+            }
+
+            // Pagination
+            initPagination();
+
+            // Notifications
+            const notificationBtn = document.getElementById('notificationBtn');
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+
+            if (notificationBtn && notificationDropdown) {
+                notificationBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    notificationDropdown.classList.toggle('active');
+                });
+            }
+        }
+
+        function filterInspections() {
+            const statusFilter = document.getElementById('statusFilter');
+            const typeFilter = document.getElementById('typeFilter');
+            const table = document.querySelector('.data-table');
+
+            if (!table) return;
+
+            const statusValue = statusFilter ? statusFilter.value : '';
+            const typeValue = typeFilter ? typeFilter.value : '';
+
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const cells = row.querySelectorAll('td');
+                if (cells.length < 6) return;
+
+                const statusCell = cells[5]; // Status column
+                const typeCell = cells[2]; // Type column
+
+                const statusBadge = statusCell.querySelector('.status-badge');
+                const status = statusBadge ? statusBadge.textContent.toLowerCase() : '';
+                const type = typeCell.textContent.toLowerCase();
+
+                let showRow = true;
+
+                // Check status filter
+                if (statusValue) {
+                    if (statusValue === 'completed' && !status.includes('completed') && !status.includes('passed')) {
+                        showRow = false;
+                    } else if (statusValue === 'in-progress' && !status.includes('progress') && !status.includes('ongoing')) {
+                        showRow = false;
+                    } else if (statusValue === 'scheduled' && !status.includes('scheduled') && !status.includes('pending')) {
+                        showRow = false;
+                    }
+                }
+
+                // Check type filter
+                if (typeValue && showRow) {
+                    if (typeValue === 'pigging' && !type.includes('pig') && !type.includes('smart')) {
+                        showRow = false;
+                    } else if (typeValue === 'visual' && !type.includes('visual') && !type.includes('direct')) {
+                        showRow = false;
+                    } else if (typeValue === 'mfl' && !type.includes('mfl') && !type.includes('flux')) {
+                        showRow = false;
+                    } else if (typeValue === 'ultrasonic' && !type.includes('ultra')) {
+                        showRow = false;
+                    }
+                }
+
+                row.style.display = showRow ? '' : 'none';
+            });
+
+            // Show notification
+            const visibleCount = Array.from(rows).filter(r => r.style.display !== 'none').length;
+            showNotification('Showing ' + visibleCount + ' inspections', 'info');
+        }
+
+        function exportInspections() {
+            const exportBtn = document.getElementById('exportInspectionsBtn');
+
+            // Show loading state
+            const originalContent = exportBtn.innerHTML;
+            exportBtn.disabled = true;
+            exportBtn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="0.75"></path></svg> Exporting...';
+
+            // Simulate export process
+            setTimeout(function () {
+                // Gather inspection data
+                const inspectionData = getInspectionData();
+
+                // Generate CSV content
+                const csvContent = generateInspectionsCSV(inspectionData);
+
+                // Download the file
+                downloadCSV(csvContent, 'inspections_export_' + new Date().toISOString().split('T')[0] + '.csv');
+
+                // Reset button
+                exportBtn.disabled = false;
+                exportBtn.innerHTML = originalContent;
+
+                // Show success notification
+                showNotification('Inspections exported successfully!', 'success');
+            }, 1000);
+        }
+
+        function getInspectionData() {
+            const table = document.querySelector('.data-table');
+            if (!table) return [];
+
+            const data = [];
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                if (row.style.display === 'none') return;
+
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 6) {
+                    data.push({
+                        id: cells[0].textContent.trim(),
+                        pipeline: cells[1].textContent.trim(),
+                        type: cells[2].textContent.trim(),
+                        date: cells[3].textContent.trim(),
+                        inspector: cells[4].textContent.trim(),
+                        status: cells[5].textContent.trim()
+                    });
+                }
+            });
+
+            return data;
+        }
+
+        function generateInspectionsCSV(data) {
+            let csv = '';
+
+            csv += 'INSPECTIONS EXPORT\n';
+            csv += 'Generated: ' + new Date().toLocaleString() + '\n\n';
+
+            csv += 'ID,Pipeline,Type,Date,Inspector,Status\n';
+
+            data.forEach(function (row) {
+                csv += row.id + ',' +
+                    '\"' + row.pipeline + '\","' + row.type + '\","' + row.date + '","' + row.inspector + '","' + row.status + '"\n';
+            });
+
+            return csv;
+        }
+
+        function downloadCSV(csvContent, filename) {
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                setTimeout(function () { URL.revokeObjectURL(url); }, 100);
+            }
+        }
+
+        function showNotification(message, type) {
+            // Remove existing notifications
+            const existing = document.querySelectorAll('.notification-toast');
+            existing.forEach(function (n) { n.remove(); });
+
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease;';
+
+            if (type === 'success') {
+                notification.style.background = 'var(--color-success-600)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--color-error-600)';
+            } else {
+                notification.style.background = 'var(--color-primary-600)';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(function () {
+                notification.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(function () { notification.remove(); }, 300);
+            }, 3000);
+        }
+
+        // Pagination Functionality
+        let currentPage = 1;
+        const totalPages = 50;
+        const itemsPerPage = 5;
+
+        function initPagination() {
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            const pageBtns = document.querySelectorAll('.page-btn');
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    if (currentPage > 1) {
+                        goToPage(currentPage - 1);
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    if (currentPage < totalPages) {
+                        goToPage(currentPage + 1);
+                    }
+                });
+            }
+
+            pageBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    goToPage(page);
+                });
+            });
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+
+            // Update button styles
+            const pageBtns = document.querySelectorAll('.page-btn');
+            pageBtns.forEach(function (btn) {
+                const btnPage = parseInt(btn.getAttribute('data-page'));
+                if (btnPage === page) {
+                    btn.classList.remove('btn-ghost');
+                    btn.classList.add('btn-primary');
+                } else {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-ghost');
+                }
+            });
+
+            // Update Previous/Next buttons
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+
+            if (prevBtn) {
+                prevBtn.disabled = (page === 1);
+            }
+            if (nextBtn) {
+                nextBtn.disabled = (page === totalPages);
+            }
+
+            // Update pagination info
+            const paginationInfo = document.getElementById('paginationInfo');
+            if (paginationInfo) {
+                const startItem = (page - 1) * itemsPerPage + 1;
+                const endItem = Math.min(page * itemsPerPage, 248);
+                paginationInfo.textContent = 'Showing ' + startItem + '-' + endItem + ' of 248 inspections';
+            }
+
+            // Update visible rows (simulated)
+            updateVisibleRows(page);
+
+            showNotification('Page ' + page + ' of ' + totalPages, 'info');
+        }
+
+        function updateVisibleRows(page) {
+            const table = document.querySelector('.data-table');
+            if (!table) return;
+
+            const rows = table.querySelectorAll('tbody tr');
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            rows.forEach(function (row, index) {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dashboard.js"></script>
 </body>

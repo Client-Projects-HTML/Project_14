@@ -95,14 +95,8 @@
                 <!-- Header Actions -->
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
                     </button>
 
                     <!-- Theme Toggle -->
@@ -120,7 +114,7 @@
                     </button>
 
                     <!-- Client Login -->
-                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
 
                     <!-- Mobile Menu Toggle -->
                     <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
@@ -141,7 +135,7 @@
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -233,7 +227,7 @@
                         <h3 class="service-title">Inline Inspection (ILI)</h3>
                         <p class="service-description">Advanced smart pigging technology for comprehensive internal
                             pipeline assessment including metal loss, cracks, and geometry anomalies.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=ili" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -257,7 +251,7 @@
                         <h3 class="service-title">Dig Report Generation</h3>
                         <p class="service-description">Comprehensive excavation reports with detailed anomaly analysis,
                             repair recommendations, and regulatory compliance documentation.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=dig-reports" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -277,7 +271,7 @@
                         <h3 class="service-title">Integrity Management</h3>
                         <p class="service-description">Strategic pipeline integrity programs including risk assessment,
                             corrosion management, and regulatory compliance planning.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=integrity" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -300,7 +294,7 @@
                         <h3 class="service-title">Cathodic Protection</h3>
                         <p class="service-description">Complete cathodic protection system design, installation, and
                             monitoring to prevent external corrosion of your pipeline assets.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=cp" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -321,7 +315,7 @@
                         <h3 class="service-title">Coating Inspection</h3>
                         <p class="service-description">Advanced coating assessment and quality control services to
                             ensure long-term pipeline protection and integrity.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=coating" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -342,7 +336,7 @@
                         <h3 class="service-title">Data Analysis & Reporting</h3>
                         <p class="service-description">Expert analysis of inspection data with comprehensive reporting,
                             trend analysis, and actionable recommendations.</p>
-                        <a href="service-details.html" class="service-link">
+                        <a href="service-details.html?service=data" class="service-link">
                             Learn More
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -359,8 +353,10 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="about-image reveal">
-                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=700&fit=crop"
-                            alt="Pipeline inspection team at work" loading="lazy" width="600" height="700">
+                        <div class="about-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=700&fit=crop"
+                                alt="Pipeline inspection team at work" loading="lazy" width="600" height="700">
+                        </div>
                         <div class="about-image-badge">
                             <div class="years">15+</div>
                             <div class="text">Years of Excellence</div>
@@ -615,83 +611,92 @@
 
                 <div class="blog-grid">
                     <article class="blog-card reveal">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop"
-                                alt="Smart pigging technology" loading="lazy" width="600" height="400">
-                            <span class="badge badge-primary blog-category">Technology</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Jan 15, 2026</span>
-                                <span>•</span>
-                                <span>5 min read</span>
+                        <div class="blog-card-inner">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop"
+                                    alt="Advances in Smart Pigging" loading="lazy">
+                                <span class="badge badge-primary">Technology</span>
                             </div>
-                            <h3 class="blog-title">
-                                <a href="blog-details.html">Advances in Smart Pigging Technology for 2026</a>
-                            </h3>
-                            <p class="blog-excerpt">Exploring the latest innovations in inline inspection tools and how
-                                they're revolutionizing pipeline integrity assessment.</p>
-                            <a href="blog-details.html" class="service-link">
-                                Read More
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </a>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span>Jan 15, 2026</span>
+                                    <span>•</span>
+                                    <span>5 min read</span>
+                                </div>
+                                <h3 class="blog-title">
+                                    <a href="blog-details.html?id=advances-pigging-2026">Advances in Smart Pigging
+                                        Technology for 2026</a>
+                                </h3>
+                                <p class="blog-excerpt">Explore the latest breakthroughs in ILI technology and what to
+                                    expect in the coming year.</p>
+                                <a href="blog-details.html?id=advances-pigging-2026" class="service-link">
+                                    Read More
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </article>
 
                     <article class="blog-card reveal">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop"
-                                alt="Pipeline integrity management" loading="lazy" width="600" height="400">
-                            <span class="badge badge-secondary blog-category">Regulations</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Jan 10, 2026</span>
-                                <span>•</span>
-                                <span>8 min read</span>
+                        <div class="blog-card-inner">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop"
+                                    alt="Pipeline integrity management" loading="lazy">
+                                <span class="badge badge-secondary">Regulations</span>
                             </div>
-                            <h3 class="blog-title">
-                                <a href="blog-details.html">New PHMSA Regulations: What Operators Need to Know</a>
-                            </h3>
-                            <p class="blog-excerpt">A comprehensive guide to the latest regulatory changes and how they
-                                impact your integrity management programs.</p>
-                            <a href="blog-details.html" class="service-link">
-                                Read More
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </a>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span>Jan 10, 2026</span>
+                                    <span>•</span>
+                                    <span>8 min read</span>
+                                </div>
+                                <h3 class="blog-title">
+                                    <a href="blog-details.html?id=phmsa-regulations">New PHMSA Regulations: What
+                                        Operators Need to Know</a>
+                                </h3>
+                                <p class="blog-excerpt">A comprehensive guide to the latest regulatory changes and how
+                                    they impact your integrity management programs.</p>
+                                <a href="blog-details.html?id=phmsa-regulations" class="service-link">
+                                    Read More
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </article>
 
                     <article class="blog-card reveal">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"
-                                alt="Pipeline construction" loading="lazy" width="600" height="400">
-                            <span class="badge badge-primary blog-category">Best Practices</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Jan 5, 2026</span>
-                                <span>•</span>
-                                <span>6 min read</span>
+                        <div class="blog-card-inner">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"
+                                    alt="Pipeline construction" loading="lazy">
+                                <span class="badge badge-primary">Best Practices</span>
                             </div>
-                            <h3 class="blog-title">
-                                <a href="blog-details.html">Optimizing Dig Programs: A Data-Driven Approach</a>
-                            </h3>
-                            <p class="blog-excerpt">Learn how to prioritize excavation activities using risk-based
-                                assessment and advanced analytics.</p>
-                            <a href="blog-details.html" class="service-link">
-                                Read More
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </a>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span>Jan 5, 2026</span>
+                                    <span>•</span>
+                                    <span>6 min read</span>
+                                </div>
+                                <h3 class="blog-title">
+                                    <a href="blog-details.html?id=data-driven-dig">Optimizing Dig Programs: A
+                                        Data-Driven Approach</a>
+                                </h3>
+                                <p class="blog-excerpt">Learn how to prioritize excavation activities using risk-based
+                                    assessment and advanced analytics.</p>
+                                <a href="blog-details.html?id=data-driven-dig" class="service-link">
+                                    Read More
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -761,6 +766,8 @@
                         <li><a href="services.html">Services</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="coming-soon.html">Events</a></li>
+                        <li><a href="404.html">Careers</a></li>
                     </ul>
                 </div>
 
@@ -768,11 +775,12 @@
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="service-details.html">Inline Inspection</a></li>
-                        <li><a href="service-details.html">Dig Reports</a></li>
-                        <li><a href="service-details.html">Integrity Management</a></li>
-                        <li><a href="service-details.html">Cathodic Protection</a></li>
-                        <li><a href="service-details.html">Data Analysis</a></li>
+                        <li><a href="service-details.html?service=ili">Inline Inspection</a></li>
+                        <li><a href="service-details.html?service=dig-reports">Dig Reports</a></li>
+                        <li><a href="service-details.html?service=integrity">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=cp">Cathodic Protection</a></li>
+                        <li><a href="service-details.html?service=coating">Coating Inspection</a></li>
+                        <li><a href="service-details.html?service=data">Data Analysis</a></li>
                     </ul>
                 </div>
 
@@ -791,11 +799,15 @@
 
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-powered">
+                    <p>Powered By <a href="https://abhivorn.com" target="_blank">Abhivorn Technologies Pvt Ltd</a></p>
                 </div>
             </div>
         </div>

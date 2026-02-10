@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Client Login - Access your PipelinePro dashboard and inspection data.">
+    <meta name="description" content="Login - Access your PipelinePro dashboard and inspection data.">
     <title>Login | PipelinePro Client Portal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,12 +150,197 @@
             gap: var(--space-2);
             color: var(--text-secondary);
             font-size: var(--text-sm);
-            margin-bottom: var(--space-6);
+            margin-bottom: var(--space-4);
             transition: color var(--transition-fast);
         }
 
         .back-link:hover {
             color: var(--text-primary);
+        }
+
+        .auth-logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--space-10);
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            color: var(--text-primary);
+        }
+
+        .logo-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            color: var(--text-white);
+        }
+
+        .auth-card {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .auth-header h1 {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .auth-header p {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-primary);
+            background-color: var(--bg-primary);
+            transition: all var(--transition-base);
+        }
+
+        .form-input:focus {
+            border-color: var(--color-primary-600);
+            box-shadow: 0 0 0 4px var(--color-primary-50);
+            outline: none;
+        }
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-8);
+        }
+
+        .login-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .login-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-5) var(--space-4);
+            height: auto;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            font-weight: var(--font-bold);
+            font-size: var(--text-sm);
+            letter-spacing: 0.5px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .icon-circle {
+            padding: var(--space-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-btn.primary .icon-circle {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .login-btn.outline .icon-circle {
+            background: var(--bg-tertiary);
+        }
+
+        .auth-separator {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+            color: var(--text-tertiary);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .auth-separator::before,
+        .auth-separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-primary);
+        }
+
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            padding: var(--space-3);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            transition: all var(--transition-fast);
+        }
+
+        .social-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-secondary);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: var(--space-8);
+        }
+
+        .auth-footer p {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .auth-footer a {
+            color: var(--color-primary-600);
+            font-weight: var(--font-semibold);
         }
 
         .auth-header-controls {
@@ -203,67 +388,42 @@
 </head>
 
 <body>
-    <div class="auth-header-controls">
-        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <circle cx="12" cy="12" r="5" />
-                <path
-                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg>
-            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-        </button>
-        <!-- RTL Toggle -->
-        <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="17 11 21 7 17 3"></polyline>
-                <line x1="21" y1="7" x2="9" y2="7"></line>
-                <polyline points="7 21 3 17 7 13"></polyline>
-                <line x1="3" y1="17" x2="15" y2="17"></line>
-            </svg>
-        </button>
-    </div>
+
     <div class="auth-wrapper">
         <div class="auth-container">
-            <a href="index.html" class="back-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                Back to website
-            </a>
-
-            <div class="auth-logo">
-                <div class="logo-icon" style="width: 48px; height: 48px;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-                        <path d="M14 2v6h6" />
-                        <path d="M2 15h10" />
-                        <path d="M5 12v6" />
-                        <path d="M9 12v6" />
-                    </svg>
-                </div>
-                <span>Pipeline<span style="color: var(--color-primary-600);">Pro</span></span>
-            </div>
-
             <div class="auth-card">
+                <div class="auth-logo" style="margin-bottom: var(--space-6);">
+                    <a href="index.html"
+                        style="display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: inherit;">
+                        <div class="logo-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                                <path d="M14 2v6h6" />
+                                <path d="M2 15h10" />
+                                <path d="M5 12v6" />
+                                <path d="M9 12v6" />
+                            </svg>
+                        </div>
+                        <span>Pipeline<span style="color: var(--color-primary-600);">Pro</span></span>
+                    </a>
+                </div>
                 <div class="auth-header">
                     <h1>Welcome back</h1>
                     <p>Sign in to access your dashboard</p>
                 </div>
 
+
+
                 <form class="auth-form" data-validate>
                     <div class="form-group">
-                        <label class="form-label" for="email">Email Address</label>
+                        <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="password">Password</label>
+                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-input"
                             placeholder="Enter your password" required minlength="8">
                     </div>
@@ -271,72 +431,66 @@
                     <div class="form-options">
                         <label class="form-check">
                             <input type="checkbox" name="remember" class="form-check-input">
-                            <span style="font-size: var(--text-sm); color: var(--text-secondary);">Remember me</span>
+                            <span>Remember me</span>
                         </label>
-                        <a href="#" class="forgot-password">Forgot password?</a>
+                        <a href="#" class="forgot-password" onclick="handleForgotPassword(); return false;">Forgot
+                            password?</a>
                     </div>
 
-                    <div class="login-options"
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-4);">
-                        <button type="button" onclick="window.location.href='client-dashboard.html'"
-                            class="btn btn-primary btn-lg"
-                            style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-4); height: auto;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
+                    <div class="login-options">
+                        <button type="button" onclick="handleAuth('client')" class="btn btn-outline login-btn outline">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <span>Client Login</span>
                         </button>
-                        <button type="button" onclick="window.location.href='admin-dashboard.html'"
-                            class="btn btn-outline"
-                            style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-4); height: auto; border: 2px solid var(--border-primary); background-color: var(--bg-secondary); color: var(--text-primary);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
+                        <button type="button" onclick="handleAuth('admin')" class="btn btn-outline login-btn outline">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
                             <span>Admin Login</span>
                         </button>
                     </div>
                 </form>
 
-                <div class="auth-separator">
-                    <span>Or continue with</span>
+                <div class="auth-footer" style="margin-top: var(--space-6);">
+                    <p>Don't have an account? <a href="register.html">Create an account</a></p>
                 </div>
-
-                <div class="social-login">
-                    <button type="button" class="social-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                            <path fill="currentColor"
-                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                            <path fill="currentColor"
-                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                            <path fill="currentColor"
-                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                        </svg>
-                        Google
-                    </button>
-                    <button type="button" class="social-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                        LinkedIn
-                    </button>
-                </div>
-            </div>
-
-            <div class="auth-footer">
-                <p>Don't have an account? <a href="register.html">Create an account</a></p>
-                <p style="margin-top: var(--space-4);"><a href="client-dashboard.html">Client Dashboard</a> | <a
-                        href="admin-dashboard.html">Admin Dashboard</a></p>
             </div>
         </div>
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        function handleAuth(role) {
+            // Save role to localStorage
+            localStorage.setItem('userRole', role);
+
+            // Redirect based on role
+            if (role === 'admin') {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                window.location.href = 'client-dashboard.html';
+            }
+        }
+
+        // On page load, clear role if we're on the login page
+        document.addEventListener('DOMContentLoaded', function () {
+            localStorage.removeItem('userRole');
+        });
+
+        // Forgot password handler
+        function handleForgotPassword() {
+            alert('Password reset link has been sent to your email address.\n\nPlease check your inbox and follow the instructions to reset your password.');
+        }
+    </script>
 </body>
 
 </html>

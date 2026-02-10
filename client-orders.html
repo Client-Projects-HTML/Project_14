@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="My Orders Coming Soon - PipelinePro">
-    <title>My Orders Coming Soon | PipelinePro</title>
+    <meta name="description" content="My Orders - PipelinePro Client Portal">
+    <title>My Orders | PipelinePro Client Portal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,299 +14,555 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/dashboard-custom.css">
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
 
-    <style>
-        .coming-soon-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            padding: var(--space-8);
-            position: relative;
-            overflow: hidden;
-        }
+    <script>
+        (function () {
+            // RTL Initialization
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
 
-        .coming-soon-page::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .coming-soon-content {
-            text-align: center;
-            max-width: 600px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .coming-soon-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-3);
-            margin-bottom: var(--space-8);
-            font-size: var(--text-2xl);
-            font-weight: var(--font-bold);
-            color: var(--text-primary);
-        }
-
-        .coming-soon-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-2);
-            background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
-            color: white;
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            font-size: var(--text-sm);
-            font-weight: var(--font-semibold);
-            margin-bottom: var(--space-6);
-        }
-
-        .coming-soon-title {
-            font-size: var(--text-5xl);
-            font-weight: var(--font-bold);
-            margin-bottom: var(--space-4);
-            line-height: var(--leading-tight);
-        }
-
-        .coming-soon-description {
-            color: var(--text-secondary);
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-8);
-        }
-
-        /* Countdown Timer */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-6);
-            margin-bottom: var(--space-10);
-        }
-
-        .countdown-item {
-            text-align: center;
-        }
-
-        .countdown-value {
-            width: 80px;
-            height: 80px;
-            background-color: var(--bg-primary);
-            border: 2px solid var(--border-primary);
-            border-radius: var(--radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--text-3xl);
-            font-weight: var(--font-bold);
-            color: var(--color-primary-600);
-            margin-bottom: var(--space-2);
-        }
-
-        .countdown-label {
-            font-size: var(--text-sm);
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Notify Form */
-        .notify-form {
-            max-width: 400px;
-            margin: 0 auto var(--space-8);
-        }
-
-        .notify-form p {
-            color: var(--text-secondary);
-            margin-bottom: var(--space-4);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-4);
-            margin-top: var(--space-8);
-        }
-
-        .social-link-large {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-full);
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: all var(--transition-base);
-        }
-
-        .social-link-large:hover {
-            background-color: var(--color-primary-600);
-            border-color: var(--color-primary-600);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Progress Bar */
-        .progress-section {
-            margin-bottom: var(--space-8);
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--space-2);
-            font-size: var(--text-sm);
-        }
-
-        .progress-bar {
-            height: 8px;
-            background-color: var(--bg-tertiary);
-            border-radius: var(--radius-full);
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 75%;
-            background: linear-gradient(90deg, var(--color-primary-600), var(--color-primary-400));
-            border-radius: var(--radius-full);
-            animation: progress-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes progress-pulse {
-
-            0%,
-            100% {
-                opacity: 1;
+            const role = localStorage.getItem('userRole');
+            if (role !== 'client') {
+                window.location.replace('login.html');
             }
-
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .coming-soon-title {
-                font-size: var(--text-4xl);
-            }
-
-            .countdown {
-                gap: var(--space-4);
-            }
-
-            .countdown-value {
-                width: 64px;
-                height: 64px;
-                font-size: var(--text-2xl);
-            }
-        }
-
-        .page-header-controls {
-            position: fixed;
-            top: var(--space-4);
-            right: var(--space-4);
-            display: flex;
-            gap: var(--space-2);
-            z-index: 1000;
-        }
-
-        .page-header-controls button {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-lg);
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            backdrop-filter: blur(10px);
-        }
-
-        .page-header-controls button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-    </style>
+        })();
+    </script>
 </head>
 
 <body>
-    <div class="page-header-controls">
-        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <circle cx="12" cy="12" r="5" />
-                <path
-                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg>
-            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-        </button>
-        <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="17 11 21 7 17 3"></polyline>
-                <line x1="21" y1="7" x2="9" y2="7"></line>
-                <polyline points="7 21 3 17 7 13"></polyline>
-                <line x1="3" y1="17" x2="15" y2="17"></line>
-            </svg>
-        </button>
-    </div>
-    <div class="coming-soon-page">
-        <div class="coming-soon-content">
-            <a href="client-dashboard.html" class="coming-soon-logo">
-                <div class="logo-icon" style="width: 48px; height: 48px;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-                        <path d="M14 2v6h6" />
-                        <path d="M2 15h10" />
-                        <path d="M5 12v6" />
-                        <path d="M9 12v6" />
-                    </svg>
-                </div>
-                <span>Pipeline<span style="color: var(--color-primary-600);">Pro</span></span>
-            </a>
-
-            <div class="coming-soon-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                </svg>
-                Coming Soon
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="logo-icon" style="width: 28px; height: 28px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                            <path d="M14 2v6h6" />
+                            <path d="M2 15h10" />
+                            <path d="M5 12v6" />
+                            <path d="M9 12v6" />
+                        </svg>
+                    </div>
+                    <span style="font-size: var(--text-lg); font-weight: var(--font-bold);">Pipeline<span
+                            style="color: var(--color-primary-600);">Pro</span></span>
+                </a>
             </div>
 
-            <h1 class="coming-soon-title">My Orders</h1>
-            <p class="coming-soon-description">We are making it easier for you to view and track your orders. This
-                feature is launching soon.</p>
-
-            <!-- Progress -->
-            <div class="progress-section">
-                <div class="progress-label">
-                    <span style="color: var(--text-secondary);">Development Progress</span>
-                    <span style="color: var(--color-primary-600); font-weight: var(--font-semibold);">90%</span>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <p class="sidebar-section-title">Main</p>
+                    <a href="client-dashboard.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="inspections.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        Inspections
+                    </a>
+                    <a href="reports.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                        Reports
+                    </a>
+                    <a href="client-orders.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        My Orders
+                    </a>
+                    <a href="client-messages.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Messages
+                    </a>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 90%;"></div>
+
+                <div class="sidebar-section">
+                    <p class="sidebar-section-title">Data</p>
+                    <a href="analytics.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                        Analytics
+                    </a>
+                </div>
+
+                <div class="sidebar-section">
+                    <p class="sidebar-section-title">Account</p>
+                    <a href="profile.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        Profile
+                    </a>
+
+                    <a href="#" onclick="handleLogout(event)" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <header class="dashboard-header">
+                <div class="flex items-center gap-4">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                        <span class="notification-badge">3</span>
+                    </button>
+
+                    <div class="user-menu">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff"
+                            alt="User avatar" class="user-avatar">
+                        <div>
+                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">John Doe</p>
+                            <p style="font-size: var(--text-xs); color: var(--text-tertiary);">Client</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Page Header -->
+                <div class="page-header reveal">
+                    <h1 class="page-title">My Orders</h1>
+                    <p class="page-subtitle">View and track all your pipeline inspection orders</p>
+                </div>
+
+                <!-- Orders Table Section -->
+                <div class="section-card">
+                    <div class="section-header-flex">
+                        <h2 class="section-title-sm">All Orders</h2>
+                        <div class="flex gap-3">
+                            <select id="statusFilter" class="form-select"
+                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);"
+                                aria-label="Filter by status">
+                                <option value="">All Status</option>
+                                <option value="completed">Completed</option>
+                                <option value="processing">Processing</option>
+                                <option value="pending">Pending</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <select id="dateFilter" class="form-select"
+                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);"
+                                aria-label="Filter by date">
+                                <option value="">All Time</option>
+                                <option value="7">Last 7 Days</option>
+                                <option value="30">Last 30 Days</option>
+                                <option value="90">Last 90 Days</option>
+                            </select>
+                            <button id="exportOrdersBtn" class="btn btn-primary"
+                                style="padding: var(--space-2) var(--space-4);">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table" data-sortable>
+                            <thead>
+                                <tr>
+                                    <th data-sort="text">Order ID</th>
+                                    <th data-sort="text">Service</th>
+                                    <th data-sort="date">Date</th>
+                                    <th data-sort="text">Status</th>
+                                    <th data-sort="number">Total</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ORD-2026-001</strong></td>
+                                    <td>Pipeline Integrity Assessment</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>$12,500</td>
+                                    <td>
+                                        <button class="action-btn" title="View Details">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn" title="Download">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-2026-002</strong></td>
+                                    <td>Risk Analysis Report</td>
+                                    <td>Feb 02, 2026</td>
+                                    <td><span class="status-badge in-progress">Processing</span></td>
+                                    <td>$4,150</td>
+                                    <td>
+                                        <button class="action-btn" title="View Details">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn" title="Download">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-2026-003</strong></td>
+                                    <td>MFL Inspection - Line 101</td>
+                                    <td>Jan 28, 2026</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>$18,900</td>
+                                    <td>
+                                        <button class="action-btn" title="View Details">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn" title="Download">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-2026-004</strong></td>
+                                    <td>Geometry Survey</td>
+                                    <td>Jan 25, 2026</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>$8,500</td>
+                                    <td>
+                                        <button class="action-btn" title="View Details">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn" title="Download">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-2026-005</strong></td>
+                                    <td>Corrosion Assessment</td>
+                                    <td>Jan 20, 2026</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>$15,200</td>
+                                    <td>
+                                        <button class="action-btn" title="View Details">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn" title="Download">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-            <p style="margin-top: var(--space-8); color: var(--text-tertiary); font-size: var(--text-sm);">
-                <a href="client-dashboard.html" style="color: var(--color-primary-600);">← Back to Dashboard</a>
-            </p>
-        </div>
+        </main>
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Initialize orders page functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            initOrdersPage();
+        });
+
+        function initOrdersPage() {
+            // Status filter
+            const statusFilter = document.getElementById('statusFilter');
+            if (statusFilter) {
+                statusFilter.addEventListener('change', filterOrders);
+            }
+
+            // Date filter
+            const dateFilter = document.getElementById('dateFilter');
+            if (dateFilter) {
+                dateFilter.addEventListener('change', filterOrders);
+            }
+
+            // Export orders button
+            const exportOrdersBtn = document.getElementById('exportOrdersBtn');
+            if (exportOrdersBtn) {
+                exportOrdersBtn.addEventListener('click', exportOrders);
+            }
+        }
+
+        function filterOrders() {
+            const statusFilter = document.getElementById('statusFilter');
+            const dateFilter = document.getElementById('dateFilter');
+            const table = document.querySelector('.data-table');
+
+            if (!table) return;
+
+            const statusValue = statusFilter ? statusFilter.value : '';
+            const dateValue = dateFilter ? dateFilter.value : '';
+
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const cells = row.querySelectorAll('td');
+                if (cells.length < 6) return;
+
+                const statusCell = cells[3]; // Status column
+                const statusBadge = statusCell.querySelector('.status-badge');
+                const status = statusBadge ? statusBadge.textContent.toLowerCase().trim() : '';
+
+                const dateCell = cells[2]; // Date column
+                const dateText = dateCell.textContent.trim();
+                const orderDate = new Date(dateText);
+
+                let showRow = true;
+
+                // Check status filter
+                if (statusValue) {
+                    if (statusValue === 'completed' && !status.includes('completed')) {
+                        showRow = false;
+                    } else if (statusValue === 'processing' && !status.includes('processing')) {
+                        showRow = false;
+                    } else if (statusValue === 'pending' && !status.includes('pending')) {
+                        showRow = false;
+                    } else if (statusValue === 'cancelled' && !status.includes('cancelled')) {
+                        showRow = false;
+                    }
+                }
+
+                // Check date filter
+                if (dateValue && showRow) {
+                    const now = new Date();
+                    const daysDiff = Math.floor((now - orderDate) / (1000 * 60 * 60 * 24));
+
+                    if (dateValue === '7' && daysDiff > 7) {
+                        showRow = false;
+                    } else if (dateValue === '30' && daysDiff > 30) {
+                        showRow = false;
+                    } else if (dateValue === '90' && daysDiff > 90) {
+                        showRow = false;
+                    }
+                }
+
+                row.style.display = showRow ? '' : 'none';
+            });
+
+            // Show notification
+            const visibleCount = Array.from(rows).filter(r => r.style.display !== 'none').length;
+            showNotification('Showing ' + visibleCount + ' orders', 'info');
+        }
+
+        function exportOrders() {
+            const exportBtn = document.getElementById('exportOrdersBtn');
+
+            // Show loading state
+            const originalContent = exportBtn.innerHTML;
+            exportBtn.disabled = true;
+            exportBtn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="0.75"></path></svg> Exporting...';
+
+            // Simulate export process
+            setTimeout(function () {
+                const orderData = getOrderData();
+
+                // Generate CSV content
+                let csv = 'Order ID,Service,Date,Status,Total\n';
+                orderData.forEach(function (order) {
+                    csv += order.id + ',' + order.service + ',' + order.date + ',' + order.status + ',' + order.total + '\n';
+                });
+
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'my_orders_' + new Date().toISOString().split('T')[0] + '.csv';
+                a.style.visibility = 'hidden';
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+
+                // Reset button
+                exportBtn.disabled = false;
+                exportBtn.innerHTML = originalContent;
+
+                // Show success notification
+                showNotification('Orders exported successfully!', 'success');
+            }, 1500);
+        }
+
+        function getOrderData() {
+            const table = document.querySelector('.data-table');
+            if (!table) return [];
+
+            const data = [];
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                if (row.style.display === 'none') return;
+
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 6) {
+                    const statusCell = cells[3];
+                    const statusBadge = statusCell.querySelector('.status-badge');
+                    data.push({
+                        id: cells[0].textContent.trim(),
+                        service: cells[1].textContent.trim(),
+                        date: cells[2].textContent.trim(),
+                        status: statusBadge ? statusBadge.textContent.trim() : '',
+                        total: cells[4].textContent.trim()
+                    });
+                }
+            });
+
+            return data;
+        }
+
+        function showNotification(message, type) {
+            // Remove existing notifications
+            const existing = document.querySelectorAll('.notification-toast');
+            existing.forEach(function (n) { n.remove(); });
+
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease;';
+
+            if (type === 'success') {
+                notification.style.background = 'var(--color-success-600)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--color-error-600)';
+            } else {
+                notification.style.background = 'var(--color-primary-600)';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(function () {
+                notification.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(function () { notification.remove(); }, 300);
+            }, 3000);
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

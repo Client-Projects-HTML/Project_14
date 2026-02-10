@@ -1,0 +1,196 @@
+/* Dropdown visibility overrides */
+.notification-dropdown,
+.user-menu-dropdown {
+    display: none;
+    position: fixed;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    z-index: 9999;
+}
+
+.notification-dropdown.active,
+.user-menu-dropdown.active {
+    display: block;
+}
+
+/* Notification Dropdown specific styles */
+.notification-dropdown {
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.notification-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.notification-body {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.notification-footer {
+    padding: 12px;
+    border-top: 1px solid var(--border-primary);
+    text-align: center;
+    background: var(--bg-secondary);
+}
+
+.notification-footer a {
+    font-size: 14px;
+    color: var(--color-primary-600);
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+
+.notification-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Activity items in notification */
+.notification-body .activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-primary);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.notification-body .activity-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.notification-body .activity-item:last-child {
+    border-bottom: none;
+}
+
+.notification-body .activity-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--color-primary-100);
+    color: var(--color-primary-600);
+}
+
+.notification-body .activity-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.notification-body .activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-body .activity-content h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.notification-body .activity-content p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* User Menu Dropdown specific styles */
+.user-menu-dropdown {
+    top: 90px;
+    right: 20px;
+    width: 240px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    padding: 0;
+}
+
+.user-menu-dropdown-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-menu-dropdown-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-menu-dropdown-header p:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 2px 0;
+}
+
+.user-menu-dropdown-header p:last-child {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.user-menu-dropdown-content {
+    padding: 8px;
+}
+
+.user-menu-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.user-menu-dropdown-item:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.user-menu-dropdown-item svg {
+    width: 18px;
+    height: 18px;
+}
+
+.user-menu-dropdown-item.danger {
+    color: var(--color-error-600);
+}
+
+.user-menu-dropdown-item.danger:hover {
+    background-color: var(--color-error-50);
+}

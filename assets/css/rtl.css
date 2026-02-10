@@ -176,7 +176,7 @@
 
 [dir="rtl"] .about-image-badge {
     right: auto;
-    left: -24px;
+    left: calc(var(--space-6) * -1);
 }
 
 /* ============================================
@@ -347,6 +347,7 @@
     border-right: none;
     border-left: 1px solid var(--border-primary);
     transition: transform var(--transition-slow);
+    transform: none;
 }
 
 [dir="rtl"] .sidebar.active {
@@ -355,7 +356,7 @@
 
 [dir="rtl"] .main-content {
     margin-left: 0;
-    margin-right: 280px;
+    margin-right: var(--sidebar-width, 300px);
     flex: 1;
     min-height: 100vh;
 }

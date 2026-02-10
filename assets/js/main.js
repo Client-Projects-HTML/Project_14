@@ -652,6 +652,167 @@
         }
     };
 
+    /**
+     * Role-Based Navigation Manager
+     */
+    const RoleNavigationManager = {
+        init() {
+            const role = localStorage.getItem('userRole');
+            if (!role) return;
+
+            this.updateLinks(role);
+            this.toggleSections(role);
+            this.updateHeader(role);
+        },
+
+        updateLinks(role) {
+            const dashboardLinks = document.querySelectorAll('a[href*="dashboard.html"]');
+            dashboardLinks.forEach(link => {
+                if (role === 'admin') {
+                    link.href = 'admin-dashboard.html';
+                } else if (role === 'client') {
+                    link.href = 'client-dashboard.html';
+                }
+            });
+
+            // Update logo links to go to main website (index.html)
+            const logoLinks = document.querySelectorAll('.logo');
+            logoLinks.forEach(link => {
+                link.href = 'index.html';
+            });
+
+            // Update generic dashboard links that might not have the full filename
+            const allLinks = document.querySelectorAll('.sidebar-link, .nav-item');
+            allLinks.forEach(link => {
+                const text = link.textContent.trim().toLowerCase();
+                if (text === 'dashboard') {
+                    link.href = role === 'admin' ? 'admin-dashboard.html' : 'client-dashboard.html';
+                }
+            });
+        },
+
+        toggleSections(role) {
+            // New approach: Use data-role attribute for precise control
+            const roleElements = document.querySelectorAll('[data-role]');
+            roleElements.forEach(el => {
+                const targetRole = el.getAttribute('data-role');
+                if (targetRole === 'admin' && role !== 'admin') {
+                    el.style.display = 'none';
+                } else if (targetRole === 'client' && role !== 'client') {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = '';
+                }
+            });
+
+            // Fallback for existing structure
+            const sidebarSections = document.querySelectorAll('.sidebar-section');
+            sidebarSections.forEach(section => {
+                if (section.hasAttribute('data-role')) return; // Skip if already handled
+
+                const title = section.querySelector('.sidebar-section-title');
+                if (!title) return;
+
+                const sectionTitle = title.textContent.trim().toLowerCase();
+
+                // Admin only sections
+                if (sectionTitle === 'management' || sectionTitle === 'admin') {
+                    if (role !== 'admin') {
+                        section.style.display = 'none';
+                    }
+                }
+            });
+
+            // Individual links visibility (legacy support)
+            const allLinks = document.querySelectorAll('.sidebar-link, .nav-item');
+            allLinks.forEach(link => {
+                if (link.hasAttribute('data-role')) return; // Skip if already handled
+
+                const text = link.textContent.trim().toLowerCase();
+
+                // Admin only items
+                const adminOnly = ['users', 'all users', 'admin users'];
+                if (adminOnly.includes(text)) {
+                    if (role !== 'admin') {
+                        link.style.display = 'none';
+                    }
+                }
+
+                // Client only items
+                const clientOnly = ['my orders', 'my inspections'];
+                if (clientOnly.includes(text)) {
+                    if (role !== 'client') {
+                        link.style.display = 'none';
+                    }
+                }
+            });
+        },
+
+        updateHeader(role) {
+            const userMenus = document.querySelectorAll('.user-menu, .user-menu-dropdown');
+            if (userMenus.length === 0) return;
+
+            const userName = role === 'admin' ? "John Smith" : "Sarah Jenkins";
+            const userEmail = role === 'admin' ? "john.smith@company.com" : "sarah.j@chevron.com";
+            const avatarUrl = role === 'admin'
+                ? "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+                : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face";
+            const initials = role === 'admin' ? 'JS' : 'SJ';
+
+            userMenus.forEach(userMenu => {
+                // Update Name and Role based on structure
+                const pElements = userMenu.querySelectorAll('p');
+                if (pElements.length >= 2) {
+                    pElements[0].textContent = userName;
+                    pElements[1].textContent = role.charAt(0).toUpperCase() + role.slice(1);
+                } else if (pElements.length === 1) {
+                    // Try to find if it's name or role
+                    const text = pElements[0].textContent.toLowerCase();
+                    if (text.includes('admin') || text.includes('client')) {
+                        pElements[0].textContent = role.charAt(0).toUpperCase() + role.slice(1);
+                    } else {
+                        pElements[0].textContent = userName;
+                    }
+                }
+
+                // Update Avatar (Image or Div)
+                const avatarImg = userMenu.querySelector('img.user-avatar');
+                if (avatarImg) {
+                    avatarImg.src = avatarUrl;
+                } else {
+                    const avatarDiv = userMenu.querySelector('.user-avatar');
+                    if (avatarDiv && avatarDiv.tagName === 'DIV') {
+                        avatarDiv.textContent = initials;
+                        avatarDiv.style.backgroundImage = 'none';
+                    }
+                }
+            });
+
+            // Update Profile Page specific elements (if present)
+            const profileImg = document.getElementById('profileImage');
+            if (profileImg) {
+                profileImg.src = avatarUrl;
+            }
+
+            const profileName = document.getElementById('profileName');
+            if (profileName) {
+                profileName.textContent = userName;
+            }
+
+            const profileRole = document.getElementById('profileRole');
+            if (profileRole) {
+                profileRole.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+            }
+
+            // Update Profile Form Fields
+            const nameInput = document.querySelector('input[name="full_name"]') || document.querySelector('input[placeholder*="Name"]');
+            if (nameInput) nameInput.value = userName;
+
+            const emailInput = document.querySelector('input[name="email"]') || document.querySelector('input[type="email"]');
+            if (emailInput) emailInput.value = userEmail;
+        }
+    };
+
     // ============================================
     // Initialize Application
     // ============================================
@@ -665,6 +826,7 @@
         LoadingStateManager.init();
         CounterAnimation.init();
         AccessibilityManager.init();
+        RoleNavigationManager.init();
 
         // Log initialization
         console.log('🚀 Pipeline Inspection Services - Application initialized');
@@ -686,6 +848,30 @@
         ThemeManager,
         NavigationManager,
         FormValidationManager
+    };
+
+    // Global Logout Handler
+    window.handleLogout = function (e) {
+        if (e) e.preventDefault();
+        localStorage.removeItem('userRole');
+        window.location.href = 'login.html';
+    };
+
+    // RTL Toggle Handler
+    window.toggleRTL = function () {
+        const dir = localStorage.getItem('dir') || 'ltr';
+        const newDir = dir === 'ltr' ? 'rtl' : 'ltr';
+        localStorage.setItem('dir', newDir);
+        document.documentElement.setAttribute('dir', newDir);
+        document.documentElement.setAttribute('lang', newDir === 'rtl' ? 'ar' : 'en');
+    };
+
+    // Theme Toggle Handler
+    window.toggleTheme = function () {
+        const theme = localStorage.getItem('theme') || 'light';
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        document.documentElement.classList.toggle('dark', newTheme === 'dark');
     };
 
 })();

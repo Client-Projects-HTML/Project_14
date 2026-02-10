@@ -15,8 +15,23 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/dashboard-custom.css">
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+
+    <script>
+        (function () {
+            // RTL Initialization
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+
+            const role = localStorage.getItem('userRole');
+            if (!role) {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
 
     <!-- Chart.js for analytics charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -46,7 +61,7 @@
             <nav class="sidebar-nav">
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Main</p>
-                    <a href="client-dashboard.html" class="sidebar-link">
+                    <a href="admin-dashboard.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <rect x="3" y="3" width="7" height="7" />
@@ -62,7 +77,8 @@
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                         </svg>
-                        Inspections
+                        <span data-role="admin">All Inspections</span>
+                        <span data-role="client">Inspections</span>
                     </a>
                     <a href="reports.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -75,7 +91,8 @@
                         </svg>
                         Reports
                     </a>
-                    <a href="client-orders.html" class="sidebar-link">
+                    <!-- Client Only -->
+                    <a href="client-orders.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="9" cy="21" r="1" />
@@ -84,7 +101,7 @@
                         </svg>
                         My Orders
                     </a>
-                    <a href="client-messages.html" class="sidebar-link">
+                    <a href="client-messages.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -92,12 +109,40 @@
                         </svg>
                         Messages
                     </a>
+                </div>
 
+                <div class="sidebar-section" data-role="admin">
+                    <p class="sidebar-section-title">Management</p>
+                    <a href="admin-users.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Users
+                    </a>
+                    <a href="admin-orders.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        Orders
+                    </a>
+                    <a href="admin-messages.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Messages
+                    </a>
                 </div>
 
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Data</p>
-
                     <a href="analytics.html" class="sidebar-link active">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -107,23 +152,10 @@
                         </svg>
                         Analytics
                     </a>
-
                 </div>
 
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Account</p>
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle sidebar-link" id="rtlToggle" aria-label="Toggle RTL direction"
-                        title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
-                        RTL Mode
-                    </button>
                     <a href="profile.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -133,7 +165,7 @@
                         Profile
                     </a>
 
-                    <a href="login.html" class="sidebar-link">
+                    <a href="#" onclick="handleLogout(event)" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -159,50 +191,28 @@
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
-                    <div class="header-search">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.35-4.35" />
-                        </svg>
-                        <input type="text" placeholder="Search analytics..." aria-label="Search analytics">
-                    </div>
                 </div>
 
                 <div class="header-actions">
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    </button>
                     <!-- Theme Toggle -->
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                         </svg>
-                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL mode" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                            <path d="M3 3v5h5" />
-                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-                            <path d="M16 21h5v-5" />
-                        </svg>
-                    </button>
-
                     <!-- Notifications -->
-                    <button class="notification-btn" aria-label="Notifications">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -213,10 +223,10 @@
 
                     <!-- User Menu -->
                     <div class="user-menu">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff"
+                        <img src="https://ui-avatars.com/api/?name=John+Smith&background=3b82f6&color=fff"
                             alt="User avatar" class="user-avatar">
                         <div>
-                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">John Doe</p>
+                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">John Smith</p>
                             <p style="font-size: var(--text-xs); color: var(--text-tertiary);">Admin</p>
                         </div>
                     </div>
@@ -233,13 +243,18 @@
                 <!-- Time Range Selector -->
                 <div
                     style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-4);">
-                    <div class="flex gap-2">
-                        <button class="btn btn-primary" style="padding: var(--space-2) var(--space-4);">7 Days</button>
-                        <button class="btn btn-ghost" style="padding: var(--space-2) var(--space-4);">30 Days</button>
-                        <button class="btn btn-ghost" style="padding: var(--space-2) var(--space-4);">90 Days</button>
-                        <button class="btn btn-ghost" style="padding: var(--space-2) var(--space-4);">Year</button>
+                    <div class="flex gap-2" id="timeRangeSelector">
+                        <button data-range="7" class="btn btn-primary time-range-btn"
+                            style="padding: var(--space-2) var(--space-4);">7 Days</button>
+                        <button data-range="30" class="btn btn-ghost time-range-btn"
+                            style="padding: var(--space-2) var(--space-4);">30 Days</button>
+                        <button data-range="90" class="btn btn-ghost time-range-btn"
+                            style="padding: var(--space-2) var(--space-4);">90 Days</button>
+                        <button data-range="365" class="btn btn-ghost time-range-btn"
+                            style="padding: var(--space-2) var(--space-4);">Year</button>
                     </div>
-                    <button class="btn btn-primary" style="padding: var(--space-2) var(--space-4);">
+                    <button id="exportAnalyticsBtn" class="btn btn-primary"
+                        style="padding: var(--space-2) var(--space-4);">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -261,8 +276,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>248</h3>
                             <p>Total Inspections</p>
+                            <h3>248</h3>
                             <div class="stat-trend up">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -283,10 +298,10 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>94.2%</h3>
                             <p>Success Rate</p>
+                            <h3>94.2%</h3>
                             <div class="stat-trend up">
-                                <svg width="16" height="16" viewBox="24 24" 0 0 fill="none" stroke="currentColor"
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                                     <polyline points="17 6 23 6 23 12" />
@@ -307,8 +322,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>12</h3>
                             <p>Critical Findings</p>
+                            <h3>12</h3>
                             <div class="stat-trend down">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -329,8 +344,8 @@
                             </svg>
                         </div>
                         <div class="stat-content">
-                            <h3>1,245</h3>
                             <p>Hours Inspected</p>
+                            <h3>1,245</h3>
                             <div class="stat-trend up">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -350,14 +365,17 @@
                     <div class="section-card">
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Inspections Trend</h2>
-                            <select class="form-select"
-                                style="padding: var(--space-1) var(--space-3); font-size: var(--text-sm); border-radius: var(--radius-md); border: 1px solid var(--border-primary); background: var(--bg-secondary);">
-                                <option>This Year</option>
-                                <option>Last Year</option>
+                            <select id="trendYearFilter" class="form-select"
+                                style="padding: var(--space-1) var(--space-3); font-size: var(--text-sm); border-radius: var(--radius-md); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);"
+                                aria-label="Select year">
+                                <option value="thisYear">This Year</option>
+                                <option value="lastYear">Last Year</option>
                             </select>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="inspectionsTrendChart"></canvas>
+                        <div class="h-48 relative">
+                            <div class="chart-container h-full min-h-0">
+                                <canvas id="inspectionsTrendChart"></canvas>
+                            </div>
                         </div>
                     </div>
 
@@ -365,16 +383,19 @@
                     <div class="section-card">
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Defect Distribution</h2>
-                            <select class="form-select"
-                                style="padding: var(--space-1) var(--space-3); font-size: var(--text-sm); border-radius: var(--radius-md); border: 1px solid var(--border-primary); background: var(--bg-secondary);">
-                                <option>All Types</option>
-                                <option>Metal Loss</option>
-                                <option>Cracks</option>
-                                <option>Dents</option>
+                            <select id="defectTypeFilter" class="form-select"
+                                style="padding: var(--space-1) var(--space-3); font-size: var(--text-sm); border-radius: var(--radius-md); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);"
+                                aria-label="Filter by defect type">
+                                <option value="all">All Types</option>
+                                <option value="metalLoss">Metal Loss</option>
+                                <option value="cracks">Cracks</option>
+                                <option value="dents">Dents</option>
                             </select>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="defectDistributionChart"></canvas>
+                        <div class="h-48 relative">
+                            <div class="chart-container h-full min-h-0">
+                                <canvas id="defectDistributionChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -387,8 +408,10 @@
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Pipeline Health Overview</h2>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="pipelineHealthChart"></canvas>
+                        <div class="h-48 relative">
+                            <div class="chart-container h-full min-h-0">
+                                <canvas id="pipelineHealthChart"></canvas>
+                            </div>
                         </div>
                     </div>
 
@@ -397,8 +420,10 @@
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Monthly Comparison</h2>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="monthlyComparisonChart"></canvas>
+                        <div class="h-48 relative">
+                            <div class="chart-container h-full min-h-0">
+                                <canvas id="monthlyComparisonChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -407,7 +432,8 @@
                 <div class="section-card" style="margin-top: var(--space-8);">
                     <div class="section-header-flex">
                         <h2 class="section-title-sm">Pipeline Performance Metrics</h2>
-                        <button class="btn btn-ghost" style="padding: var(--space-2) var(--space-4);">
+                        <button id="exportTableBtn" class="btn btn-ghost"
+                            style="padding: var(--space-2) var(--space-4);">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -479,23 +505,537 @@
         </main>
     </div>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/dashboard.js"></script>
     <script>
         // Initialize analytics charts when DOM is ready
         document.addEventListener('DOMContentLoaded', function () {
             initAnalyticsCharts();
+            initExportAnalytics();
+            initTimeRangeButtons();
+            initExportTable();
+            initChartFilters();
         });
+
+
+        // Chart Filter Functionality
+        function initChartFilters() {
+            const trendYearFilter = document.getElementById('trendYearFilter');
+            const defectTypeFilter = document.getElementById('defectTypeFilter');
+
+            if (trendYearFilter) {
+                trendYearFilter.addEventListener('change', function () {
+                    updateTrendChart(this.value);
+                });
+            }
+
+            if (defectTypeFilter) {
+                defectTypeFilter.addEventListener('change', function () {
+                    updateDefectChart(this.value);
+                });
+            }
+        }
+
+        function updateTrendChart(year) {
+            const trendChart = Chart.getChart('inspectionsTrendChart');
+            if (!trendChart) return;
+
+            let data;
+            if (year === 'lastYear') {
+                data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    completed: [38, 45, 42, 58, 65, 60, 68, 72, 70, 75, 80, 78],
+                    scheduled: [42, 48, 45, 62, 70, 65, 72, 78, 75, 80, 85, 82]
+                };
+            } else {
+                data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    completed: [45, 52, 48, 65, 72, 68, 75, 82, 78, 85, 90, 88],
+                    scheduled: [50, 55, 52, 70, 75, 72, 78, 85, 82, 88, 92, 90]
+                };
+            }
+
+            trendChart.data.labels = data.labels;
+            trendChart.data.datasets[0].data = data.completed;
+            trendChart.data.datasets[1].data = data.scheduled;
+            trendChart.update();
+
+            showNotification('Showing ' + (year === 'lastYear' ? 'Last Year' : 'This Year') + ' data', 'info');
+        }
+
+        function updateDefectChart(type) {
+            const defectChart = Chart.getChart('defectDistributionChart');
+            if (!defectChart) return;
+
+            let data;
+            const chartColors = {
+                primary: 'var(--color-primary-600)',
+                secondary: 'var(--color-secondary-600)',
+                success: 'var(--color-success-600)',
+                warning: 'var(--color-warning-600)',
+                error: 'var(--color-error-600)',
+                neutral: 'var(--text-tertiary)'
+            };
+
+            if (type === 'all') {
+                data = [145, 32, 28, 15, 22, 18];
+                defectChart.data.datasets[0].backgroundColor = [
+                    chartColors.primary, chartColors.secondary, chartColors.success,
+                    chartColors.warning, chartColors.error, chartColors.neutral
+                ];
+            } else if (type === 'metalLoss') {
+                data = [145];
+                defectChart.data.datasets[0].backgroundColor = [chartColors.primary];
+            } else if (type === 'cracks') {
+                data = [32];
+                defectChart.data.datasets[0].backgroundColor = [chartColors.secondary];
+            } else if (type === 'dents') {
+                data = [28];
+                defectChart.data.datasets[0].backgroundColor = [chartColors.success];
+            }
+
+            defectChart.data.datasets[0].data = data;
+            defectChart.update();
+
+            const label = type === 'all' ? 'All Types' : type.charAt(0).toUpperCase() + type.slice(1).replace(/([A-Z])/g, ' $1');
+            showNotification('Showing ' + label + ' defects', 'info');
+        }
+
+        // Time Range Button Functionality
+        function initTimeRangeButtons() {
+            const buttons = document.querySelectorAll('.time-range-btn');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const range = this.getAttribute('data-range');
+
+                    // Update button styles
+                    buttons.forEach(function (b) {
+                        b.classList.remove('btn-primary');
+                        b.classList.add('btn-ghost');
+                    });
+                    this.classList.remove('btn-ghost');
+                    this.classList.add('btn-primary');
+
+                    // Update data based on time range
+                    updateAnalyticsForRange(range);
+
+                    // Show notification
+                    showNotification('Showing data for ' + getRangeLabel(range), 'info');
+                });
+            });
+        }
+
+        function getRangeLabel(range) {
+            switch (range) {
+                case '7': return 'Last 7 Days';
+                case '30': return 'Last 30 Days';
+                case '90': return 'Last 90 Days';
+                case '365': return 'This Year';
+                default: return 'All Time';
+            }
+        }
+
+        function updateAnalyticsForRange(range) {
+            // Update KPI values based on time range
+            const kpiData = getKPIForRange(range);
+
+            // Update stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            if (statCards.length >= 4) {
+                // Total Inspections
+                statCards[0].querySelector('h3').textContent = kpiData.inspections;
+                statCards[0].querySelector('.stat-trend').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg> ' + kpiData.inspectionsTrend;
+
+                // Success Rate
+                statCards[1].querySelector('h3').textContent = kpiData.successRate;
+                statCards[1].querySelector('.stat-trend').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg> ' + kpiData.successTrend;
+
+                // Critical Findings
+                statCards[2].querySelector('h3').textContent = kpiData.critical;
+                statCards[2].querySelector('.stat-trend').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></svg> ' + kpiData.criticalTrend;
+
+                // Hours Inspected
+                statCards[3].querySelector('h3').textContent = kpiData.hours;
+                statCards[3].querySelector('.stat-trend').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg> ' + kpiData.hoursTrend;
+            }
+
+            // Update charts with new data
+            updateChartsForRange(range);
+        }
+
+        function getKPIForRange(range) {
+            // Return different KPI data based on time range
+            switch (range) {
+                case '7':
+                    return {
+                        inspections: '32',
+                        inspectionsTrend: '+8% this week',
+                        successRate: '91.5%',
+                        successTrend: '+1.2% improvement',
+                        critical: '2',
+                        criticalTrend: '-1 from last week',
+                        hours: '156',
+                        hoursTrend: '+12% from last week'
+                    };
+                case '30':
+                    return {
+                        inspections: '128',
+                        inspectionsTrend: '+15% this month',
+                        successRate: '93.8%',
+                        successTrend: '+2.1% improvement',
+                        critical: '7',
+                        criticalTrend: '-3 from last month',
+                        hours: '612',
+                        hoursTrend: '+18% from last month'
+                    };
+                case '90':
+                    return {
+                        inspections: '356',
+                        inspectionsTrend: '+22% this quarter',
+                        successRate: '94.5%',
+                        successTrend: '+1.8% improvement',
+                        critical: '15',
+                        criticalTrend: '-5 from last quarter',
+                        hours: '1,890',
+                        hoursTrend: '+25% from last quarter'
+                    };
+                case '365':
+                    return {
+                        inspections: '1,248',
+                        inspectionsTrend: '+32% this year',
+                        successRate: '94.2%',
+                        successTrend: '+2.4% improvement',
+                        critical: '52',
+                        criticalTrend: '-18% from last year',
+                        hours: '7,245',
+                        hoursTrend: '+28% from last year'
+                    };
+                default:
+                    return {
+                        inspections: '248',
+                        inspectionsTrend: '+12% growth',
+                        successRate: '94.2%',
+                        successTrend: '+2.4% improvement',
+                        critical: '12',
+                        criticalTrend: '-8% from last month',
+                        hours: '1,245',
+                        hoursTrend: '+15% from last month'
+                    };
+            }
+        }
+
+        function updateChartsForRange(range) {
+            // Get chart data for the selected range
+            const chartData = getChartDataForRange(range);
+
+            // Update Inspections Trend Chart
+            const trendChart = Chart.getChart('inspectionsTrendChart');
+            if (trendChart) {
+                trendChart.data.labels = chartData.months;
+                trendChart.data.datasets[0].data = chartData.completed;
+                trendChart.data.datasets[1].data = chartData.scheduled;
+                trendChart.update();
+            }
+
+            // Update Defect Distribution Chart
+            const defectChart = Chart.getChart('defectDistributionChart');
+            if (defectChart) {
+                defectChart.data.datasets[0].data = chartData.defects;
+                defectChart.update();
+            }
+
+            // Update Monthly Comparison Chart
+            const comparisonChart = Chart.getChart('monthlyComparisonChart');
+            if (comparisonChart) {
+                comparisonChart.data.datasets[0].data = chartData.inspections;
+                comparisonChart.data.datasets[1].data = chartData.defectsFound;
+                comparisonChart.update();
+            }
+        }
+
+        function getChartDataForRange(range) {
+            switch (range) {
+                case '7':
+                    return {
+                        months: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        completed: [5, 8, 6, 9, 7, 4, 3],
+                        scheduled: [6, 9, 7, 10, 8, 5, 4],
+                        defects: [3, 1, 2, 0, 1, 2, 1],
+                        inspections: [5, 8, 6, 9, 7, 4, 3],
+                        defectsFound: [1, 2, 1, 3, 1, 0, 1]
+                    };
+                case '30':
+                    return {
+                        months: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        completed: [28, 32, 35, 33],
+                        scheduled: [30, 35, 38, 36],
+                        defects: [12, 15, 18, 14],
+                        inspections: [28, 32, 35, 33],
+                        defectsFound: [12, 15, 18, 14]
+                    };
+                case '90':
+                    return {
+                        months: ['Month 1', 'Month 2', 'Month 3'],
+                        completed: [95, 118, 143],
+                        scheduled: [102, 125, 150],
+                        defects: [35, 42, 55],
+                        inspections: [95, 118, 143],
+                        defectsFound: [35, 42, 55]
+                    };
+                case '365':
+                    return {
+                        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        completed: [45, 52, 48, 65, 72, 68, 75, 82, 78, 85, 90, 88],
+                        scheduled: [50, 55, 52, 70, 75, 72, 78, 85, 82, 88, 92, 90],
+                        defects: [145, 32, 28, 15, 22, 18, 45, 52, 48, 65, 72, 68],
+                        inspections: [45, 52, 48, 65, 72, 68, 75, 82, 78, 85, 90, 88],
+                        defectsFound: [12, 18, 15, 22, 28, 20, 25, 32, 28, 35, 42, 38]
+                    };
+                default:
+                    return {
+                        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        completed: [45, 52, 48, 65, 72, 68],
+                        scheduled: [50, 55, 52, 70, 75, 72],
+                        defects: [145, 32, 28, 15, 22, 18],
+                        inspections: [45, 52, 48, 65, 72, 68],
+                        defectsFound: [12, 18, 15, 22, 28, 20]
+                    };
+            }
+        }
+
+        // Export Analytics Functionality
+        function initExportAnalytics() {
+            const exportBtn = document.getElementById('exportAnalyticsBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', exportAnalytics);
+            }
+        }
+
+        // Export Table Data Functionality
+        function initExportTable() {
+            const exportBtn = document.getElementById('exportTableBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', exportTableData);
+            }
+        }
+
+        function exportTableData() {
+            const exportBtn = document.getElementById('exportTableBtn');
+
+            // Show loading state
+            const originalContent = exportBtn.innerHTML;
+            exportBtn.disabled = true;
+            exportBtn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="0.75"></path></svg> Exporting...';
+
+            // Simulate export process
+            setTimeout(function () {
+                // Get table data
+                const tableData = getTableData();
+
+                // Generate CSV content
+                const csvContent = generateTableCSV(tableData);
+
+                // Download the file
+                downloadCSV(csvContent, 'pipeline_performance_' + new Date().toISOString().split('T')[0] + '.csv');
+
+                // Reset button
+                exportBtn.disabled = false;
+                exportBtn.innerHTML = originalContent;
+
+                // Show success notification
+                showNotification('Pipeline data exported successfully!', 'success');
+            }, 800);
+        }
+
+        function getTableData() {
+            const table = document.querySelector('.data-table');
+            if (!table) return [];
+
+            const data = [];
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const cells = row.querySelectorAll('td');
+                data.push({
+                    pipeline: cells[0].textContent.trim(),
+                    length: cells[1].textContent.trim(),
+                    inspections: cells[2].textContent.trim(),
+                    lastInspection: cells[3].textContent.trim(),
+                    condition: cells[4].textContent.trim(),
+                    defects: cells[5].textContent.trim()
+                });
+            });
+
+            return data;
+        }
+
+        function generateTableCSV(data) {
+            let csv = '';
+
+            csv += 'PIPELINE PERFORMANCE DATA\n';
+            csv += 'Generated: ' + new Date().toLocaleString() + '\n\n';
+
+            csv += 'Pipeline,Length (km),Inspections,Last Inspection,Condition,Defects Found\n';
+
+            data.forEach(function (row) {
+                csv += '\"' + row.pipeline + '\",' + row.length + ',' + row.inspections + ',' + row.lastInspection + ',' + row.condition + ',' + row.defects + '\n';
+            });
+
+            return csv;
+        }
+
+
+        function exportAnalytics() {
+            const exportBtn = document.getElementById('exportAnalyticsBtn');
+
+            // Show loading state
+            const originalContent = exportBtn.innerHTML;
+            exportBtn.disabled = true;
+            exportBtn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="0.75"></path></svg> Exporting...';
+
+            // Simulate export process
+            setTimeout(function () {
+                // Gather analytics data
+                const analyticsData = gatherAnalyticsData();
+
+                // Generate CSV content
+                const csvContent = generateCSV(analyticsData);
+
+                // Download the file
+                downloadCSV(csvContent, 'analytics_export_' + new Date().toISOString().split('T')[0] + '.csv');
+
+                // Reset button
+                exportBtn.disabled = false;
+                exportBtn.innerHTML = originalContent;
+
+                // Show success notification
+                showNotification('Analytics exported successfully!', 'success');
+            }, 1000);
+        }
+
+        function gatherAnalyticsData() {
+            return {
+                kpis: [
+                    { name: 'Total Inspections', value: '248', trend: '+12% growth' },
+                    { name: 'Success Rate', value: '94.2%', trend: '+2.4% improvement' },
+                    { name: 'Critical Findings', value: '12', trend: '-8% from last month' },
+                    { name: 'Hours Inspected', value: '1,245', trend: '+15% from last month' }
+                ],
+                monthlyData: [
+                    { month: 'Jan', inspections: 45, defects: 12 },
+                    { month: 'Feb', inspections: 52, defects: 18 },
+                    { month: 'Mar', inspections: 48, defects: 15 },
+                    { month: 'Apr', inspections: 65, defects: 22 },
+                    { month: 'May', inspections: 72, defects: 28 },
+                    { month: 'Jun', inspections: 68, defects: 20 }
+                ],
+                defectTypes: [
+                    { type: 'Metal Loss', count: 145 },
+                    { type: 'Cracks', count: 32 },
+                    { type: 'Dents', count: 28 },
+                    { type: 'Lamination', count: 15 },
+                    { type: 'Gouges', count: 22 },
+                    { type: 'Other', count: 18 }
+                ],
+                pipelinePerformance: [
+                    { pipeline: 'Line 101 - Texas to Oklahoma', length: '245 km', inspections: 12, condition: 'Excellent', defects: 3 },
+                    { pipeline: 'Line 204 - California Loop', length: '182 km', inspections: 8, condition: 'Good', defects: 7 },
+                    { pipeline: 'Line 305 - East Coast Main', length: '312 km', inspections: 15, condition: 'Excellent', defects: 2 },
+                    { pipeline: 'Line 108 - Midwest Connector', length: '156 km', inspections: 6, condition: 'Fair', defects: 12 },
+                    { pipeline: 'Line 412 - Gulf Coast', length: '198 km', inspections: 10, condition: 'Good', defects: 5 }
+                ]
+            };
+        }
+
+        function generateCSV(data) {
+            let csv = '';
+
+            // KPI Section
+            csv += 'ANALYTICS EXPORT\n';
+            csv += 'Generated: ' + new Date().toLocaleString() + '\n\n';
+
+            csv += 'KEY PERFORMANCE INDICATORS\n';
+            csv += 'Metric,Value,Trend\n';
+            data.kpis.forEach(kpi => {
+                csv += '\"' + kpi.name + '\",' + kpi.value + ',' + kpi.trend + '\n';
+            });
+
+            // Monthly Data Section
+            csv += '\nMONTHLY DATA\n';
+            csv += 'Month,Inspections,Defects Found\n';
+            data.monthlyData.forEach(item => {
+                csv += item.month + ',' + item.inspections + ',' + item.defects + '\n';
+            });
+
+            // Defect Types Section
+            csv += '\nDEFECT DISTRIBUTION\n';
+            csv += 'Defect Type,Count\n';
+            data.defectTypes.forEach(defect => {
+                csv += '\"' + defect.type + '\",' + defect.count + '\n';
+            });
+
+            // Pipeline Performance Section
+            csv += '\nPIPELINE PERFORMANCE METRICS\n';
+            csv += 'Pipeline,Length,Inspections,Condition,Defects Found\n';
+            data.pipelinePerformance.forEach(pipeline => {
+                csv += '\"' + pipeline.pipeline + '\",' + pipeline.length + ',' + pipeline.inspections + ',' + pipeline.condition + ',' + pipeline.defects + '\n';
+            });
+
+            return csv;
+        }
+
+        function downloadCSV(csvContent, filename) {
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Clean up the URL object
+                setTimeout(() => URL.revokeObjectURL(url), 100);
+            }
+        }
+
+        function showNotification(message, type) {
+            // Remove existing notifications
+            const existing = document.querySelectorAll('.notification-toast');
+            existing.forEach(n => n.remove());
+
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease;';
+
+            if (type === 'success') {
+                notification.style.background = 'var(--color-success-600)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--color-error-600)';
+            } else {
+                notification.style.background = 'var(--color-primary-600)';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
 
         function initAnalyticsCharts() {
             const chartColors = {
-                primary: '#3b82f6',
-                primaryLight: 'rgba(59, 130, 246, 0.1)',
-                secondary: '#f97316',
-                success: '#22c55e',
-                warning: '#f59e0b',
-                error: '#ef4444',
-                neutral: '#94a3b8'
+                primary: getComputedStyle(document.documentElement).getPropertyValue('--color-primary-600').trim() || '#3b82f6',
+                primaryLight: getComputedStyle(document.documentElement).getPropertyValue('--color-primary-100').trim() || 'rgba(59, 130, 246, 0.1)',
+                secondary: getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-600').trim() || '#f97316',
+                success: getComputedStyle(document.documentElement).getPropertyValue('--color-success-600').trim() || '#22c55e',
+                warning: getComputedStyle(document.documentElement).getPropertyValue('--color-warning-600').trim() || '#f59e0b',
+                error: getComputedStyle(document.documentElement).getPropertyValue('--color-error-600').trim() || '#ef4444',
+                neutral: getComputedStyle(document.documentElement).getPropertyValue('--text-tertiary').trim() || '#94a3b8'
             };
 
             // Inspections Trend Chart
@@ -672,6 +1212,8 @@
             }
         }
     </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

@@ -16,6 +16,30 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .blog-details-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+        }
+
+        @media (min-width: 1024px) {
+            .blog-details-grid {
+                grid-template-columns: 1fr 320px;
+            }
+        }
+
+        .blog-sidebar {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .blog-sidebar {
+                display: block;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -49,14 +73,8 @@
 
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
                     </button>
                     <button class="theme-toggle" aria-label="Toggle dark mode">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -70,8 +88,8 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
-                    <button class="menu-toggle" aria-label="Toggle mobile menu">
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -87,7 +105,7 @@
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
                 <li><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -97,19 +115,20 @@
         <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-8);">
             <div class="hero-pattern"></div>
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;" class="reveal">
+                <div class="reveal">
                     <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
-                        <span class="badge badge-primary">Technology</span>
-                        <span class="badge badge-secondary">Featured</span>
+                        <span class="badge badge-primary" id="articleCategory">Technology</span>
+                        <span class="badge badge-secondary" id="articleFeatured">Featured</span>
                     </div>
-                    <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">The Future of Smart Pigging:
+                    <h1 style="font-size: var(--text-5xl); margin-bottom: var(--space-4); max-width: 900px;"
+                        id="articleTitle">The Future of Smart Pigging:
                         AI-Powered Defect Recognition</h1>
                     <div class="blog-meta" style="justify-content: flex-start;">
-                        <span>Jan 28, 2026</span>
+                        <span id="articleDate">Jan 28, 2026</span>
                         <span>•</span>
-                        <span>8 min read</span>
+                        <span id="articleReadTime">8 min read</span>
                         <span>•</span>
-                        <span>By Dr. Emily Rodriguez</span>
+                        <span id="articleAuthor">By Dr. Emily Rodriguez</span>
                     </div>
                 </div>
             </div>
@@ -118,7 +137,7 @@
         <!-- Article Content -->
         <section class="section" style="padding-top: 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 320px; gap: var(--space-12);">
+                <div class="blog-details-grid">
                     <!-- Main Article -->
                     <article>
                         <!-- Featured Image -->
@@ -288,7 +307,7 @@
                     </article>
 
                     <!-- Sidebar -->
-                    <aside style="display: none;" class="lg:block">
+                    <aside class="blog-sidebar">
                         <!-- Author -->
                         <div class="card reveal" style="margin-bottom: var(--space-6);">
                             <div style="padding: var(--space-6); text-align: center;">
@@ -397,15 +416,20 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="coming-soon.html">Events</a></li>
+                        <li><a href="404.html">Careers</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="service-details.html">Inline Inspection</a></li>
-                        <li><a href="service-details.html">Dig Reports</a></li>
-                        <li><a href="service-details.html">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=ili">Inline Inspection</a></li>
+                        <li><a href="service-details.html?service=dig-reports">Dig Reports</a></li>
+                        <li><a href="service-details.html?service=integrity">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=cp">Cathodic Protection</a></li>
+                        <li><a href="service-details.html?service=coating">Coating Inspection</a></li>
+                        <li><a href="service-details.html?service=data">Data Analysis</a></li>
                     </ul>
                 </div>
 
@@ -419,15 +443,22 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-powered">
+                    <p>Powered By <a href="https://abhivorn.com" target="_blank">Abhivorn Technologies Pvt Ltd</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="assets/js/blog-data.js"></script>
+    <script src="assets/js/blog-details.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

@@ -14,151 +14,148 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/dashboard-custom.css">
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
 
     <!-- Chart.js for dashboard charts (if needed) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script>
+        (function () {
+            // RTL Initialization
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+
+            const role = localStorage.getItem('userRole');
+            if (role !== 'admin') {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
+
     <style>
-        /* Specific page overrides if any */
-    </style>
-    justify-content: space-between;
-    align-items: center;
-    z-index: var(--z-sticky);
-    }
+        /* Dashboard Header Overrides removed to use global dashboard.css */
 
-    .user-menu {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    }
+        /* User Table Specific Styles */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+            padding: var(--space-8);
+            padding-bottom: 0;
+        }
 
-    .user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-primary-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: var(--font-bold);
-    color: var(--color-primary-700);
-    }
+        .content-container {
+            padding: var(--space-8);
+        }
 
-    /* User Table Specific Styles */
-    .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-6);
-    padding: var(--space-8);
-    padding-bottom: 0;
-    }
+        .filter-bar {
+            background-color: var(--bg-secondary);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-primary);
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            flex-wrap: nowrap;
+            align-items: center;
+        }
 
-    .content-container {
-    padding: var(--space-8);
-    }
+        .filter-bar>* {
+            flex-shrink: 0;
+        }
 
-    .filter-bar {
-    background-color: var(--bg-secondary);
-    padding: var(--space-4);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-primary);
-    display: flex;
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-    flex-wrap: wrap;
-    }
+        .table-container {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-primary);
+            overflow: hidden;
+        }
 
-    .table-container {
-    background-color: var(--bg-secondary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-primary);
-    overflow: hidden;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    table {
-    width: 100%;
-    border-collapse: collapse;
-    }
+        th {
+            text-align: left;
+            padding: var(--space-4);
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-weight: var(--font-semibold);
+            font-size: var(--text-sm);
+            border-bottom: 1px solid var(--border-primary);
+        }
 
-    th {
-    text-align: left;
-    padding: var(--space-4);
-    background-color: var(--bg-tertiary);
-    color: var(--text-secondary);
-    font-weight: var(--font-semibold);
-    font-size: var(--text-sm);
-    border-bottom: 1px solid var(--border-primary);
-    }
+        td {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--border-primary);
+            color: var(--text-primary);
+        }
 
-    td {
-    padding: var(--space-4);
-    border-bottom: 1px solid var(--border-primary);
-    color: var(--text-primary);
-    }
+        tr:last-child td {
+            border-bottom: none;
+        }
 
-    tr:last-child td {
-    border-bottom: none;
-    }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
 
-    .user-info {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-medium);
+        }
 
-    .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
-    border-radius: var(--radius-full);
-    font-size: var(--text-xs);
-    font-weight: var(--font-medium);
-    }
+        .badge-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--color-success);
+        }
 
-    .badge-success {
-    background-color: rgba(16, 185, 129, 0.1);
-    color: #10B981;
-    }
+        .badge-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--color-warning);
+        }
 
-    .badge-warning {
-    background-color: rgba(245, 158, 11, 0.1);
-    color: #F59E0B;
-    }
+        .badge-secondary {
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
 
-    .badge-secondary {
-    background-color: var(--bg-tertiary);
-    color: var(--text-secondary);
-    }
+        .action-btn {
+            padding: var(--space-2);
+            color: var(--text-tertiary);
+            transition: color var(--transition-fast);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
 
-    .action-btn {
-    padding: var(--space-2);
-    color: var(--text-tertiary);
-    transition: color var(--transition-fast);
-    background: none;
-    border: none;
-    cursor: pointer;
-    }
+        .action-btn:hover {
+            color: var(--color-primary-600);
+        }
 
-    .action-btn:hover {
-    color: var(--color-primary-600);
-    }
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
 
-    @media (max-width: 1024px) {
-    .sidebar {
-    transform: translateX(-100%);
-    }
+            .main-content {
+                margin-left: 0;
+            }
 
-    .main-content {
-    margin-left: 0;
-    }
-
-    .sidebar.active {
-    transform: translateX(0);
-    }
-    }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 
@@ -167,8 +164,7 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <a href="admin-dashboard.html" class="logo"
-                    style="display: flex; align-items: center; gap: var(--space-3);">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: var(--space-3);">
                     <div class="logo-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -271,6 +267,16 @@
                         </svg>
                         Profile
                     </a>
+
+                    <a href="#" onclick="handleLogout(event)" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+                        Logout
+                    </a>
                 </div>
             </nav>
         </aside>
@@ -280,7 +286,7 @@
             <!-- Dashboard Header -->
             <header class="dashboard-header">
                 <div class="flex items-center gap-4">
-                    <button id="sidebarToggle" class="btn btn-icon lg:hidden">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12" />
@@ -288,10 +294,13 @@
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
-                    <h2 class="text-xl font-bold">User Management</h2>
                 </div>
-                <div class="user-menu">
-                    <button class="theme-toggle btn btn-icon">
+                <div class="header-actions">
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
@@ -303,18 +312,22 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle btn btn-icon" id="rtlToggle" aria-label="Toggle RTL direction"
-                        title="Toggle RTL">
+                    <!-- Notifications -->
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                         </svg>
+                        <span class="notification-badge">3</span>
                     </button>
-                    <div class="user-avatar">AD</div>
+                    <div class="user-menu">
+                        <img src="" alt="User avatar" class="user-avatar">
+                        <div style="display: none;" class="sm:block">
+                            <p style="font-size: var(--text-sm); font-weight: var(--font-medium);">Admin User</p>
+                            <p style="font-size: var(--text-xs); color: var(--text-tertiary);">Administrator</p>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -326,19 +339,12 @@
                         Users</h1>
                     <p style="color: var(--text-secondary);">Manage user access and permissions</p>
                 </div>
-                <button class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                    Add User
-                </button>
             </div>
 
             <div class="content-container">
                 <!-- Filters -->
                 <div class="filter-bar">
-                    <div style="position: relative; flex: 1; min-width: 250px;">
+                    <div style="position: relative; flex: 1; max-width: 300px;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2"
                             style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
@@ -348,17 +354,25 @@
                         <input type="text" class="form-input" placeholder="Search users..."
                             style="padding-left: 40px; width: 100%;">
                     </div>
-                    <select class="form-select" style="min-width: 150px;">
+                    <select id="roleFilter" class="form-select" style="width: 140px;" aria-label="Filter by role">
                         <option value="">All Roles</option>
                         <option value="admin">Admin</option>
                         <option value="inspector">Inspector</option>
                         <option value="client">Client</option>
                     </select>
-                    <select class="form-select" style="min-width: 150px;">
+                    <select id="statusFilter" class="form-select" style="width: 140px;" aria-label="Filter by status">
                         <option value="">All Status</option>
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
+                    <button class="btn btn-primary" id="addUserBtn" style="height: 42px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Add User
+                    </button>
                 </div>
 
                 <!-- Users Table -->
@@ -391,23 +405,11 @@
                                 <td><span class="badge badge-success">Active</span></td>
                                 <td style="color: var(--text-secondary); font-size: var(--text-sm);">2 mins ago</td>
                                 <td>
-                                    <button class="action-btn" title="Edit">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete" style="color: var(--color-error);">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                            <path
-                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                             </tr>
 
                             <!-- Row 2 -->
@@ -415,7 +417,7 @@
                                 <td>
                                     <div class="user-info">
                                         <div class="user-avatar"
-                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: #E0F2FE; color: #0284C7;">
+                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: var(--color-primary-100); color: var(--color-primary-600);">
                                             SJ</div>
                                         <div>
                                             <div style="font-weight: var(--font-medium);">Sarah Jenkins</div>
@@ -428,23 +430,11 @@
                                 <td><span class="badge badge-success">Active</span></td>
                                 <td style="color: var(--text-secondary); font-size: var(--text-sm);">2 hours ago</td>
                                 <td>
-                                    <button class="action-btn" title="Edit">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete" style="color: var(--color-error);">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                            <path
-                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                             </tr>
 
                             <!-- Row 3 -->
@@ -452,7 +442,7 @@
                                 <td>
                                     <div class="user-info">
                                         <div class="user-avatar"
-                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: #F3E8FF; color: #9333EA;">
+                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: var(--color-purple-100); color: var(--color-purple-600);">
                                             MC</div>
                                         <div>
                                             <div style="font-weight: var(--font-medium);">Michael Chang</div>
@@ -465,23 +455,11 @@
                                 <td><span class="badge badge-warning">Inactive</span></td>
                                 <td style="color: var(--text-secondary); font-size: var(--text-sm);">5 days ago</td>
                                 <td>
-                                    <button class="action-btn" title="Edit">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete" style="color: var(--color-error);">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                            <path
-                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
                             </tr>
                         </tbody>
                     </table>
@@ -501,7 +479,268 @@
                 sidebar.classList.toggle('active');
             });
         }
+
+        // Initialize users page filters
+        document.addEventListener('DOMContentLoaded', function () {
+            initUsersFilters();
+        });
+
+        function initUsersFilters() {
+            const roleFilter = document.getElementById('roleFilter');
+            const statusFilter = document.getElementById('statusFilter');
+
+            if (roleFilter) {
+                roleFilter.addEventListener('change', filterUsers);
+            }
+
+            if (statusFilter) {
+                statusFilter.addEventListener('change', filterUsers);
+            }
+        }
+
+        function filterUsers() {
+            const roleFilter = document.getElementById('roleFilter');
+            const statusFilter = document.getElementById('statusFilter');
+            const table = document.querySelector('table');
+
+            if (!table) return;
+
+            const roleValue = roleFilter ? roleFilter.value : '';
+            const statusValue = statusFilter ? statusFilter.value : '';
+
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const cells = row.querySelectorAll('td');
+                if (cells.length < 5) return;
+
+                const roleCell = cells[1]; // Role column
+                const statusCell = cells[2]; // Status column
+
+                const role = roleCell.textContent.toLowerCase().trim();
+                const statusBadge = statusCell.querySelector('.status-badge');
+                const status = statusBadge ? statusBadge.textContent.toLowerCase().trim() : '';
+
+                let showRow = true;
+
+                // Check role filter
+                if (roleValue) {
+                    if (roleValue === 'admin' && !role.includes('admin')) {
+                        showRow = false;
+                    } else if (roleValue === 'inspector' && !role.includes('inspector')) {
+                        showRow = false;
+                    } else if (roleValue === 'client' && !role.includes('client')) {
+                        showRow = false;
+                    }
+                }
+
+                // Check status filter
+                if (statusValue && showRow) {
+                    if (statusValue === 'active' && !status.includes('active')) {
+                        showRow = false;
+                    } else if (statusValue === 'inactive' && !status.includes('inactive')) {
+                        showRow = false;
+                    }
+                }
+
+                row.style.display = showRow ? '' : 'none';
+            });
+
+            // Show notification
+            const visibleCount = Array.from(rows).filter(r => r.style.display !== 'none').length;
+            showNotification('Showing ' + visibleCount + ' users', 'info');
+        }
+
+        function showNotification(message, type) {
+            // Remove existing notifications
+            const existing = document.querySelectorAll('.notification-toast');
+            existing.forEach(function (n) { n.remove(); });
+
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease;';
+
+            if (type === 'success') {
+                notification.style.background = 'var(--color-success-600)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--color-error-600)';
+            } else {
+                notification.style.background = 'var(--color-primary-600)';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(function () {
+                notification.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(function () { notification.remove(); }, 300);
+            }, 3000);
+        }
+
+        // Add User Modal Functions - Run after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const addUserBtn = document.getElementById('addUserBtn');
+            const addUserModal = document.getElementById('addUserModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const addUserForm = document.getElementById('addUserForm');
+
+            if (addUserBtn && addUserModal) {
+                addUserBtn.addEventListener('click', function () {
+                    addUserModal.style.display = 'flex';
+                });
+            }
+
+            if (closeModalBtn && addUserModal) {
+                closeModalBtn.addEventListener('click', function () {
+                    addUserModal.style.display = 'none';
+                });
+            }
+
+            if (cancelBtn && addUserModal) {
+                cancelBtn.addEventListener('click', function () {
+                    addUserModal.style.display = 'none';
+                });
+            }
+
+            // Close modal when clicking outside
+            if (addUserModal) {
+                addUserModal.addEventListener('click', function (e) {
+                    if (e.target === addUserModal) {
+                        addUserModal.style.display = 'none';
+                    }
+                });
+            }
+
+            // Handle form submission
+            if (addUserForm) {
+                addUserForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form values
+                    const name = document.getElementById('newUserName').value;
+                    const email = document.getElementById('newUserEmail').value;
+                    const role = document.getElementById('newUserRole').value;
+                    const status = document.getElementById('newUserStatus').value;
+
+                    if (name && email && role) {
+                        // Add new row to table
+                        const tbody = document.querySelector('table tbody');
+                        const newRow = document.createElement('tr');
+
+                        // Generate initials from name
+                        const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+                        // Random color for avatar
+                        const colors = ['var(--color-primary-100)', 'var(--color-secondary-100)', 'var(--color-warning-100)', 'var(--color-success-100)', 'var(--color-error-100)'];
+                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                        // Map background color to text color
+                        let textColor = 'var(--color-primary-600)';
+                        if (randomColor.includes('secondary')) textColor = 'var(--color-secondary-600)';
+                        if (randomColor.includes('warning')) textColor = 'var(--color-warning-600)';
+                        if (randomColor.includes('success')) textColor = 'var(--color-success-600)';
+                        if (randomColor.includes('danger')) textColor = 'var(--color-error-600)';
+
+                        newRow.innerHTML = `
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar" style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: ${randomColor}; color: ${textColor};">${initials}</div>
+                                    <div>
+                                        <div style="font-weight: var(--font-medium);">${name}</div>
+                                        <div style="font-size: var(--text-xs); color: var(--text-tertiary);">${email}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge badge-secondary">${role.charAt(0).toUpperCase() + role.slice(1)}</span></td>
+                            <td><span class="badge ${status === 'active' ? 'badge-success' : 'badge-warning'}">${status.charAt(0).toUpperCase() + status.slice(1)}</span></td>
+                            <td style="color: var(--text-secondary); font-size: var(--text-sm);">Just now</td>
+                            <td>
+<div style="display: flex; gap: 4px;">
+    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+</div></td>
+                        `;
+
+                        tbody.insertBefore(newRow, tbody.firstChild);
+
+                        // Close modal and reset form
+                        addUserModal.style.display = 'none';
+                        addUserForm.reset();
+
+                        showNotification('User "' + name + '" added successfully!', 'success');
+                    } else {
+                        showNotification('Please fill in all required fields', 'error');
+                    }
+                });
+            }
+        });
     </script>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center;">
+        <div
+            style="background: var(--bg-primary); border-radius: var(--radius-xl); width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl);">
+            <div
+                style="padding: var(--space-6); border-bottom: 1px solid var(--border-primary); display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Add New User</h2>
+                <button id="closeModalBtn"
+                    style="background: none; border: none; cursor: pointer; padding: var(--space-2); color: var(--text-tertiary);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <form id="addUserForm" style="padding: var(--space-6);">
+                <div style="margin-bottom: var(--space-4);">
+                    <label for="newUserName"
+                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Full
+                        Name <span style="color: var(--color-error);">*</span></label>
+                    <input type="text" id="newUserName" required
+                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                </div>
+                <div style="margin-bottom: var(--space-4);">
+                    <label for="newUserEmail"
+                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Email
+                        Address <span style="color: var(--color-error);">*</span></label>
+                    <input type="email" id="newUserEmail" required
+                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                </div>
+                <div style="margin-bottom: var(--space-4);">
+                    <label for="newUserRole"
+                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Role
+                        <span style="color: var(--color-error);">*</span></label>
+                    <select id="newUserRole" required
+                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                        <option value="">Select Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="inspector">Inspector</option>
+                        <option value="client">Client</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: var(--space-4);">
+                    <label for="newUserStatus"
+                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Status</label>
+                    <select id="newUserStatus"
+                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-6);">
+                    <button type="button" id="cancelBtn"
+                        style="padding: var(--space-3) var(--space-4); border: 1px solid var(--border-primary); border-radius: var(--radius-md); background: var(--bg-secondary); cursor: pointer; font-weight: var(--font-medium);">Cancel</button>
+                    <button type="submit"
+                        style="padding: var(--space-3) var(--space-4); border: none; border-radius: var(--radius-md); background: var(--color-primary-600); color: white; cursor: pointer; font-weight: var(--font-medium);">Add
+                        User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

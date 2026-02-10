@@ -14,8 +14,23 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/dashboard-custom.css">
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+
+    <script>
+        (function () {
+            // RTL Initialization
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+
+            const role = localStorage.getItem('userRole');
+            if (!role) {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -42,7 +57,7 @@
             <nav class="sidebar-nav">
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Main</p>
-                    <a href="client-dashboard.html" class="sidebar-link">
+                    <a href="admin-dashboard.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <rect x="3" y="3" width="7" height="7" />
@@ -58,7 +73,8 @@
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                         </svg>
-                        Inspections
+                        <span data-role="admin">All Inspections</span>
+                        <span data-role="client">Inspections</span>
                     </a>
                     <a href="reports.html" class="sidebar-link active">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -71,7 +87,8 @@
                         </svg>
                         Reports
                     </a>
-                    <a href="client-orders.html" class="sidebar-link">
+                    <!-- Client Only -->
+                    <a href="client-orders.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="9" cy="21" r="1" />
@@ -80,7 +97,7 @@
                         </svg>
                         My Orders
                     </a>
-                    <a href="client-messages.html" class="sidebar-link">
+                    <a href="client-messages.html" class="sidebar-link" data-role="client">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -88,12 +105,40 @@
                         </svg>
                         Messages
                     </a>
+                </div>
 
+                <div class="sidebar-section" data-role="admin">
+                    <p class="sidebar-section-title">Management</p>
+                    <a href="admin-users.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Users
+                    </a>
+                    <a href="admin-orders.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        Orders
+                    </a>
+                    <a href="admin-messages.html" class="sidebar-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Messages
+                    </a>
                 </div>
 
                 <div class="sidebar-section">
                     <p class="sidebar-section-title">Data</p>
-
                     <a href="analytics.html" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -103,7 +148,6 @@
                         </svg>
                         Analytics
                     </a>
-
                 </div>
 
                 <div class="sidebar-section">
@@ -117,17 +161,7 @@
                         Profile
                     </a>
 
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
-                    </button>
-                    <a href="login.html" class="sidebar-link">
+                    <a href="#" onclick="handleLogout(event)" class="sidebar-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -153,50 +187,27 @@
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
-                    <div class="header-search">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.35-4.35" />
-                        </svg>
-                        <input type="text" placeholder="Search reports..." aria-label="Search reports">
-                    </div>
                 </div>
 
                 <div class="header-actions">
-                    <!-- Theme Toggle -->
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <!-- RTL Toggle -->
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                         </svg>
                         <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-
-                    <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL mode" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                            <path d="M3 3v5h5" />
-                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-                            <path d="M16 21h5v-5" />
-                        </svg>
-                    </button>
-
                     <!-- Notifications -->
-                    <button class="notification-btn" aria-label="Notifications">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -227,7 +238,7 @@
                 <!-- Quick Actions -->
                 <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                     <div class="stat-card" style="cursor: pointer; transition: all var(--transition-fast);"
-                        onclick="document.getElementById('generateReportModal').classList.add('active')">
+                        onclick="openGenerateReportModal()">
                         <div class="stat-icon blue">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -243,7 +254,8 @@
                         </div>
                     </div>
 
-                    <div class="stat-card" style="cursor: pointer; transition: all var(--transition-fast);">
+                    <div class="stat-card" style="cursor: pointer; transition: all var(--transition-fast);"
+                        onclick="openBulkDownload()">
                         <div class="stat-icon green">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -258,7 +270,8 @@
                         </div>
                     </div>
 
-                    <div class="stat-card" style="cursor: pointer; transition: all var(--transition-fast);">
+                    <div class="stat-card" style="cursor: pointer; transition: all var(--transition-fast);"
+                        onclick="openArchiveAccess()">
                         <div class="stat-icon purple">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -279,7 +292,8 @@
                     <div class="section-card">
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Detailed Reports</h2>
-                            <a href="#" style="color: var(--color-primary-600); font-size: var(--text-sm);">View All</a>
+                            <a href="#" onclick="toggleDetailedReports(event)"
+                                style="color: var(--color-primary-600); font-size: var(--text-sm);">View All</a>
                         </div>
                         <div class="activity-list">
                             <div class="activity-item">
@@ -295,7 +309,9 @@
                                     <h4>MFL Inspection Report - Line 101</h4>
                                     <p>Generated Jan 15, 2024 • PDF • 2.4 MB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn"
+                                    onclick="downloadReport('MFL Inspection Report - Line 101', 'pdf')"
+                                    title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -317,7 +333,9 @@
                                     <h4>Smart Pigging Analysis - Line 204</h4>
                                     <p>Generated Jan 18, 2024 • PDF • 3.1 MB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn"
+                                    onclick="downloadReport('Smart Pigging Analysis - Line 204', 'pdf')"
+                                    title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -339,7 +357,61 @@
                                     <h4>Ultrasonic Test Results - Line 305</h4>
                                     <p>Generated Jan 10, 2024 • PDF • 1.8 MB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn"
+                                    onclick="downloadReport('Ultrasonic Test Results - Line 305', 'pdf')"
+                                    title="Download">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Additional Detailed Reports (hidden by default) -->
+                        <div id="additionalDetailedReports" class="activity-list"
+                            style="display: none; border-top: 1px solid var(--border-primary);">
+                            <div class="activity-item">
+                                <div class="activity-icon"
+                                    style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content" style="flex: 1;">
+                                    <h4>Corrosion Assessment Report - Line 412</h4>
+                                    <p>Generated Jan 5, 2024 • PDF • 2.1 MB</p>
+                                </div>
+                                <button class="action-btn"
+                                    onclick="downloadReport('Corrosion Assessment Report - Line 412', 'pdf')"
+                                    title="Download">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon"
+                                    style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content" style="flex: 1;">
+                                    <h4>Pipeline Geometry Survey - Line 108</h4>
+                                    <p>Generated Dec 28, 2023 • PDF • 1.5 MB</p>
+                                </div>
+                                <button class="action-btn"
+                                    onclick="downloadReport('Pipeline Geometry Survey - Line 108', 'pdf')"
+                                    title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -355,11 +427,13 @@
                     <div class="section-card">
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Summary Reports</h2>
-                            <a href="#" style="color: var(--color-primary-600); font-size: var(--text-sm);">View All</a>
+                            <a href="#" onclick="toggleSummaryReports(event)"
+                                style="color: var(--color-primary-600); font-size: var(--text-sm);">View All</a>
                         </div>
                         <div class="activity-list">
                             <div class="activity-item">
-                                <div class="activity-icon" style="background: #dcfce7; color: #15803d;">
+                                <div class="activity-icon"
+                                    style="background: var(--color-success-100); color: var(--color-success-600);">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <line x1="18" y1="20" x2="18" y2="10" />
@@ -371,7 +445,8 @@
                                     <h4>Quarterly Analysis Q4 2023</h4>
                                     <p>Generated Jan 5, 2024 • XLSX • 856 KB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn"
+                                    onclick="downloadReport('Quarterly Analysis Q4 2023', 'xlsx')" title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -381,7 +456,8 @@
                                 </button>
                             </div>
                             <div class="activity-item">
-                                <div class="activity-icon" style="background: #dcfce7; color: #15803d;">
+                                <div class="activity-icon"
+                                    style="background: var(--color-success-100); color: var(--color-success-600);">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <line x1="18" y1="20" x2="18" y2="10" />
@@ -393,7 +469,8 @@
                                     <h4>Annual Integrity Assessment</h4>
                                     <p>Generated Jan 1, 2024 • PDF • 5.2 MB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn"
+                                    onclick="downloadReport('Annual Integrity Assessment', 'pdf')" title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -403,7 +480,8 @@
                                 </button>
                             </div>
                             <div class="activity-item">
-                                <div class="activity-icon" style="background: #dcfce7; color: #15803d;">
+                                <div class="activity-icon"
+                                    style="background: var(--color-success-100); color: var(--color-success-600);">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <line x1="18" y1="20" x2="18" y2="10" />
@@ -415,7 +493,61 @@
                                     <h4>Defect Distribution Report</h4>
                                     <p>Generated Dec 28, 2023 • PDF • 1.2 MB</p>
                                 </div>
-                                <button class="action-btn">
+                                <button class="action-btn" onclick="downloadReport('Defect Distribution Report', 'pdf')"
+                                    title="Download">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Additional Summary Reports (hidden by default) -->
+                        <div id="additionalSummaryReports" class="activity-list"
+                            style="display: none; border-top: 1px solid var(--border-primary);">
+                            <div class="activity-item">
+                                <div class="activity-icon"
+                                    style="background: var(--color-success-100); color: var(--color-success-600);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="20" x2="18" y2="10" />
+                                        <line x1="12" y1="20" x2="12" y2="4" />
+                                        <line x1="6" y1="20" x2="6" y2="14" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content" style="flex: 1;">
+                                    <h4>Pipeline Performance Summary 2023</h4>
+                                    <p>Generated Dec 20, 2023 • XLSX • 1.1 MB</p>
+                                </div>
+                                <button class="action-btn"
+                                    onclick="downloadReport('Pipeline Performance Summary 2023', 'xlsx')"
+                                    title="Download">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon"
+                                    style="background: var(--color-success-100); color: var(--color-success-600);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="20" x2="18" y2="10" />
+                                        <line x1="12" y1="20" x2="12" y2="4" />
+                                        <line x1="6" y1="20" x2="6" y2="14" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content" style="flex: 1;">
+                                    <h4>Risk Analysis Summary</h4>
+                                    <p>Generated Dec 15, 2023 • PDF • 2.8 MB</p>
+                                </div>
+                                <button class="action-btn" onclick="downloadReport('Risk Analysis Summary', 'pdf')"
+                                    title="Download">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -433,14 +565,16 @@
                     <div class="section-header-flex">
                         <h2 class="section-title-sm">All Reports</h2>
                         <div class="flex gap-3">
-                            <select class="form-select"
-                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary);">
+                            <select id="reportTypeFilter" class="form-select"
+                                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border-primary); background: var(--bg-secondary); color: var(--text-primary);"
+                                aria-label="Filter by report type">
                                 <option value="">All Types</option>
                                 <option value="pdf">PDF</option>
                                 <option value="xlsx">Excel</option>
                                 <option value="csv">CSV</option>
                             </select>
-                            <button class="btn btn-primary" style="padding: var(--space-2) var(--space-4);">
+                            <button id="downloadAllBtn" class="btn btn-primary"
+                                style="padding: var(--space-2) var(--space-4);">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -587,6 +721,858 @@
         </main>
     </div>
 
+    <script>
+        // Initialize reports page functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            initReportsPage();
+        });
+
+        function initReportsPage() {
+            // Report type filter
+            const reportTypeFilter = document.getElementById('reportTypeFilter');
+            if (reportTypeFilter) {
+                reportTypeFilter.addEventListener('change', filterReports);
+            }
+
+            // Download All button
+            const downloadAllBtn = document.getElementById('downloadAllBtn');
+            if (downloadAllBtn) {
+                downloadAllBtn.addEventListener('click', downloadAllReports);
+            }
+
+        }
+
+        function filterReports() {
+            const reportTypeFilter = document.getElementById('reportTypeFilter');
+            const table = document.querySelector('.data-table');
+
+            if (!table) return;
+
+            const typeValue = reportTypeFilter ? reportTypeFilter.value : '';
+
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const cells = row.querySelectorAll('td');
+                if (cells.length < 5) return;
+
+                const typeCell = cells[1]; // Type column
+                const type = typeCell.textContent.toLowerCase().trim();
+
+                let showRow = true;
+
+                // Check type filter
+                if (typeValue) {
+                    if (typeValue === 'pdf' && !type.includes('pdf')) {
+                        showRow = false;
+                    } else if (typeValue === 'xlsx' && !type.includes('excel') && !type.includes('xlsx')) {
+                        showRow = false;
+                    } else if (typeValue === 'csv' && !type.includes('csv')) {
+                        showRow = false;
+                    }
+                }
+
+                row.style.display = showRow ? '' : 'none';
+            });
+
+            // Show notification
+            const visibleCount = Array.from(rows).filter(r => r.style.display !== 'none').length;
+            showNotification('Showing ' + visibleCount + ' reports', 'info');
+        }
+
+        function downloadAllReports() {
+            const downloadAllBtn = document.getElementById('downloadAllBtn');
+
+            // Show loading state
+            const originalContent = downloadAllBtn.innerHTML;
+            downloadAllBtn.disabled = true;
+            downloadAllBtn.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="0.75"></path></svg> Downloading...';
+
+            // Simulate download process
+            setTimeout(function () {
+                // Gather report data
+                const reportData = getReportData();
+
+                // Generate summary file
+                const content = 'REPORTS EXPORT\n' +
+                    'Generated: ' + new Date().toLocaleString() + '\n\n' +
+                    'Total Reports: ' + reportData.length + '\n\n' +
+                    'Report List:\n' +
+                    reportData.map(function (r) { return '- ' + r.name + ' (' + r.type + ')'; }).join('\n');
+
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'reports_export_' + new Date().toISOString().split('T')[0] + '.txt';
+                a.style.visibility = 'hidden';
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+
+                // Reset button
+                downloadAllBtn.disabled = false;
+                downloadAllBtn.innerHTML = originalContent;
+
+                // Show success notification
+                showNotification('Reports exported successfully!', 'success');
+            }, 1500);
+        }
+
+        function getReportData() {
+            const table = document.querySelector('.data-table');
+            if (!table) return [];
+
+            const data = [];
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                if (row.style.display === 'none') return;
+
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 5) {
+                    data.push({
+                        name: cells[0].textContent.trim(),
+                        type: cells[1].textContent.trim(),
+                        date: cells[2].textContent.trim(),
+                        size: cells[3].textContent.trim()
+                    });
+                }
+            });
+
+            return data;
+        }
+
+        function showNotification(message, type) {
+            // Remove existing notifications
+            const existing = document.querySelectorAll('.notification-toast');
+            existing.forEach(function (n) { n.remove(); });
+
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease;';
+
+            if (type === 'success') {
+                notification.style.background = 'var(--color-success-600)';
+            } else if (type === 'error') {
+                notification.style.background = 'var(--color-error-600)';
+            } else {
+                notification.style.background = 'var(--color-primary-600)';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(function () {
+                notification.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(function () { notification.remove(); }, 300);
+            }, 3000);
+        }
+
+        // Show nothing function for View All links
+        function showNothing(event) {
+            event.preventDefault();
+            // Do nothing
+        }
+
+        // Open Detailed Reports Modal
+        function openDetailedReports(event) {
+            event.preventDefault();
+
+            let modal = document.getElementById('detailedReportsModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'detailedReportsModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" onclick="closeModal('detailedReportsModal')" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div class="modal-content" onclick="event.stopPropagation()" style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-6); max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+                                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">All Detailed Reports</h2>
+                                <button onclick="closeModal('detailedReportsModal')" style="background: none; border: none; cursor: pointer; color: var(--text-secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="activity-list" style="max-height: 400px; overflow-y: auto;">
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>MFL Inspection Report - Line 101</h4>
+                                        <p>Generated Jan 15, 2024 • PDF • 2.4 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Smart Pigging Analysis - Line 204</h4>
+                                        <p>Generated Jan 18, 2024 • PDF • 3.1 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Ultrasonic Test Results - Line 305</h4>
+                                        <p>Generated Jan 10, 2024 • PDF • 1.8 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Corrosion Assessment Report - Line 412</h4>
+                                        <p>Generated Jan 5, 2024 • PDF • 2.1 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Pipeline Geometry Survey - Line 108</h4>
+                                        <p>Generated Dec 28, 2023 • PDF • 1.5 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+        }
+
+        // Open Summary Reports Modal
+        function openSummaryReports(event) {
+            event.preventDefault();
+
+            let modal = document.getElementById('summaryReportsModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'summaryReportsModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" onclick="closeModal('summaryReportsModal')" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div class="modal-content" onclick="event.stopPropagation()" style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-6); max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+                                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">All Summary Reports</h2>
+                                <button onclick="closeModal('summaryReportsModal')" style="background: none; border: none; cursor: pointer; color: var(--text-secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="activity-list" style="max-height: 400px; overflow-y: auto;">
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-success-100); color: var(--color-success-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="20" x2="18" y2="10" />
+                                            <line x1="12" y1="20" x2="12" y2="4" />
+                                            <line x1="6" y1="20" x2="6" y2="14" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Quarterly Analysis Q4 2023</h4>
+                                        <p>Generated Jan 5, 2024 • XLSX • 856 KB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-success-100); color: var(--color-success-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="20" x2="18" y2="10" />
+                                            <line x1="12" y1="20" x2="12" y2="4" />
+                                            <line x1="6" y1="20" x2="6" y2="14" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Annual Integrity Assessment</h4>
+                                        <p>Generated Jan 1, 2024 • PDF • 5.2 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-success-100); color: var(--color-success-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="20" x2="18" y2="10" />
+                                            <line x1="12" y1="20" x2="12" y2="4" />
+                                            <line x1="6" y1="20" x2="6" y2="14" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Defect Distribution Report</h4>
+                                        <p>Generated Dec 28, 2023 • PDF • 1.2 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-success-100); color: var(--color-success-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="20" x2="18" y2="10" />
+                                            <line x1="12" y1="20" x2="12" y2="4" />
+                                            <line x1="6" y1="20" x2="6" y2="14" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Pipeline Performance Summary 2023</h4>
+                                        <p>Generated Dec 20, 2023 • XLSX • 1.1 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: var(--color-success-100); color: var(--color-success-600);">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="20" x2="18" y2="10" />
+                                            <line x1="12" y1="20" x2="12" y2="4" />
+                                            <line x1="6" y1="20" x2="6" y2="14" />
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content" style="flex: 1;">
+                                        <h4>Risk Analysis Summary</h4>
+                                        <p>Generated Dec 15, 2023 • PDF • 2.8 MB</p>
+                                    </div>
+                                    <button class="action-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+        }
+
+        // Close Modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+            }
+        }
+
+        // Generate Report Modal Functions
+        function openGenerateReportModal() {
+            // Create modal if it doesn't exist
+            let modal = document.getElementById('generateReportModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'generateReportModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" onclick="closeGenerateReportModal()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div class="modal-content" onclick="event.stopPropagation()" style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-8); max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Generate Custom Report</h2>
+                                <button onclick="closeGenerateReportModal()" style="background: none; border: none; cursor: pointer; color: var(--text-secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <form id="generateReportForm" onsubmit="generateCustomReport(event)">
+                                <div style="margin-bottom: var(--space-4);">
+                                    <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-medium);">Report Type</label>
+                                    <select id="reportType" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                                        <option value="">Select report type</option>
+                                        <option value="inspection">Inspection Report</option>
+                                        <option value="summary">Summary Report</option>
+                                        <option value="analysis">Analysis Report</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="margin-bottom: var(--space-4);">
+                                    <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-medium);">Pipeline</label>
+                                    <select id="pipelineSelect" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                                        <option value="">Select pipeline</option>
+                                        <option value="line101">Line 101 - Texas to Oklahoma</option>
+                                        <option value="line204">Line 204 - California Loop</option>
+                                        <option value="line305">Line 305 - East Coast Main</option>
+                                        <option value="all">All Pipelines</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="margin-bottom: var(--space-4);">
+                                    <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-medium);">Date Range</label>
+                                    <div style="display: flex; gap: var(--space-3);">
+                                        <input type="date" id="startDate" required style="flex: 1; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                                        <input type="date" id="endDate" required style="flex: 1; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: var(--space-6);">
+                                    <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-medium);">Format</label>
+                                    <select id="reportFormat" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                                        <option value="pdf">PDF</option>
+                                        <option value="xlsx">Excel (XLSX)</option>
+                                        <option value="csv">CSV</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: flex; gap: var(--space-3); justify-content: flex-end;">
+                                    <button type="button" onclick="closeGenerateReportModal()" class="btn btn-ghost">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Generate Report</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            // Set default dates
+            const today = new Date();
+            const thirtyDaysAgo = new Date(today);
+            thirtyDaysAgo.setDate(today.getDate() - 30);
+
+            document.getElementById('endDate').value = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = thirtyDaysAgo.toISOString().split('T')[0];
+
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+        }
+
+        function closeGenerateReportModal() {
+            const modal = document.getElementById('generateReportModal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+            }
+        }
+
+        function generateCustomReport(event) {
+            event.preventDefault();
+
+            const reportType = document.getElementById('reportType').value;
+            const pipeline = document.getElementById('pipelineSelect').value;
+            const format = document.getElementById('reportFormat').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // Close modal
+            closeGenerateReportModal();
+
+            // Simulate report generation
+            showNotification('Generating report...', 'info');
+
+            setTimeout(function () {
+                // Generate sample report content
+                const content = 'CUSTOM REPORT\n' +
+                    '================\n\n' +
+                    'Report Type: ' + reportType + '\n' +
+                    'Pipeline: ' + pipeline + '\n' +
+                    'Date Range: ' + startDate + ' to ' + endDate + '\n' +
+                    'Format: ' + format.toUpperCase() + '\n\n' +
+                    'This is a sample custom report generated on ' + new Date().toLocaleString();
+
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'custom_report_' + new Date().toISOString().split('T')[0] + '.txt';
+                a.style.visibility = 'hidden';
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+
+                showNotification('Custom report generated and downloaded!', 'success');
+            }, 1500);
+        }
+
+        // Bulk Download Function
+        function openBulkDownload() {
+            // Create bulk download modal
+            let modal = document.getElementById('bulkDownloadModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'bulkDownloadModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" onclick="closeBulkDownloadModal()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div class="modal-content" onclick="event.stopPropagation()" style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-8); max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Bulk Download Reports</h2>
+                                <button onclick="closeBulkDownloadModal()" style="background: none; border: none; cursor: pointer; color: var(--text-secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <p style="margin-bottom: var(--space-4); color: var(--text-secondary);">Select reports to download:</p>
+                            
+                            <div id="reportsList" style="max-height: 300px; overflow-y: auto; margin-bottom: var(--space-6); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-4);">
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="MFL Inspection Report - Line 101.pdf" checked>
+                                    <span>MFL Inspection Report - Line 101 (2.4 MB)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="Smart Pigging Analysis - Line 204.pdf" checked>
+                                    <span>Smart Pigging Analysis - Line 204 (3.1 MB)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="Ultrasonic Test Results - Line 305.pdf" checked>
+                                    <span>Ultrasonic Test Results - Line 305 (1.8 MB)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="Quarterly Analysis Q4 2023.xlsx" checked>
+                                    <span>Quarterly Analysis Q4 2023 (856 KB)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="Annual Integrity Assessment.pdf" checked>
+                                    <span>Annual Integrity Assessment (5.2 MB)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; cursor: pointer;">
+                                    <input type="checkbox" value="Defect Distribution Report.pdf" checked>
+                                    <span>Defect Distribution Report (1.2 MB)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: var(--space-3); justify-content: space-between; align-items: center;">
+                                <label style="cursor: pointer;">
+                                    <input type="checkbox" id="selectAllReports" onchange="toggleSelectAllReports()">
+                                    <span>Select All</span>
+                                </label>
+                                <div style="display: flex; gap: var(--space-3);">
+                                    <button type="button" onclick="closeBulkDownloadModal()" class="btn btn-ghost">Cancel</button>
+                                    <button onclick="executeBulkDownload()" class="btn btn-primary">Download Selected</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+        }
+
+        function closeBulkDownloadModal() {
+            const modal = document.getElementById('bulkDownloadModal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+            }
+        }
+
+        function toggleSelectAllReports() {
+            const selectAll = document.getElementById('selectAllReports');
+            const checkboxes = document.querySelectorAll('#reportsList input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = selectAll.checked);
+        }
+
+        function executeBulkDownload() {
+            const checkboxes = document.querySelectorAll('#reportsList input[type="checkbox"]:checked');
+
+            if (checkboxes.length === 0) {
+                showNotification('Please select at least one report', 'error');
+                return;
+            }
+
+            closeBulkDownloadModal();
+
+            showNotification('Downloading ' + checkboxes.length + ' reports...', 'info');
+
+            // Simulate multiple downloads
+            let delay = 0;
+            checkboxes.forEach((checkbox, index) => {
+                setTimeout(function () {
+                    const content = 'Report: ' + checkbox.value + '\n\nThis is a sample download file.';
+                    const blob = new Blob([content], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = checkbox.value.replace('.pdf', '.txt').replace('.xlsx', '.txt');
+                    a.style.visibility = 'hidden';
+
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+
+                    URL.revokeObjectURL(url);
+
+                    if (index === checkboxes.length - 1) {
+                        showNotification('All reports downloaded successfully!', 'success');
+                    }
+                }, delay);
+                delay += 500;
+            });
+        }
+
+        // Archive Access Function
+        function openArchiveAccess() {
+            // Create archive modal
+            let modal = document.getElementById('archiveModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'archiveModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" onclick="closeArchiveModal()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div class="modal-content" onclick="event.stopPropagation()" style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-8); max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Archive Access</h2>
+                                <button onclick="closeArchiveModal()" style="background: none; border: none; cursor: pointer; color: var(--text-secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: var(--space-6);">
+                                <input type="text" id="archiveSearch" placeholder="Search archives..." oninput="filterArchives()" style="width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); background: var(--bg-secondary);">
+                            </div>
+                            
+                            <div id="archiveList" style="max-height: 400px; overflow-y: auto;">
+                                <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--text-secondary); margin-bottom: var(--space-3);">2023 Archives</h3>
+                                
+                                <div class="archive-item" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-2); cursor: pointer; transition: background var(--transition-fast);" onmouseover="this.style.background='var(--bg-secondary)'" onmouseout="this.style.background='var(--bg-primary)'">
+                                    <div style="width: 40px; height: 40px; background: var(--color-primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="font-weight: var(--font-medium);">Annual Report 2023</h4>
+                                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">12 reports • Generated Dec 31, 2023</p>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm" onclick="downloadArchive('annual_2023')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="archive-item" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-2); cursor: pointer; transition: background var(--transition-fast);" onmouseover="this.style.background='var(--bg-secondary)'" onmouseout="this.style.background='var(--bg-primary)'">
+                                    <div style="width: 40px; height: 40px; background: var(--color-primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="font-weight: var(--font-medium);">Q4 2023 Reports</h4>
+                                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">8 reports • Generated Jan 5, 2024</p>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm" onclick="downloadArchive('q4_2023')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="archive-item" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-2); cursor: pointer; transition: background var(--transition-fast);" onmouseover="this.style.background='var(--bg-secondary)'" onmouseout="this.style.background='var(--bg-primary)'">
+                                    <div style="width: 40px; height: 40px; background: var(--color-primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="font-weight: var(--font-medium);">Q3 2023 Reports</h4>
+                                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">6 reports • Generated Oct 5, 2023</p>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm" onclick="downloadArchive('q3_2023')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--text-secondary); margin: var(--space-6) 0 var(--space-3);">2022 Archives</h3>
+                                
+                                <div class="archive-item" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-2); cursor: pointer; transition: background var(--transition-fast);" onmouseover="this.style.background='var(--bg-secondary)'" onmouseout="this.style.background='var(--bg-primary)'">
+                                    <div style="width: 40px; height: 40px; background: var(--color-primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                        </svg>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="font-weight: var(--font-medium);">Annual Report 2022</h4>
+                                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">15 reports • Generated Dec 31, 2022</p>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm" onclick="downloadArchive('annual_2022')">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+        }
+
+        function closeArchiveModal() {
+            const modal = document.getElementById('archiveModal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+            }
+        }
+
+        function filterArchives() {
+            const search = document.getElementById('archiveSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.archive-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(search) ? 'flex' : 'none';
+            });
+        }
+
+        function downloadArchive(archiveId) {
+            showNotification('Downloading archive...', 'info');
+
+            setTimeout(function () {
+                const content = 'ARCHIVE DOWNLOAD\n' +
+                    '================\n\n' +
+                    'Archive ID: ' + archiveId + '\n' +
+                    'Downloaded on: ' + new Date().toLocaleString() + '\n\n' +
+                    'This archive contains historical inspection reports.';
+
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = archiveId + '_archive_' + new Date().toISOString().split('T')[0] + '.txt';
+                a.style.visibility = 'hidden';
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+
+                showNotification('Archive downloaded successfully!', 'success');
+            }, 1000);
+        }
+    </script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dashboard.js"></script>
 </body>

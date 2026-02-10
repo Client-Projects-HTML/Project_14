@@ -50,14 +50,8 @@
 
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
                     </button>
                     <button class="theme-toggle" aria-label="Toggle dark mode">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -71,8 +65,8 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
-                    <button class="menu-toggle" aria-label="Toggle mobile menu">
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -88,41 +82,22 @@
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="main-content">
-        <!-- Page Header -->
-        <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-16);">
-            <div class="hero-pattern"></div>
-            <div class="container">
-                <div class="text-center reveal">
-                    <span class="section-label" style="justify-content: center;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                            <polyline points="22,6 12,13 2,6" />
-                        </svg>
-                        Contact Us
-                    </span>
-                    <h1 class="hero-title" style="max-width: 800px; margin-left: auto; margin-right: auto;">Get in Touch
-                    </h1>
-                    <p class="hero-description" style="margin-left: auto; margin-right: auto;">Have a question or need a
-                        quote? Our team is here to help. Reach out and we'll respond as soon as possible.</p>
-                </div>
-            </div>
-        </section>
-
+    <main id="main-content" style="padding-top: 72px;">
         <!-- Contact Section -->
         <section class="section">
             <div class="container">
                 <div class="contact-grid">
                     <!-- Contact Info -->
                     <div class="contact-info">
-                        <div class="reveal">
-                            <span class="section-label">
+                        <div class="contact-card reveal">
+                            <h2 style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">Contact Information
+                            </h2>
+                            <span class="section-label" style="margin-bottom: var(--space-8); display: inline-flex;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -130,98 +105,97 @@
                                 </svg>
                                 Our Office
                             </span>
-                            <h2 style="font-size: var(--text-3xl); margin-bottom: var(--space-6);">Contact Information
-                            </h2>
-                        </div>
 
-                        <div class="contact-item reveal">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
+                                <div class="contact-content">
+                                    <h3>Address</h3>
+                                    <p>1234 Energy Plaza, Suite 500<br>Houston, TX 77002, USA</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3>Address</h3>
-                                <p>1234 Energy Plaza, Suite 500<br>Houston, TX 77002, USA</p>
-                            </div>
-                        </div>
 
-                        <div class="contact-item reveal">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>+1 (800) 555-0123<br>+1 (713) 555-0456</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item reveal">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>info@pipelinepro.com<br>support@pipelinepro.com</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item reveal">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polyline points="12 6 12 12 16 14" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Business Hours</h3>
-                                <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
-                            </div>
-                        </div>
-
-                        <!-- Social Links -->
-                        <div class="reveal" style="margin-top: var(--space-8);">
-                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Follow Us</h3>
-                            <div class="footer-social">
-                                <a href="#" class="social-link"
-                                    style="background-color: var(--bg-tertiary); color: var(--text-primary);">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                     </svg>
-                                </a>
-                                <a href="#" class="social-link"
-                                    style="background-color: var(--bg-tertiary); color: var(--text-primary);">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                </div>
+                                <div class="contact-content">
+                                    <h3>Phone</h3>
+                                    <p>+1 (800) 555-0123<br>+1 (713) 555-0456</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path
-                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
                                     </svg>
-                                </a>
-                                <a href="#" class="social-link"
-                                    style="background-color: var(--bg-tertiary); color: var(--text-primary);">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                </div>
+                                <div class="contact-content">
+                                    <h3>Email</h3>
+                                    <p>info@pipelinepro.com<br>support@pipelinepro.com</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
-                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
                                     </svg>
-                                </a>
+                                </div>
+                                <div class="contact-content">
+                                    <h3>Business Hours</h3>
+                                    <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
+                                </div>
+                            </div>
+
+                            <!-- Social Links -->
+                            <div
+                                style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--border-primary);">
+                                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Follow Us</h3>
+                                <div class="footer-social">
+                                    <a href="#" class="social-link"
+                                        style="background-color: var(--bg-tertiary); color: var(--text-primary);">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                            <rect x="2" y="9" width="4" height="12" />
+                                            <circle cx="4" cy="4" r="2" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-link"
+                                        style="background-color: var(--bg-tertiary); color: var(--text-primary);">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-link"
+                                        style="background-color: var(--bg-tertiary); color: var(--text-primary);">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -404,15 +378,20 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="coming-soon.html">Events</a></li>
+                        <li><a href="404.html">Careers</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="service-details.html">Inline Inspection</a></li>
-                        <li><a href="service-details.html">Dig Reports</a></li>
-                        <li><a href="service-details.html">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=ili">Inline Inspection</a></li>
+                        <li><a href="service-details.html?service=dig-reports">Dig Reports</a></li>
+                        <li><a href="service-details.html?service=integrity">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=cp">Cathodic Protection</a></li>
+                        <li><a href="service-details.html?service=coating">Coating Inspection</a></li>
+                        <li><a href="service-details.html?service=data">Data Analysis</a></li>
                     </ul>
                 </div>
 
@@ -426,10 +405,15 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-powered">
+                    <p>Powered By <a href="https://abhivorn.com" target="_blank">Abhivorn Technologies Pvt Ltd</a></p>
                 </div>
             </div>
         </div>

@@ -49,14 +49,8 @@
 
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL direction" title="Toggle RTL">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="17 11 21 7 17 3"></polyline>
-                            <line x1="21" y1="7" x2="9" y2="7"></line>
-                            <polyline points="7 21 3 17 7 13"></polyline>
-                            <line x1="3" y1="17" x2="15" y2="17"></line>
-                        </svg>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
+                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
                     </button>
                     <button class="theme-toggle" aria-label="Toggle dark mode">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -70,8 +64,8 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm hidden sm:flex">Client Login</a>
-                    <button class="menu-toggle" aria-label="Toggle mobile menu">
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -87,33 +81,17 @@
                 <li><a href="services.html" class="mobile-nav-link active">Services</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Client Login</a></li>
+                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content">
-        <!-- Service Hero -->
-        <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-16);">
+        <section class="hero" style="padding: calc(72px + var(--space-12)) 0 var(--space-4);">
             <div class="hero-pattern"></div>
             <div class="container">
-                <div class="text-center reveal">
-                    <span class="section-label" style="justify-content: center;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
-                        Services
-                    </span>
-                    <h1 class="hero-title" style="max-width: 900px; margin-left: auto; margin-right: auto;">Inline
-                        Inspection (ILI)</h1>
-                    <p class="hero-description" style="margin-left: auto; margin-right: auto;">Advanced smart pigging
-                        technology for comprehensive internal pipeline assessment and anomaly detection.</p>
-                    <div class="hero-actions" style="justify-content: center;">
-                        <a href="contact.html" class="btn btn-primary btn-lg">Request a Quote</a>
-                        <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
-                    </div>
+                <div class="reveal">
+                    <h1 class="hero-title" style="margin-bottom: 0;">Service Details</h1>
                 </div>
             </div>
         </section>
@@ -122,6 +100,13 @@
         <section class="section" id="features">
             <div class="container">
                 <div class="about-grid">
+                    <div class="about-image reveal">
+                        <div class="about-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=500&fit=crop"
+                                alt="Smart pigging equipment" loading="lazy">
+                        </div>
+                    </div>
+
                     <div class="about-content reveal">
                         <span class="section-label">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -131,20 +116,16 @@
                             </svg>
                             Overview
                         </span>
-                        <h2 class="section-title">State-of-the-Art Pipeline Inspection</h2>
-                        <p style="margin-bottom: var(--space-4);">Our Inline Inspection (ILI) services utilize
-                            cutting-edge smart pigging technology to provide comprehensive internal assessments of your
-                            pipeline infrastructure. We detect and characterize metal loss, cracks, geometry anomalies,
-                            and other defects with industry-leading accuracy.</p>
-                        <p style="margin-bottom: var(--space-4);">With over 15 years of experience and 25,000+
-                            kilometers of pipeline inspected, PipelinePro delivers reliable data that forms the
-                            foundation of effective integrity management programs.</p>
+                        <h2 class="section-title">Loading...</h2>
+                        <p style="margin-bottom: var(--space-4);">Please wait while we fetch the details for this
+                            service.</p>
+                        <p style="margin-bottom: var(--space-4);"></p>
 
                         <div
-                            style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-6);">
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-4); margin-top: var(--space-6);">
                             <div style="display: flex; align-items: center; gap: var(--space-3);">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    stroke="var(--color-success)" stroke-width="2">
+                                    stroke="var(--color-primary-600)" stroke-width="2">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                                     <polyline points="22 4 12 14.01 9 11.01" />
                                 </svg>
@@ -152,7 +133,7 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: var(--space-3);">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    stroke="var(--color-success)" stroke-width="2">
+                                    stroke="var(--color-primary-600)" stroke-width="2">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                                     <polyline points="22 4 12 14.01 9 11.01" />
                                 </svg>
@@ -160,7 +141,7 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: var(--space-3);">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    stroke="var(--color-success)" stroke-width="2">
+                                    stroke="var(--color-primary-600)" stroke-width="2">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                                     <polyline points="22 4 12 14.01 9 11.01" />
                                 </svg>
@@ -168,18 +149,13 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: var(--space-3);">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    stroke="var(--color-success)" stroke-width="2">
+                                    stroke="var(--color-primary-600)" stroke-width="2">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                                     <polyline points="22 4 12 14.01 9 11.01" />
                                 </svg>
                                 <span style="font-weight: var(--font-medium);">Geometry Tools</span>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="about-image reveal">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=500&fit=crop"
-                            alt="Smart pigging equipment" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -274,216 +250,34 @@
                     <h2 class="section-title">What We Detect</h2>
                 </div>
 
-                <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M8 12h8" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Metal Loss</h3>
-                            <p>General corrosion, pitting corrosion, and erosion with accurate depth and extent
-                                measurements.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M3 6h18" />
-                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-                                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Cracks</h3>
-                            <p>Longitudinal, circumferential, and crack colonies including SCC and fatigue cracks.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 3v18" />
-                                <path d="M3 12h18" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Dents & Buckles</h3>
-                            <p>Mechanical damage, dents, wrinkles, and buckles with precise depth and strain analysis.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Geometry</h3>
-                            <p>Pipe diameter, ovality, wall thickness variations, and bend radius measurements.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                <line x1="3" y1="9" x2="21" y2="9" />
-                                <line x1="9" y1="21" x2="9" y2="9" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Features</h3>
-                            <p>Valves, tees, flanges, welds, and other pipeline features with precise location data.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item reveal">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Debris & Deposits</h3>
-                            <p>Internal deposits, wax, scale, and debris accumulation affecting flow efficiency.</p>
-                        </div>
-                    </div>
+                <div class="features-grid">
+                    <!-- Dynamic Content -->
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Table -->
-        <section class="section" style="background-color: var(--bg-secondary);">
+        <!-- Contact CTA -->
+        <section class="section" id="pricing-cta">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                        Pricing
-                    </span>
-                    <h2 class="section-title">Service Packages</h2>
-                    <p class="section-description">Flexible pricing options to meet your inspection needs and budget.
-                    </p>
-                </div>
-
-                <div style="overflow-x: auto;">
-                    <table class="data-table reveal" style="min-width: 800px;">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Basic</th>
-                                <th>Standard</th>
-                                <th>Premium</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>MFL Inspection</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>UT Inspection</td>
-                                <td>-</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>EMAT Inspection</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>Basic Report</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>Detailed Analysis</td>
-                                <td>-</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>24/7 Support</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="var(--color-success)" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg></td>
-                            </tr>
-                            <tr>
-                                <td>Turnaround Time</td>
-                                <td>4 weeks</td>
-                                <td>3 weeks</td>
-                                <td>2 weeks</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><a href="contact.html" class="btn btn-outline btn-sm">Get Quote</a></td>
-                                <td><a href="contact.html" class="btn btn-primary btn-sm">Get Quote</a></td>
-                                <td><a href="contact.html" class="btn btn-primary btn-sm">Get Quote</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="card reveal"
+                    style="background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800)); color: white; border: none;">
+                    <div style="padding: var(--space-8); text-align: center;">
+                        <h2 style="font-size: var(--text-3xl); margin-bottom: var(--space-4);">Need Pricing for Your
+                            Project?</h2>
+                        <p
+                            style="margin-bottom: var(--space-8); max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                            Our pricing is tailored to your specific pipeline diameter, length, and inspection
+                            requirements. Contact our team for a detailed custom quote.</p>
+                        <div style="display: flex; justify-content: center; gap: var(--space-4);">
+                            <a href="contact.html" class="btn btn-white btn-lg">Request a Quote</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section class="section">
+        <!-- FAQ Section -->
+        <section class="section" style="background-color: var(--bg-secondary);">
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-label">
@@ -493,53 +287,21 @@
                             <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                             <line x1="12" y1="17" x2="12.01" y2="17" />
                         </svg>
-                        FAQ
+                        Support
                     </span>
-                    <h2 class="section-title">Common Questions</h2>
-                </div>
-
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="card reveal" style="margin-bottom: var(--space-4);">
-                        <div style="padding: var(--space-6);">
-                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">What pipeline
-                                diameters can you inspect?</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 0;">Our tools accommodate pipeline
-                                diameters from 4 inches to 56 inches. We have specialized tools for both small-diameter
-                                gathering lines and large-diameter transmission pipelines.</p>
+                    <div class="faq-grid reveal"
+                        style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 800px; margin: 0 auto;">
+                        <div class="card" style="padding: var(--space-6); border-radius: var(--radius-2xl);">
+                            <h3
+                                style="font-size: var(--text-lg); margin-bottom: var(--space-3); font-weight: var(--font-bold);">
+                                Do you offer dig verification support?</h3>
+                            <p
+                                style="color: var(--text-secondary); margin-bottom: 0; line-height: var(--leading-relaxed);">
+                                Yes, we offer comprehensive dig verification services including excavation supervision,
+                                NDT inspection, and detailed comparison reports between predicted and actual anomalies.
+                            </p>
                         </div>
                     </div>
-
-                    <div class="card reveal" style="margin-bottom: var(--space-4);">
-                        <div style="padding: var(--space-6);">
-                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">How accurate are your
-                                inspection results?</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 0;">Our MFL tools achieve 90%+ depth
-                                accuracy for metal loss features. UT tools provide wall thickness measurements accurate
-                                to within ±0.1mm. All tools are regularly calibrated and qualified per API 1163.</p>
-                        </div>
-                    </div>
-
-                    <div class="card reveal" style="margin-bottom: var(--space-4);">
-                        <div style="padding: var(--space-6);">
-                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">What is the typical
-                                inspection speed?</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 0;">Inspection speeds typically range
-                                from 1-5 m/s depending on product flow and tool technology. We optimize speed to ensure
-                                data quality while minimizing operational impact.</p>
-                        </div>
-                    </div>
-
-                    <div class="card reveal">
-                        <div style="padding: var(--space-6);">
-                            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3);">Do you provide dig
-                                verification support?</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 0;">Yes, we offer comprehensive dig
-                                verification services including excavation supervision, NDT inspection, and detailed
-                                comparison reports between predicted and actual anomalies.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- CTA -->
@@ -587,15 +349,20 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="coming-soon.html">Events</a></li>
+                        <li><a href="404.html">Careers</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="service-details.html">Inline Inspection</a></li>
-                        <li><a href="service-details.html">Dig Reports</a></li>
-                        <li><a href="service-details.html">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=ili">Inline Inspection</a></li>
+                        <li><a href="service-details.html?service=dig-reports">Dig Reports</a></li>
+                        <li><a href="service-details.html?service=integrity">Integrity Management</a></li>
+                        <li><a href="service-details.html?service=cp">Cathodic Protection</a></li>
+                        <li><a href="service-details.html?service=coating">Coating Inspection</a></li>
+                        <li><a href="service-details.html?service=data">Data Analysis</a></li>
                     </ul>
                 </div>
 
@@ -609,16 +376,22 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">© 2026 PipelinePro. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-powered">
+                    <p>Powered By <a href="https://abhivorn.com" target="_blank">Abhivorn Technologies Pvt Ltd</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/service-details.js"></script>
 </body>
 
 </html>
