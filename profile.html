@@ -179,7 +179,8 @@
             <!-- Dashboard Header -->
             <header class="dashboard-header">
                 <div class="flex items-center gap-4">
-                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar"
+                        onclick="DashboardManager.toggleSidebar()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12" />
@@ -191,8 +192,16 @@
 
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
-                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL" title="Toggle RTL"
+                        onclick="DashboardManager.toggleRTL()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
                     </button>
                     <!-- Theme Toggle -->
                     <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">

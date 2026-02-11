@@ -5,9 +5,10 @@
 .dashboard-layout {
     position: relative;
     min-height: 100vh;
-    --header-height: 80px;
+    --header-height: 72px;
     --sidebar-width: 300px;
     --sidebar-collapsed-width: 80px;
+    overflow-x: hidden;
 }
 
 /* Sidebar Styles */
@@ -213,6 +214,23 @@
 .sidebar-toggle:hover {
     background-color: var(--bg-tertiary);
     color: var(--color-primary-600);
+}
+
+.sidebar-toggle svg line {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.sidebar-toggle.active svg line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.sidebar-toggle.active svg line:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar-toggle.active svg line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 .notification-badge {

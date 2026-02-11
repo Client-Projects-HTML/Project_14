@@ -43,13 +43,28 @@
     .dashboard-header {
         left: 0 !important;
         width: 100% !important;
-        z-index: 1040;
+        z-index: 1040 !important;
+        /* Force high z-index to stay above content */
         padding: 0 var(--space-4);
     }
 
-    /* Ensure Toggle is Visible */
-    .sidebar-toggle {
+    /* Fix Global Overflow */
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* Prevent scroll when sidebar is open */
+    body.sidebar-open {
+        overflow: hidden !important;
+    }
+
+    /* Ensure Toggle is Visible with High Specificity */
+    .dashboard-layout .sidebar-toggle {
         display: flex !important;
+        z-index: 1060;
+        /* Above header */
     }
 
     /* Overlay for when sidebar is open */
@@ -62,186 +77,237 @@
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         z-index: 1045;
+        /* Above header, below sidebar */
         pointer-events: all;
     }
-}
 
-/* Mobile Breakpoints (Max Width: 768px) */
-@media screen and (max-width: 768px) {
-
-    /* General Container Padding */
-    .container,
-    .dashboard-content {
-        padding-left: var(--space-3) !important;
-        padding-right: var(--space-3) !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Grid Layouts - Stack to 1 or 2 columns */
-    .stats-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: var(--space-3) !important;
-    }
-
-    .content-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: var(--space-4) !important;
-    }
-
-    /* Cards */
-    .section-card {
-        margin-bottom: var(--space-4) !important;
-        width: 100% !important;
-    }
-
-    /* Tables - Horizontal Scroll */
-    .table-container,
-    .table-wrapper {
-        width: 100%;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        margin-bottom: var(--space-4);
-        border: 1px solid var(--border-primary);
-        border-radius: var(--radius-md);
-        background: var(--bg-primary);
-    }
-
-    .data-table {
-        min-width: 600px !important;
-        /* Force scroll */
-        width: 100% !important;
-    }
-
-    /* Typography Adjustments */
-    .page-title {
-        font-size: var(--text-xl) !important;
-    }
-
-    .section-title,
-    h2 {
-        font-size: var(--text-lg) !important;
-    }
-
-    h3 {
-        font-size: var(--text-base) !important;
-    }
-
-    /* Header Elements */
-    .header-actions {
-        gap: var(--space-2) !important;
-    }
-
-    .header-actions .rtl-toggle,
-    .header-actions .theme-toggle,
-    .header-actions .notification-btn {
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 32px !important;
-    }
-
-    .header-actions .rtl-toggle span,
-    .header-actions .theme-toggle span {
-        font-size: 9px !important;
-    }
-
-    .header-actions .btn-sm {
-        padding: 4px 10px !important;
-        min-height: 30px !important;
-        font-size: 11px !important;
-    }
-
-    .user-menu-dropdown,
-    .notification-dropdown {
-        position: fixed !important;
-        top: 70px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
-        max-width: none !important;
-    }
-}
-
-/* Small Mobile Breakpoints (Max Width: 480px) */
-@media screen and (max-width: 480px) {
-
-    /* Stack Stats Grid */
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    /* Compact Padding */
-    .card-body,
-    .stat-card {
-        padding: var(--space-3) !important;
-    }
-
-    /* Header Compactness */
-    .logo-text {
-        display: none !important;
-        /* Hide logo text if needed */
-    }
-
-    /* Buttons */
-    .btn {
-        padding: var(--space-2) var(--space-3) !important;
-        font-size: var(--text-sm) !important;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .header-actions .btn {
-        width: auto;
-        /* Header buttons keep size */
-        padding: var(--space-2);
-    }
-
-    /* Adjust page header for stacking */
-    .page-header {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: var(--space-3) !important;
-    }
-
-    .page-header .btn {
-        width: 100% !important;
-    }
-
-    /* Filter/Search Stacking */
-    .filter-search {
-        flex-direction: column !important;
-    }
-
-    .filter-search input,
-    .filter-search select {
-        width: 100% !important;
-        margin-bottom: var(--space-2);
-    }
-}
-
-/* RTL Support for Mobile Sidebar */
-@media screen and (max-width: 1024px) {
+    /* RTL Support for Mobile Sidebar */
     [dir="rtl"] .sidebar {
         left: auto !important;
         right: 0 !important;
         transform: translateX(100%);
-        border-right: none;
-        border-left: 1px solid var(--border-primary);
     }
 
     [dir="rtl"] .sidebar.active {
         transform: translateX(0);
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
     }
 
-    [dir="rtl"] .main-content {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
+    /* RTL Toggle Button Position */
+    [dir="rtl"] .dashboard-layout .sidebar-toggle {
+        margin-right: 0;
+        margin-left: auto;
+        /* Push to right if flex container */
+        order: 1;
+        /* Ensure visual order */
     }
 
-    [dir="rtl"] .header-actions {
-        margin-right: auto !important;
-        margin-left: 0 !important;
+    [dir="rtl"] .sidebar-link {
+        padding-right: var(--space-4);
+        padding-left: var(--space-4);
+        justify-content: flex-start;
+        /* Ensure proper start alignment */
     }
-}
+
+    [dir="rtl"] .sidebar-link svg {
+        margin-left: var(--space-4);
+        margin-right: 0;
+    }
+
+    /* Mobile Breakpoints (Max Width: 768px) */
+    @media screen and (max-width: 768px) {
+
+        /* General Container Padding */
+        .container,
+        .dashboard-content {
+            padding-left: var(--space-3) !important;
+            padding-right: var(--space-3) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        /* Grid Layouts - Stack to 1 or 2 columns */
+        .stats-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: var(--space-3) !important;
+        }
+
+        .content-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: var(--space-4) !important;
+        }
+
+        /* Cards */
+        .section-card {
+            margin-bottom: var(--space-4) !important;
+            width: 100% !important;
+        }
+
+        /* Tables - Horizontal Scroll */
+        .table-container,
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: var(--space-4);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+        }
+
+        .data-table {
+            min-width: 600px !important;
+            /* Force scroll */
+            width: 100% !important;
+        }
+
+        /* Typography Adjustments */
+        .page-title {
+            font-size: var(--text-xl) !important;
+        }
+
+        .section-title,
+        h2 {
+            font-size: var(--text-lg) !important;
+        }
+
+        h3 {
+            font-size: var(--text-base) !important;
+        }
+
+        /* Header Elements */
+        .header-actions {
+            gap: var(--space-2) !important;
+        }
+
+        .header-actions .rtl-toggle,
+        .header-actions .theme-toggle,
+        .header-actions .notification-btn {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+        }
+
+        .header-actions .theme-toggle span {
+            font-size: 9px !important;
+        }
+
+        .header-actions .btn-sm {
+            padding: 4px 10px !important;
+            min-height: 30px !important;
+            font-size: 11px !important;
+        }
+
+        .user-menu-dropdown,
+        .notification-dropdown {
+            position: fixed !important;
+            top: 70px !important;
+            left: 10px !important;
+            right: 10px !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+
+    /* Small Mobile Breakpoints (Max Width: 480px) */
+    @media screen and (max-width: 480px) {
+
+        /* Stack Stats Grid */
+        .stats-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* Compact Padding */
+        .card-body,
+        .stat-card {
+            padding: var(--space-3) !important;
+        }
+
+        /* Header Compactness */
+        .logo-text {
+            display: none !important;
+            /* Hide logo text if needed */
+        }
+
+        /* Buttons */
+        .btn {
+            padding: var(--space-2) var(--space-3) !important;
+            font-size: var(--text-sm) !important;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .header-actions .btn {
+            width: auto;
+            /* Header buttons keep size */
+            padding: var(--space-2);
+        }
+
+        /* Adjust page header for stacking */
+        .page-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: var(--space-3) !important;
+        }
+
+        .page-header .btn {
+            width: 100% !important;
+        }
+
+        /* Filter/Search Stacking */
+        .filter-search {
+            flex-direction: column !important;
+        }
+
+        .filter-search input,
+        .filter-search select {
+            width: 100% !important;
+            margin-bottom: var(--space-2);
+        }
+    }
+
+    /* RTL Support for Mobile Sidebar */
+    @media screen and (max-width: 1024px) {
+        [dir="rtl"] .sidebar {
+            left: auto !important;
+            right: 0 !important;
+            transform: translateX(100%);
+            border-right: none;
+            border-left: 1px solid var(--border-primary);
+        }
+
+        [dir="rtl"] .sidebar.active {
+            transform: translateX(0);
+        }
+
+        [dir="rtl"] .main-content {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        [dir="rtl"] .header-actions {
+            margin-right: auto !important;
+            margin-left: 0 !important;
+        }
+
+        [dir="rtl"] .sidebar-link {
+            justify-content: flex-start;
+            padding-right: var(--space-4);
+            padding-left: var(--space-4);
+        }
+
+        [dir="rtl"] .sidebar-link svg {
+            margin-left: var(--space-4);
+            margin-right: 0;
+            order: 0;
+            /* Ensures icon is visually first (right-most in RTL) */
+        }
+
+        [dir="rtl"] .sidebar-link {
+            text-align: right;
+            padding-right: var(--space-4);
+            /* Add padding for consistency */
+        }
+    }

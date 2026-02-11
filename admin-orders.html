@@ -54,7 +54,9 @@
             padding: var(--space-4);
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-primary);
-            display: flex; flex-wrap: wrap; gap: var(--space-4);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
             margin-bottom: var(--space-6);
             align-items: center;
         }
@@ -310,7 +312,8 @@
             <!-- Dashboard Header -->
             <header class="dashboard-header">
                 <div class="flex items-center gap-4">
-                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar"
+                        onclick="DashboardManager.toggleSidebar()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12" />
@@ -321,8 +324,16 @@
                 </div>
                 <div class="header-actions">
                     <!-- RTL Toggle -->
-                    <button class="rtl-toggle" id="rtlToggle" aria-label="RTL" title="RTL">
-                        <span style="font-weight: var(--font-bold); font-size: var(--text-xs);">RTL</span>
+                    <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL" title="Toggle RTL"
+                        onclick="DashboardManager.toggleRTL()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
                     </button>
                     <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -453,11 +464,28 @@
                                 <td><span class="badge badge-warning">Pending</span></td>
                                 <td>$12,500</td>
                                 <td>
-<div style="display: flex; flex-wrap: wrap; gap: 4px;">
-    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
-    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
-    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
-</div></td>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                        <button class="action-btn" title="View" data-action="view"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg></button>
+                                        <button class="action-btn" title="Edit" data-action="edit"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg></button>
+                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                            </svg></button>
+                                    </div>
+                                </td>
                             </tr>
 
                             <!-- Row 2 -->
@@ -476,11 +504,28 @@
                                 <td><span class="badge badge-info">Processing</span></td>
                                 <td>$8,200</td>
                                 <td>
-<div style="display: flex; flex-wrap: wrap; gap: 4px;">
-    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
-    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
-    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
-</div></td>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                        <button class="action-btn" title="View" data-action="view"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg></button>
+                                        <button class="action-btn" title="Edit" data-action="edit"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg></button>
+                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                            </svg></button>
+                                    </div>
+                                </td>
                             </tr>
 
                             <!-- Row 3 -->
@@ -499,57 +544,74 @@
                                 <td><span class="badge badge-success">Completed</span></td>
                                 <td>$15,750</td>
                                 <td>
-<div style="display: flex; flex-wrap: wrap; gap: 4px;">
-    <button class="action-btn" title="View" data-action="view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
-    <button class="action-btn" title="Edit" data-action="edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
-    <button class="action-btn delete" title="Delete" data-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
-</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const newOrderBtn = document.getElementById('newOrderBtn');
-                    const newOrderModal = document.getElementById('newOrderModal');
-                    const closeModalBtn = document.getElementById('closeModalBtn');
-                    const cancelBtn = document.getElementById('cancelBtn');
-                    const newOrderForm = document.getElementById('newOrderForm');
-                    const tbody = document.querySelector('table tbody');
+                                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                        <button class="action-btn" title="View" data-action="view"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg></button>
+                                        <button class="action-btn" title="Edit" data-action="edit"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg></button>
+                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                            </svg></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const newOrderBtn = document.getElementById('newOrderBtn');
+                        const newOrderModal = document.getElementById('newOrderModal');
+                        const closeModalBtn = document.getElementById('closeModalBtn');
+                        const cancelBtn = document.getElementById('cancelBtn');
+                        const newOrderForm = document.getElementById('newOrderForm');
+                        const tbody = document.querySelector('table tbody');
 
-                    if (newOrderBtn && newOrderModal) {
-                        newOrderBtn.addEventListener('click', () => {
-                            newOrderModal.style.display = 'flex';
-                        });
+                        if (newOrderBtn && newOrderModal) {
+                            newOrderBtn.addEventListener('click', () => {
+                                newOrderModal.style.display = 'flex';
+                            });
 
-                        [closeModalBtn, cancelBtn].forEach(btn => {
-                            if (btn) {
-                                btn.addEventListener('click', () => {
+                            [closeModalBtn, cancelBtn].forEach(btn => {
+                                if (btn) {
+                                    btn.addEventListener('click', () => {
+                                        newOrderModal.style.display = 'none';
+                                    });
+                                }
+                            });
+
+                            window.addEventListener('click', (e) => {
+                                if (e.target === newOrderModal) {
                                     newOrderModal.style.display = 'none';
-                                });
-                            }
-                        });
+                                }
+                            });
+                        }
 
-                        window.addEventListener('click', (e) => {
-                            if (e.target === newOrderModal) {
-                                newOrderModal.style.display = 'none';
-                            }
-                        });
-                    }
+                        if (newOrderForm && tbody) {
+                            newOrderForm.addEventListener('submit', function (e) {
+                                e.preventDefault();
 
-                    if (newOrderForm && tbody) {
-                        newOrderForm.addEventListener('submit', function (e) {
-                            e.preventDefault();
+                                const clientInput = document.getElementById('newOrderClient');
+                                const serviceInput = document.getElementById('newOrderService');
+                                const dateInput = document.getElementById('newOrderDate');
+                                const amountInput = document.getElementById('newOrderAmount');
 
-                            const clientInput = document.getElementById('newOrderClient');
-                            const serviceInput = document.getElementById('newOrderService');
-                            const dateInput = document.getElementById('newOrderDate');
-                            const amountInput = document.getElementById('newOrderAmount');
-
-                            if (clientInput.value && serviceInput.value && dateInput.value && amountInput.value) {
-                                const orderId = 'ORD-2026-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-                                const newRow = document.createElement('tr');
-                                newRow.innerHTML = `
+                                if (clientInput.value && serviceInput.value && dateInput.value && amountInput.value) {
+                                    const orderId = 'ORD-2026-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                                    const newRow = document.createElement('tr');
+                                    newRow.innerHTML = `
                                     <td><strong>${orderId}</strong></td>
                                     <td>
                                         <div class="order-info">
@@ -569,91 +631,93 @@
                                         </div>
                                     </td>
                                 `;
-                                tbody.insertBefore(newRow, tbody.firstChild);
+                                    tbody.insertBefore(newRow, tbody.firstChild);
 
-                                newOrderModal.style.display = 'none';
-                                newOrderForm.reset();
-                                updateStats();
-                                alert('Order ' + orderId + ' created successfully!');
-                            }
-                        });
+                                    newOrderModal.style.display = 'none';
+                                    newOrderForm.reset();
+                                    updateStats();
+                                    alert('Order ' + orderId + ' created successfully!');
+                                }
+                            });
+                        }
+                    });
+
+                    function updateStats() {
+                        const total = document.querySelectorAll('table tbody tr').length;
+                        const pending = document.querySelectorAll('table tbody tr .badge-warning').length;
+                        const stats = document.querySelectorAll('.stat-card h3');
+                        if (stats[0]) stats[0].textContent = total;
+                        if (stats[1]) stats[1].textContent = pending;
                     }
-                });
-
-                function updateStats() {
-                    const total = document.querySelectorAll('table tbody tr').length;
-                    const pending = document.querySelectorAll('table tbody tr .badge-warning').length;
-                    const stats = document.querySelectorAll('.stat-card h3');
-                    if (stats[0]) stats[0].textContent = total;
-                    if (stats[1]) stats[1].textContent = pending;
-                }
-            </script>
-    <!-- New Order Modal -->
-    <div id="newOrderModal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center;">
-        <div
-            style="background: var(--bg-primary); border-radius: var(--radius-xl); width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl);">
-            <div
-                style="padding: var(--space-6); border-bottom: 1px solid var(--border-primary); display: flex; justify-content: space-between; align-items: center;">
-                <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Create New Order</h2>
-                <button id="closeModalBtn"
-                    style="background: none; border: none; cursor: pointer; padding: var(--space-2); color: var(--text-tertiary);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <form id="newOrderForm" style="padding: var(--space-6);">
-                <div style="margin-bottom: var(--space-4);">
-                    <label for="newOrderClient"
-                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Client
-                        Name <span style="color: var(--color-error);">*</span></label>
-                    <input type="text" id="newOrderClient" required placeholder="Enter client name"
-                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                </script>
+                <!-- New Order Modal -->
+                <div id="newOrderModal"
+                    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; align-items: center; justify-content: center;">
+                    <div
+                        style="background: var(--bg-primary); border-radius: var(--radius-xl); width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl);">
+                        <div
+                            style="padding: var(--space-6); border-bottom: 1px solid var(--border-primary); display: flex; justify-content: space-between; align-items: center;">
+                            <h2 style="font-size: var(--text-xl); font-weight: var(--font-bold);">Create New Order</h2>
+                            <button id="closeModalBtn"
+                                style="background: none; border: none; cursor: pointer; padding: var(--space-2); color: var(--text-tertiary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <form id="newOrderForm" style="padding: var(--space-6);">
+                            <div style="margin-bottom: var(--space-4);">
+                                <label for="newOrderClient"
+                                    style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Client
+                                    Name <span style="color: var(--color-error);">*</span></label>
+                                <input type="text" id="newOrderClient" required placeholder="Enter client name"
+                                    style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                            </div>
+                            <div style="margin-bottom: var(--space-4);">
+                                <label for="newOrderService"
+                                    style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Service
+                                    Type <span style="color: var(--color-error);">*</span></label>
+                                <select id="newOrderService" required
+                                    style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                                    <option value="">Select Service</option>
+                                    <option value="Pipeline Integrity Assessment">Pipeline Integrity Assessment</option>
+                                    <option value="MFL Inspection">MFL Inspection</option>
+                                    <option value="Corrosion Monitoring">Corrosion Monitoring</option>
+                                    <option value="Risk Analysis Report">Risk Analysis Report</option>
+                                    <option value="Geometry Survey">Geometry Survey</option>
+                                    <option value="Pigging Services">Pigging Services</option>
+                                    <option value="UT Inspection">UT Inspection</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: var(--space-4);">
+                                <label for="newOrderDate"
+                                    style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Scheduled
+                                    Date <span style="color: var(--color-error);">*</span></label>
+                                <input type="date" id="newOrderDate" required
+                                    style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                            </div>
+                            <div style="margin-bottom: var(--space-4);">
+                                <label for="newOrderAmount"
+                                    style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Amount
+                                    ($) <span style="color: var(--color-error);">*</span></label>
+                                <input type="number" id="newOrderAmount" required placeholder="Enter amount" min="1"
+                                    style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
+                            </div>
+                            <div
+                                style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-6);">
+                                <button type="button" id="cancelBtn"
+                                    style="padding: var(--space-3) var(--space-4); border: 1px solid var(--border-primary); border-radius: var(--radius-md); background: var(--bg-secondary); cursor: pointer; font-weight: var(--font-medium);">Cancel</button>
+                                <button type="submit"
+                                    style="padding: var(--space-3) var(--space-4); border: none; border-radius: var(--radius-md); background: var(--color-primary-600); color: white; cursor: pointer; font-weight: var(--font-medium);">Create
+                                    Order</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div style="margin-bottom: var(--space-4);">
-                    <label for="newOrderService"
-                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Service
-                        Type <span style="color: var(--color-error);">*</span></label>
-                    <select id="newOrderService" required
-                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
-                        <option value="">Select Service</option>
-                        <option value="Pipeline Integrity Assessment">Pipeline Integrity Assessment</option>
-                        <option value="MFL Inspection">MFL Inspection</option>
-                        <option value="Corrosion Monitoring">Corrosion Monitoring</option>
-                        <option value="Risk Analysis Report">Risk Analysis Report</option>
-                        <option value="Geometry Survey">Geometry Survey</option>
-                        <option value="Pigging Services">Pigging Services</option>
-                        <option value="UT Inspection">UT Inspection</option>
-                    </select>
-                </div>
-                <div style="margin-bottom: var(--space-4);">
-                    <label for="newOrderDate"
-                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Scheduled
-                        Date <span style="color: var(--color-error);">*</span></label>
-                    <input type="date" id="newOrderDate" required
-                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
-                </div>
-                <div style="margin-bottom: var(--space-4);">
-                    <label for="newOrderAmount"
-                        style="display: block; font-weight: var(--font-medium); margin-bottom: var(--space-2);">Amount
-                        ($) <span style="color: var(--color-error);">*</span></label>
-                    <input type="number" id="newOrderAmount" required placeholder="Enter amount" min="1"
-                        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border-primary); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--bg-secondary);">
-                </div>
-                <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-6);">
-                    <button type="button" id="cancelBtn"
-                        style="padding: var(--space-3) var(--space-4); border: 1px solid var(--border-primary); border-radius: var(--radius-md); background: var(--bg-secondary); cursor: pointer; font-weight: var(--font-medium);">Cancel</button>
-                    <button type="submit"
-                        style="padding: var(--space-3) var(--space-4); border: none; border-radius: var(--radius-md); background: var(--color-primary-600); color: white; cursor: pointer; font-weight: var(--font-medium);">Create
-                        Order</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+                <script src="assets/js/main.js"></script>
+                <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

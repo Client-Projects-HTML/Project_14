@@ -253,6 +253,7 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 img,
@@ -880,18 +881,23 @@ p {
 .menu-toggle {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     padding: var(--space-2);
     background: none;
     border: none;
     cursor: pointer;
+    flex-shrink: 0;
+    color: var(--text-primary);
 }
 
 .menu-toggle span {
     display: block;
     width: 24px;
-    height: 2px;
-    background-color: var(--text-primary);
+    height: 2.5px;
+    background-color: currentColor;
+    border-radius: var(--radius-full);
     transition: all var(--transition-base);
 }
 
@@ -975,15 +981,18 @@ p {
     right: 0;
     bottom: 0;
     background-color: var(--bg-primary);
-    z-index: var(--z-fixed);
+    z-index: 2000;
     padding: var(--space-6);
     transform: translateX(100%);
     transition: transform var(--transition-slow);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .mobile-nav.active {
     transform: translateX(0);
+    display: flex !important;
 }
 
 .mobile-nav-list {
@@ -1092,7 +1101,7 @@ p {
 /* Hero Stats */
 .hero-stats {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: var(--space-6);
     margin-top: var(--space-12);
     padding-top: var(--space-12);
@@ -2509,15 +2518,18 @@ p {
 
 @media (max-width: 768px) {
     .header-actions .btn-primary {
-        min-width: auto;
-        padding: 4px 10px !important;
-        font-size: 11px !important;
-        min-height: 30px !important;
+        display: none !important;
     }
 
     .menu-toggle {
         display: flex !important;
+        flex-shrink: 0 !important;
         z-index: 1100;
+        visibility: visible !important;
+    }
+
+    body.menu-open {
+        overflow: hidden !important;
     }
 }
 
@@ -2707,7 +2719,10 @@ p {
     }
 
     /* Landing & Dashboard Header Buttons Compact */
-    .header .rtl-toggle,
+    .header .rtl-toggle {
+        display: none !important;
+    }
+
     .header .theme-toggle,
     .header .menu-toggle,
     .dashboard-header .theme-toggle,
@@ -2735,8 +2750,8 @@ p {
     }
 
     .menu-toggle span {
-        width: 18px !important;
-        height: 1.5px !important;
+        width: 20px !important;
+        height: 2.5px !important;
     }
 
     .header-actions {

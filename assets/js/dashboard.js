@@ -55,10 +55,18 @@
         },
 
         bindEvents() {
-            // Sidebar toggle
+            // Delegation fallback - Handles all sidebar toggles that don't have explicit onclick
             document.addEventListener('click', (e) => {
                 const toggle = e.target.closest('.sidebar-toggle');
+
+                // If it's the main toggle with an onclick attribute, let the attribute handle it
+                if (toggle && toggle.id === 'sidebarToggle' && toggle.hasAttribute('onclick')) {
+                    return;
+                }
+
                 if (toggle) {
+                    console.log('Sidebar toggle clicked (Delegated)');
+                    e.preventDefault();
                     e.stopPropagation();
                     this.toggleSidebar();
                 }
@@ -69,7 +77,7 @@
                 if (window.innerWidth < 1024 &&
                     this.sidebar?.classList.contains('active') &&
                     !this.sidebar.contains(e.target) &&
-                    !this.sidebarToggle?.contains(e.target)) {
+                    !e.target.closest('.sidebar-toggle')) {
                     this.closeSidebar();
                 }
             });
@@ -102,9 +110,25 @@
                 this.closeAllDropdowns();
             });
 
+            // RTL Toggle Delegation
+            document.addEventListener('click', (e) => {
+                const toggle = e.target.closest('.rtl-toggle') || e.target.closest('#rtlToggle');
+
+                // If has onclick attribute, let it handle it
+                if (toggle && toggle.hasAttribute('onclick')) {
+                    return;
+                }
+
+                if (toggle) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.toggleRTL();
+                }
+            });
+
             // Window resize
             window.addEventListener('resize', this.debounce(() => {
-                if (window.innerWidth >= 1024) {
+                if (window.innerWidth > 1024) {
                     this.sidebar?.classList.remove('active');
                     document.body.classList.remove('sidebar-open');
                 }
@@ -112,14 +136,45 @@
         },
 
         toggleSidebar() {
-            if (!this.sidebar) this.sidebar = document.querySelector('.sidebar');
-            this.sidebar?.classList.toggle('active');
+            if (!this.sidebar) {
+                this.sidebar = document.querySelector('.sidebar');
+                if (!this.sidebar) {
+                    console.error('Sidebar element not found!');
+                    return;
+                }
+            }
+            console.log('Toggling sidebar via JS', this.sidebar);
+            const isActive = this.sidebar.classList.toggle('active');
             document.body.classList.toggle('sidebar-open');
+
+            // Sync all toggle buttons
+            document.querySelectorAll('.sidebar-toggle').forEach(btn => {
+                btn.classList.toggle('active', isActive);
+            });
         },
 
         closeSidebar() {
+            if (!this.sidebar) this.sidebar = document.querySelector('.sidebar');
             this.sidebar?.classList.remove('active');
             document.body.classList.remove('sidebar-open');
+
+            // Sync all toggle buttons
+            document.querySelectorAll('.sidebar-toggle').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        },
+
+        toggleRTL() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+
+            // Trigger custom event for other components
+            window.dispatchEvent(new CustomEvent('rtlchange', { detail: { dir: newDir } }));
+
+            console.log('RTL toggled to:', newDir);
         },
 
         toggleDropdown(dropdown) {
@@ -1408,7 +1463,14 @@
         }, 3000);
     }
 
+    // Expose for global access (debugging and inline handlers)
+    window.DashboardManager = DashboardManager;
+
     // Initialize dashboard manager
-    DashboardManager.init();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => DashboardManager.init());
+    } else {
+        DashboardManager.init();
+    }
 
 })();

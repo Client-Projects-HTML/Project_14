@@ -183,29 +183,6 @@
                 themeToggles.forEach(btn => btn.addEventListener('click', () => this.toggle()));
             }
 
-            // RTL toggle button
-            const rtlToggle = document.getElementById('rtlToggle');
-            if (rtlToggle) {
-                rtlToggle.addEventListener('click', () => {
-                    const html = document.documentElement;
-                    const currentDir = html.getAttribute('dir');
-                    const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
-                    html.setAttribute('dir', newDir);
-                    localStorage.setItem('dir', newDir);
-                });
-            }
-
-            // Sidebar toggle for dashboard pages
-            const sidebarToggleBtn = document.getElementById('sidebarToggle');
-            const sidebarEl = document.getElementById('sidebar');
-            if (sidebarToggleBtn && sidebarEl) {
-                sidebarToggleBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sidebarEl.classList.toggle('active');
-                    document.body.classList.toggle('sidebar-open');
-                });
-            }
-
             // Restore RTL preference
             const savedDir = localStorage.getItem('dir');
             if (savedDir) {
