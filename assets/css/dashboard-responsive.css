@@ -236,23 +236,25 @@
         max-width: 100% !important;
         overflow-x: auto !important;
         overflow-y: auto !important;
-        /* Allow vertical scroll */
+        /* Allow vertical scroll if height exceeds max-height */
         max-height: 450px !important;
         /* Internal height limit */
         display: block !important;
         -webkit-overflow-scrolling: touch;
         margin-bottom: var(--space-4);
-        padding-bottom: var(--space-2);
-        /* Space for scrollbar */
+        padding-bottom: 5px !important;
+        /* Increased space for scrollbar visibility */
         border-radius: var(--radius-lg);
         position: relative;
-        /* Premium background for internal scroll feel */
         background: var(--bg-primary);
+        /* Ensure it doesn't push parent */
+        min-width: 0;
     }
 
-    /* Custom Scrollbar for Table Container */
+    /* Make horizontal scrollbar more visible on mobile */
     .table-container::-webkit-scrollbar {
-        height: 6px;
+        height: 10px !important;
+        /* Thicker for better touch/visibility */
         width: 6px;
     }
 
@@ -262,22 +264,23 @@
     }
 
     .table-container::-webkit-scrollbar-thumb {
-        background: var(--color-primary-300);
+        background: var(--color-primary-400);
+        /* Brighter color */
         border-radius: 10px;
+        border: 2px solid var(--bg-secondary);
+        /* Contrast border */
     }
 
     .table-container::-webkit-scrollbar-thumb:hover {
-        background: var(--color-primary-500);
+        background: var(--color-primary-600);
     }
 
     .data-table {
         width: 100% !important;
-        min-width: 800px !important;
-        /* Force min-width to ensure horizontal scroll on mobile */
+        min-width: 750px !important;
+        /* Adjusted for better balance */
         table-layout: auto !important;
-        /* Allow auto-adjusting column widths based on content */
         border-collapse: separate !important;
-        /* Required for sticky headers to avoid border jitter */
         border-spacing: 0;
         margin: 0 !important;
     }
@@ -285,7 +288,8 @@
     /* Sticky Header for Internal Scroll Effect */
     .data-table thead th {
         position: sticky !important;
-        top: 0;
+        top: -1px;
+        /* Slight offset to ensure no gap */
         z-index: 10;
         background-color: var(--bg-tertiary) !important;
         box-shadow: 0 1px 0 var(--border-primary);
@@ -294,9 +298,32 @@
     .data-table th,
     .data-table td {
         white-space: nowrap !important;
-        /* Prevent text wrapping to keep content visible */
         padding: var(--space-3) var(--space-4) !important;
         text-align: left;
+    }
+
+    /* Prevent grid items from growing wider than viewport */
+    .content-grid>div,
+    .analytics-grid>div {
+        min-width: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* Ensure filter containers wrap properly and don't overflow */
+    .filter-container,
+    .filter-bar {
+        flex-wrap: wrap !important;
+        gap: var(--space-2) !important;
+    }
+
+    .filter-container>div,
+    .filter-bar>div,
+    .filter-container select,
+    .filter-bar select {
+        flex: 1 1 auto !important;
+        min-width: 120px !important;
+        max-width: 100% !important;
     }
 
     /* Adjust specific table content for mobile */
