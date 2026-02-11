@@ -61,7 +61,8 @@
     }
 
     /* Ensure Toggle is Visible with High Specificity */
-    .dashboard-layout .sidebar-toggle {
+    /* Ensure Toggle is Visible with High Specificity */
+    .dashboard-layout .sidebar-toggle:not(.hide-on-mobile) {
         display: flex !important;
         z-index: 1060;
         /* Above header */

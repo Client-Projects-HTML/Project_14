@@ -357,8 +357,8 @@
             <!-- Dashboard Header -->
             <header class="dashboard-header">
                 <div class="flex items-center gap-4">
-                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar"
-                        onclick="DashboardManager.toggleSidebar()">
+                    <button class="sidebar-toggle btn btn-ghost hide-on-mobile" id="sidebarToggle"
+                        aria-label="Toggle sidebar" onclick="DashboardManager.toggleSidebar()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12" />
@@ -366,6 +366,23 @@
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
+                    <!-- Mobile Logo -->
+                    <a href="index.html" class="logo show-on-mobile"
+                        style="text-decoration: none; align-items: center; gap: 8px;">
+                        <div class="logo-icon"
+                            style="width: 32px; height: 32px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--text-white);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
+                                <path d="M14 2v6h6" />
+                                <path d="M2 15h10" />
+                                <path d="M5 12v6" />
+                                <path d="M9 12v6" />
+                            </svg>
+                        </div>
+                        <span style="font-size: 18px; font-weight: 700; color: var(--text-primary);">Pipeline<span
+                                style="color: var(--color-primary-600);">Pro</span></span>
+                    </a>
                 </div>
                 <div class="header-actions">
                     <!-- RTL Toggle -->
@@ -402,6 +419,17 @@
                             <p style="font-size: var(--text-xs); color: var(--text-tertiary);">Administrator</p>
                         </div>
                     </div>
+
+                    <!-- Mobile Sidebar Toggle -->
+                    <button class="sidebar-toggle btn btn-ghost show-on-mobile" aria-label="Toggle sidebar"
+                        onclick="DashboardManager.toggleSidebar()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
                 </div>
             </header>
 
