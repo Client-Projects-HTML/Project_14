@@ -37,52 +37,8 @@
         })();
     </script>
 
-    <!-- Core Dashboard Styles moved to dashboard.css -->
-    <style>
-        /* Force Horizontal Scrolling for Dashboard Tables */
-        .table-container {
-            width: 100% !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 5px;
-            /* Ensure scrollbar space */
-            display: block !important;
-        }
+    <!-- Core Dashboard Styles moved to assets/css/dashboard-responsive.css -->
 
-        .data-table {
-            width: 100%;
-            /* Take full container width */
-            border-collapse: collapse;
-            table-layout: auto;
-            /* Let browser adjust column widths based on content */
-        }
-
-        .data-table th,
-        .data-table td {
-            white-space: nowrap !important;
-            /* Keep content on one line */
-            width: auto;
-            /* Allow columns to size automatically */
-        }
-
-        /* Fix for mobile card layout */
-        @media screen and (max-width: 1024px) {
-            .section-card {
-                display: block !important;
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            .section-header-flex {
-                display: flex !important;
-            }
-
-            /* On very small screens, ensure table expands to fit content */
-            .data-table {
-                min-width: 600px;
-            }
-        }
-    </style>
 </head>
 
 <body>

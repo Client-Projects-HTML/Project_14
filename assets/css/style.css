@@ -3061,8 +3061,9 @@ p {
 /* Responsive header actions */
 @media (max-width: 768px) {
 
+    .header .theme-toggle,
     .header .rtl-toggle {
-        display: none !important;
+        display: flex !important;
     }
 
     .dashboard-header .theme-toggle,
@@ -3095,8 +3096,10 @@ p {
 }
 
 @media (max-width: 640px) {
-    .dashboard-header .rtl-toggle {
-        display: none;
+
+    .dashboard-header .rtl-toggle,
+    .header .rtl-toggle {
+        display: flex !important;
     }
 
     .dashboard-header .user-menu {

@@ -68,38 +68,10 @@
             flex-shrink: 0;
         }
 
-        .table-container {
-            background-color: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-primary);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+        .action-btn:hover {
+            color: var(--color-primary-600);
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            text-align: left;
-            padding: var(--space-4);
-            background-color: var(--bg-tertiary);
-            color: var(--text-secondary);
-            font-weight: var(--font-semibold);
-            font-size: var(--text-sm);
-            border-bottom: 1px solid var(--border-primary);
-        }
-
-        td {
-            padding: var(--space-4);
-            border-bottom: 1px solid var(--border-primary);
-            color: var(--text-primary);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
 
         .user-info {
             display: flex;
@@ -413,7 +385,7 @@
 
                 <!-- Users Table -->
                 <div class="table-container">
-                    <table>
+                    <table class="data-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
