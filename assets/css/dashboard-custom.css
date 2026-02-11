@@ -77,7 +77,10 @@
 
 /* Remove padding from main-content to let header be full-width and top-aligned */
 .main-content {
-    padding: 0 !important;
+    padding-top: var(--header-height) !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
 }
 
 /* Specific overrides for Admin files to remove top/left/right spacing */

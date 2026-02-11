@@ -3061,6 +3061,10 @@ p {
 /* Responsive header actions */
 @media (max-width: 768px) {
 
+    .header .rtl-toggle {
+        display: none !important;
+    }
+
     .dashboard-header .theme-toggle,
     .dashboard-header .rtl-toggle,
     .dashboard-header .notification-btn {

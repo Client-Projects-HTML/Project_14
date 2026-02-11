@@ -61,11 +61,45 @@
     }
 
     /* Ensure Toggle is Visible with High Specificity */
-    /* Ensure Toggle is Visible with High Specificity */
     .dashboard-layout .sidebar-toggle:not(.hide-on-mobile) {
         display: flex !important;
         z-index: 1060;
         /* Above header */
+        padding: var(--space-2);
+        width: 44px;
+        /* Larger touch target */
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fix Sidebar Toggle Button */
+    .dashboard-layout .sidebar-toggle.show-on-mobile {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        cursor: pointer;
+    }
+
+    .dashboard-layout .sidebar-toggle.show-on-mobile svg {
+        width: 28px !important;
+        height: 28px !important;
+        stroke-width: 2.5px !important;
+        stroke: #0f172a !important;
+        /* Explicit dark color */
+        color: #0f172a !important;
+        transition: none !important;
+    }
+
+    /* Disable Hamburger Animation on Mobile */
+    .dashboard-layout .sidebar-toggle.show-on-mobile.active svg line {
+        transform: none !important;
+        opacity: 1 !important;
     }
 
     /* Overlay for when sidebar is open */
@@ -129,5 +163,71 @@
 
     .show-on-mobile {
         display: flex !important;
+    }
+
+    /* Mobile Messages View */
+    .messages-container {
+        grid-template-columns: 1fr !important;
+        height: calc(100vh - 140px) !important;
+        padding: var(--space-4) !important;
+    }
+
+    .messages-container .conversations-panel {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .messages-container .chat-panel {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Active Chat State */
+    body.chat-active .messages-container .conversations-panel {
+        display: none !important;
+    }
+
+    body.chat-active .messages-container .chat-panel {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    body.chat-active .dashboard-header,
+    body.chat-active .page-header {
+        display: none;
+    }
+
+    /* Chat Back Button */
+    .chat-back-btn {
+        display: none;
+        margin-right: var(--space-3);
+        padding: var(--space-2);
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    body.chat-active .chat-back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.chat-active .chat-back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Analytics Grid Mobile Override */
+    .analytics-grid {
+        grid-template-columns: 1fr !important;
     }
 }

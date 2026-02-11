@@ -136,12 +136,20 @@
     position: relative;
     background-color: var(--bg-secondary);
     transition: margin var(--transition-base), width var(--transition-base);
+    padding-top: var(--header-height);
+    /* Added for fixed header */
 }
 
 /* Dashboard Header */
 .dashboard-header {
-    position: sticky;
+    position: fixed;
+    /* Changed from sticky */
     top: 0;
+    right: 0;
+    left: var(--sidebar-width);
+    /* Align with main content */
+    width: calc(100% - var(--sidebar-width));
+    /* Fill remaining width */
     height: var(--header-height);
     background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-primary);
@@ -150,6 +158,8 @@
     align-items: center;
     justify-content: space-between;
     z-index: var(--z-sticky);
+    transition: left var(--transition-base), width var(--transition-base);
+    /* Smooth transition for sidebar toggle */
 }
 
 .header-search {
@@ -431,6 +441,15 @@
     font-weight: var(--font-bold);
     color: var(--text-primary);
     letter-spacing: -0.01em;
+    letter-spacing: -0.01em;
+}
+
+/* Analytics Grid */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
 }
 
 /* Charts */
@@ -438,12 +457,22 @@
     padding: var(--space-5);
     flex: 1;
     min-height: 280px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.chart-container canvas {
+    max-width: 100%;
 }
 
 /* Data Table */
 .table-container {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     padding: var(--space-2) 0;
 }
@@ -509,9 +538,7 @@
     box-shadow: 0 0 0 3px var(--color-primary-100);
 }
 
-.table-container::-webkit-scrollbar {
-    display: none;
-}
+
 
 .data-table {
     width: 100%;
@@ -528,6 +555,7 @@
     color: var(--text-light);
     background-color: var(--bg-secondary);
     border-bottom: 1px solid var(--border-primary);
+    white-space: nowrap;
 }
 
 .data-table td {
@@ -536,6 +564,7 @@
     color: var(--text-secondary);
     font-size: var(--text-sm);
     vertical-align: middle;
+    white-space: nowrap;
 }
 
 .data-table tr:last-child td {
