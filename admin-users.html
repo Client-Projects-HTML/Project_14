@@ -300,14 +300,7 @@
                     <!-- RTL Toggle -->
                     <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL" title="Toggle RTL"
                         onclick="DashboardManager.toggleRTL()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                            </path>
-                        </svg>
+                        RTL
                     </button>
                     <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -322,7 +315,8 @@
                         </svg>
                     </button>
                     <!-- Notifications -->
-                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications"
+                        onclick="toggleNotificationDropdown()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -353,34 +347,38 @@
             <div class="content-container">
                 <!-- Filters -->
                 <div class="filter-bar">
-                    <div style="position: relative; flex: 1; max-width: 300px;">
+                    <div style="position: relative; flex: 2; max-width: 500px;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2"
-                            style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
+                            style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        <input type="text" class="form-input" placeholder="Search users..."
-                            style="padding-left: 40px; width: 100%;">
+                        <input type="text" id="searchInput" class="form-input"
+                            placeholder="Search users by name or email..."
+                            style="padding-left: 48px; width: 100%; height: 48px; font-size: var(--text-base);">
                     </div>
-                    <select id="roleFilter" class="form-select" style="width: 140px;" aria-label="Filter by role">
+                    <select id="roleFilter" class="form-select" style="width: 160px; height: 48px;"
+                        aria-label="Filter by role">
                         <option value="">All Roles</option>
                         <option value="admin">Admin</option>
                         <option value="inspector">Inspector</option>
                         <option value="client">Client</option>
                     </select>
-                    <select id="statusFilter" class="form-select" style="width: 140px;" aria-label="Filter by status">
+                    <select id="statusFilter" class="form-select" style="width: 160px; height: 48px;"
+                        aria-label="Filter by status">
                         <option value="">All Status</option>
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
-                    <button class="btn btn-primary" id="addUserBtn" style="height: 42px;">
+                    <button class="btn btn-primary" id="addUserBtn"
+                        style="height: 48px; padding: 0 var(--space-6); font-size: var(--text-base); min-width: 160px;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
-                        Add User
+                        Add New User
                     </button>
                 </div>
 
@@ -393,7 +391,6 @@
                                 <th>Role</th>
                                 <th>Status</th>
                                 <th>Last Active</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -413,29 +410,7 @@
                                 <td><span class="badge badge-secondary">Admin</span></td>
                                 <td><span class="badge badge-success">Active</span></td>
                                 <td style="color: var(--text-secondary); font-size: var(--text-sm);">2 mins ago</td>
-                                <td>
-                                    <div style="display: flex; gap: 4px;">
-                                        <button class="action-btn" title="View" data-action="view"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
-                                            </svg></button>
-                                        <button class="action-btn" title="Edit" data-action="edit"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
-                                                </path>
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
-                                                </path>
-                                            </svg></button>
-                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path
-                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                </path>
-                                            </svg></button>
-                                    </div>
-                                </td>
+
                             </tr>
 
                             <!-- Row 2 -->
@@ -455,29 +430,7 @@
                                 <td><span class="badge badge-secondary">Inspector</span></td>
                                 <td><span class="badge badge-success">Active</span></td>
                                 <td style="color: var(--text-secondary); font-size: var(--text-sm);">2 hours ago</td>
-                                <td>
-                                    <div style="display: flex; gap: 4px;">
-                                        <button class="action-btn" title="View" data-action="view"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
-                                            </svg></button>
-                                        <button class="action-btn" title="Edit" data-action="edit"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
-                                                </path>
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
-                                                </path>
-                                            </svg></button>
-                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path
-                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                </path>
-                                            </svg></button>
-                                    </div>
-                                </td>
+
                             </tr>
 
                             <!-- Row 3 -->
@@ -495,32 +448,49 @@
                                     </div>
                                 </td>
                                 <td><span class="badge badge-secondary">Client</span></td>
-                                <td><span class="badge badge-warning">Inactive</span></td>
-                                <td style="color: var(--text-secondary); font-size: var(--text-sm);">5 days ago</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td style="color: var(--text-secondary); font-size: var(--text-sm);">1 day ago</td>
+
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr>
                                 <td>
-                                    <div style="display: flex; gap: 4px;">
-                                        <button class="action-btn" title="View" data-action="view"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
-                                            </svg></button>
-                                        <button class="action-btn" title="Edit" data-action="edit"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
-                                                </path>
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
-                                                </path>
-                                            </svg></button>
-                                        <button class="action-btn delete" title="Delete" data-action="delete"><svg
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path
-                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                </path>
-                                            </svg></button>
+                                    <div class="user-info">
+                                        <div class="user-avatar"
+                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: var(--color-success-100); color: var(--color-success-600);">
+                                            ER</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-medium);">Emily Rodriguez</div>
+                                            <div style="font-size: var(--text-xs); color: var(--text-tertiary);">
+                                                e.rodriguez@chevron.com</div>
+                                        </div>
                                     </div>
                                 </td>
+                                <td><span class="badge badge-secondary">Client</span></td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td style="color: var(--text-secondary); font-size: var(--text-sm);">Just now</td>
+
                             </tr>
+
+                            <!-- Row 5 (Previously Row 4) -->
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-avatar"
+                                            style="width: 32px; height: 32px; font-size: var(--text-sm); background-color: var(--color-error-100); color: var(--color-error-600);">
+                                            TM</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-medium);">Thomas Müller</div>
+                                            <div style="font-size: var(--text-xs); color: var(--text-tertiary);">
+                                                t.muller@saudi-aramco.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary">Client</span></td>
+                                <td><span class="badge badge-warning">Inactive</span></td>
+                                <td style="color: var(--text-secondary); font-size: var(--text-sm);">5 days ago</td>
+
                         </tbody>
                     </table>
                 </div>
@@ -540,6 +510,7 @@
         function initUsersFilters() {
             const roleFilter = document.getElementById('roleFilter');
             const statusFilter = document.getElementById('statusFilter');
+            const searchInput = document.getElementById('searchInput');
 
             if (roleFilter) {
                 roleFilter.addEventListener('change', filterUsers);
@@ -548,35 +519,55 @@
             if (statusFilter) {
                 statusFilter.addEventListener('change', filterUsers);
             }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterUsers);
+            }
         }
 
         function filterUsers() {
             const roleFilter = document.getElementById('roleFilter');
             const statusFilter = document.getElementById('statusFilter');
+            const searchInput = document.getElementById('searchInput');
             const table = document.querySelector('table');
 
             if (!table) return;
 
             const roleValue = roleFilter ? roleFilter.value : '';
             const statusValue = statusFilter ? statusFilter.value : '';
+            const searchValue = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
             const rows = table.querySelectorAll('tbody tr');
 
             rows.forEach(function (row) {
                 const cells = row.querySelectorAll('td');
-                if (cells.length < 5) return;
+                if (cells.length < 4) return;
 
+                const nameCell = cells[0]; // Name column (contains user-info div)
                 const roleCell = cells[1]; // Role column
                 const statusCell = cells[2]; // Status column
 
+                // Get name and email from the first cell
+                const nameDiv = nameCell.querySelector('.user-info div:nth-child(2) div:first-child');
+                const emailDiv = nameCell.querySelector('.user-info div:nth-child(2) div:last-child');
+                const name = nameDiv ? nameDiv.textContent.toLowerCase().trim() : '';
+                const email = emailDiv ? emailDiv.textContent.toLowerCase().trim() : '';
+
                 const role = roleCell.textContent.toLowerCase().trim();
-                const statusBadge = statusCell.querySelector('.status-badge');
+                const statusBadge = statusCell.querySelector('.badge');
                 const status = statusBadge ? statusBadge.textContent.toLowerCase().trim() : '';
 
                 let showRow = true;
 
+                // Check search filter
+                if (searchValue) {
+                    if (!name.includes(searchValue) && !email.includes(searchValue)) {
+                        showRow = false;
+                    }
+                }
+
                 // Check role filter
-                if (roleValue) {
+                if (roleValue && showRow) {
                     if (roleValue === 'admin' && !role.includes('admin')) {
                         showRow = false;
                     } else if (roleValue === 'inspector' && !role.includes('inspector')) {
@@ -789,6 +780,71 @@
                         User</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- Notification Dropdown -->
+    <div id="notificationDropdown"
+        style="display: none; position: fixed; top: 80px; right: 20px; width: 320px; background: var(--bg-primary); border: 1px solid var(--border-primary); box-shadow: var(--shadow-xl); z-index: 10000; overflow: hidden;">
+        <div style="padding: 16px; border-bottom: 1px solid var(--border-primary); background: var(--bg-secondary);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 0;">🔔 Notifications</h3>
+        </div>
+        <div style="max-height: 320px; overflow-y: auto;">
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-primary-50); color: var(--color-primary-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">📄 New
+                        Report
+                        Available</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">INS-2026-001 report is ready
+                    </p>
+                </div>
+            </div>
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-success-50); color: var(--color-success-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">✅
+                        Inspection
+                        Completed</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Line 12A finished successfully
+                    </p>
+                </div>
+            </div>
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-warning-50); color: var(--color-warning-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">📅
+                        Scheduled
+                        Inspection</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Line 8B starts tomorrow</p>
+                </div>
+            </div>
+        </div>
+        <div
+            style="padding: 12px; border-top: 1px solid var(--border-primary); text-align: center; background: var(--bg-secondary);">
+            <a href="#"
+                style="font-size: 14px; color: var(--color-primary-600); font-weight: 500; text-decoration: none; display: block;">View
+                All Notifications →</a>
         </div>
     </div>
     <script src="assets/js/main.js"></script>

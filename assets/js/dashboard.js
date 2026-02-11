@@ -857,7 +857,7 @@
         },
 
         show(options) {
-            const { title, body, footer, onConfirm } = options;
+            const { title, body, footer, onConfirm, confirmType } = options;
             this.init();
 
             document.getElementById('modalTitle').textContent = title || 'Details';
@@ -867,6 +867,15 @@
             if (onConfirm) {
                 submitBtn.style.display = 'block';
                 submitBtn.textContent = options.confirmText || 'Save Changes';
+
+                // Reset and set intent classes
+                submitBtn.className = 'btn';
+                if (confirmType === 'destructive') {
+                    submitBtn.classList.add('btn-destructive');
+                } else {
+                    submitBtn.classList.add('btn-primary');
+                }
+
                 // Clone button to clear old event listeners
                 const newSubmitBtn = submitBtn.cloneNode(true);
                 submitBtn.parentNode.replaceChild(newSubmitBtn, submitBtn);
@@ -877,6 +886,7 @@
             } else {
                 submitBtn.style.display = 'none';
             }
+
 
             this.overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1024,14 +1034,20 @@
             const data = this.getRowData(row);
             const itemName = Object.values(data)[0] || 'this item';
 
-            if (confirm(`Are you sure you want to delete ${itemName}?`)) {
-                row.style.opacity = '0.5';
-                row.style.backgroundColor = 'var(--color-error-50)';
-                setTimeout(() => {
-                    row.remove();
-                    this.showNotification('Item deleted successfully', 'success');
-                }, 500);
-            }
+            ModalManager.show({
+                title: 'Confirm Deletion',
+                body: `<p>Are you sure you want to delete <strong>${itemName}</strong>? This action cannot be undone.</p>`,
+                confirmText: 'Delete',
+                confirmType: 'destructive',
+                onConfirm: () => {
+                    row.style.opacity = '0.5';
+                    row.style.backgroundColor = 'var(--color-error-50)';
+                    setTimeout(() => {
+                        row.remove();
+                        this.showNotification('Item deleted successfully', 'success');
+                    }, 500);
+                }
+            });
         },
 
         showNotification(message, type = 'info') {
@@ -1049,7 +1065,7 @@
                 notification.classList.remove('show');
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
-        }
+        },
     };
 
     // ============================================
@@ -1465,6 +1481,25 @@
 
     // Expose for global access (debugging and inline handlers)
     window.DashboardManager = DashboardManager;
+
+    // Global notification toggle for cross-page compatibility
+    window.toggleNotificationDropdown = function () {
+        const dropdown = document.getElementById('notificationDropdown');
+        if (dropdown) {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    };
+
+    // Close notification dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+        const dropdown = document.getElementById('notificationDropdown');
+        const btn = document.getElementById('notificationBtn');
+        if (dropdown && dropdown.style.display === 'block') {
+            if (!dropdown.contains(e.target) && (!btn || !btn.contains(e.target))) {
+                dropdown.style.display = 'none';
+            }
+        }
+    });
 
     // Initialize dashboard manager
     if (document.readyState === 'loading') {

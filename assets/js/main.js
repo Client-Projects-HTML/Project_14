@@ -183,6 +183,20 @@
                 themeToggles.forEach(btn => btn.addEventListener('click', () => this.toggle()));
             }
 
+            // RTL toggle buttons (attach to all)
+            const rtlToggles = document.querySelectorAll('.rtl-toggle');
+            if (rtlToggles.length) {
+                rtlToggles.forEach(btn => {
+                    if (!btn.hasAttribute('onclick')) {
+                        btn.addEventListener('click', () => {
+                            if (typeof window.toggleRTL === 'function') {
+                                window.toggleRTL();
+                            }
+                        });
+                    }
+                });
+            }
+
             // Restore RTL preference
             const savedDir = localStorage.getItem('dir');
             if (savedDir) {

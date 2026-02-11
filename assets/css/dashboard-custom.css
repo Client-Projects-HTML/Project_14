@@ -132,16 +132,26 @@
 }
 
 .data-table td {
-    padding: var(--space-3) var(--space-4) !important;
+    padding: var(--space-3-5, 12px) var(--space-4) !important;
     font-size: var(--text-sm) !important;
 }
 
 /* Compact Buttons */
 .btn {
-    padding: var(--space-1-5) var(--space-3) !important;
+    padding: var(--space-2) var(--space-4) !important;
     font-size: var(--text-sm) !important;
     height: auto !important;
     min-height: 32px !important;
+    white-space: nowrap !important;
+}
+
+.btn-destructive {
+    background-color: var(--color-error-600) !important;
+    color: var(--text-white) !important;
+}
+
+.btn-destructive:hover {
+    background-color: var(--color-error-700) !important;
 }
 
 /* Header Adjustments to match Sidebar Header */
@@ -171,7 +181,7 @@
 .filter-search input,
 .header-search input,
 .filter-bar input {
-    padding-left: 40px !important;
+    padding-left: 48px !important;
     /* Ensure space for icon */
     height: 40px !important;
     /* Ensure proper height */
@@ -179,10 +189,10 @@
     /* Reset line-height */
 }
 
-/* Fix SVG icon position in search */
+/* Fix SVG icon position in search - specifically target icons alongside inputs */
 .filter-search svg,
 .header-search svg,
-.filter-bar svg {
+.filter-bar div[style*="position: relative"]>svg {
     top: 50% !important;
     transform: translateY(-50%) !important;
     z-index: 10;
@@ -360,4 +370,30 @@ h3,
 
 #paginationInfo {
     font-size: var(--text-base) !important;
+}
+
+/* Force action buttons to stay in one line */
+.data-table td>div[style*="display: flex"] {
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+}
+
+.action-btn {
+    flex-shrink: 0 !important;
+    min-width: 32px !important;
+}
+
+/* Ensure dropdowns appear above other content */
+.form-select {
+    position: relative;
+    z-index: 10;
+}
+
+.filter-bar {
+    position: relative;
+    z-index: 20;
+}
+
+.filter-bar .form-select {
+    z-index: 30;
 }

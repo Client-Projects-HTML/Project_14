@@ -1552,6 +1552,8 @@ p {
     overflow: hidden;
 }
 
+
+
 /* Contact Section */
 .contact-grid {
     display: grid;
@@ -2719,9 +2721,9 @@ p {
     }
 
     /* Landing & Dashboard Header Buttons Compact */
-    .header .rtl-toggle {
+    /* .header .rtl-toggle {
         display: none !important;
-    }
+    } */
 
     .header .theme-toggle,
     .header .menu-toggle,
@@ -2789,9 +2791,9 @@ p {
 }
 
 @media (max-width: 640px) {
-    .dashboard-header .rtl-toggle {
+    /* .dashboard-header .rtl-toggle {
         display: none;
-    }
+    } */
 
     .dashboard-header .user-menu {
         padding: var(--space-1);

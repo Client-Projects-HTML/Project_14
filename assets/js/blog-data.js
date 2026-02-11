@@ -15,7 +15,7 @@ const BLOG_DATA = {
         author: 'Dr. Emily Rodriguez',
         authorRole: 'Chief Technology Officer',
         authorImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=600&fit=crop',
         tags: ['Artificial Intelligence', 'Machine Learning', 'Smart Pigging', 'ILI', 'Defect Recognition', 'Technology'],
         content: `
             <p style="margin-bottom: var(--space-6);">The pipeline inspection industry is undergoing a revolutionary transformation with the integration of artificial intelligence and machine learning technologies. At PipelinePro, we've been at the forefront of this evolution, developing AI-powered systems that are dramatically improving the accuracy and efficiency of defect recognition in inline inspection data.</p>
@@ -177,6 +177,30 @@ const BLOG_DATA = {
             
             <h2 style="font-size: var(--text-2xl); margin: var(--space-8) 0 var(--space-4);">Forward Looking</h2>
             <p>As sensor technology continues to improve, the precision of our data-driven models will only increase, eventually moving toward a truly "zero-waste" maintenance model for pipeline infrastructure.</p>
+        `
+    },
+    'big-data-integrity': {
+        title: 'Leveraging Big Data for Pipeline Integrity',
+        category: 'Best Practices',
+        badge: 'Best Practices',
+        date: 'Jan 12, 2026',
+        readTime: '6 min read',
+        author: 'Sarah Mitchell',
+        authorRole: 'Integrity Manager',
+        authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+        image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?w=1200&h=600&fit=crop',
+        tags: ['Big Data', 'Analytics', 'Pipeline Integrity', 'Best Practices'],
+        content: `
+            <p style="margin-bottom: var(--space-6);">The integration of big data analytics into pipeline integrity management is revolutionizing how we monitor and maintain our infrastructure. By leveraging vast amounts of historical inspection data, we can now identify patterns and trends that were previously invisible.</p>
+            
+            <h2 style="font-size: var(--text-2xl); margin: var(--space-8) 0 var(--space-4);">Predictive Modeling</h2>
+            <p style="margin-bottom: var(--space-6);">One of the key benefits of big data is the ability to create highly accurate predictive models for corrosion growth and defect development. These models allow for more precise maintenance scheduling and risk assessment.</p>
+            
+            <h2 style="font-size: var(--text-2xl); margin: var(--space-8) 0 var(--space-4);">Data Integration</h2>
+            <p style="margin-bottom: var(--space-6);">By combining ILI results with other data streams such as SCADA, soil conditions, and cathodic protection readings, we get a holistic view of the pipeline's health. This integrated approach is essential for modern integrity management.</p>
+            
+            <h2 style="font-size: var(--text-2xl); margin: var(--space-8) 0 var(--space-4);">Improved Decision Making</h2>
+            <p>Better data leads to better decisions. Operators can now prioritize repairs with higher confidence, ensuring that the most critical issues are addressed first, thereby maximizing safety and optimizing operational costs.</p>
         `
     }
 };

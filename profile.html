@@ -194,14 +194,7 @@
                     <!-- RTL Toggle -->
                     <button class="rtl-toggle" id="rtlToggle" aria-label="Toggle RTL" title="Toggle RTL"
                         onclick="DashboardManager.toggleRTL()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                            </path>
-                        </svg>
+                        RTL
                     </button>
                     <!-- Theme Toggle -->
                     <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -217,7 +210,8 @@
                         </svg>
                     </button>
                     <!-- Notifications -->
-                    <button class="notification-btn" aria-label="Notifications">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications"
+                        onclick="toggleNotificationDropdown()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -371,12 +365,12 @@
                                                 style="font-size: var(--text-sm); color: var(--text-tertiary); margin: 0;">
                                                 Receive email updates about inspections</p>
                                         </div>
-                                        <label
+                                        <label class="toggle-switch"
                                             style="position: relative; display: inline-block; width: 48px; height: 24px;">
                                             <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
-                                            <span
+                                            <span class="toggle-slider"
                                                 style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--color-primary-600); border-radius: var(--radius-full); transition: var(--transition-fast);">
-                                                <span
+                                                <span class="toggle-knob"
                                                     style="position: absolute; content: ''; height: 18px; width: 18px; left: 26px; bottom: 3px; background-color: white; border-radius: var(--radius-full); transition: var(--transition-fast);"></span>
                                             </span>
                                         </label>
@@ -389,12 +383,12 @@
                                                 style="font-size: var(--text-sm); color: var(--text-tertiary); margin: 0;">
                                                 Receive critical alerts via SMS</p>
                                         </div>
-                                        <label
+                                        <label class="toggle-switch"
                                             style="position: relative; display: inline-block; width: 48px; height: 24px;">
                                             <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
-                                            <span
+                                            <span class="toggle-slider"
                                                 style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-tertiary); border-radius: var(--radius-full); transition: var(--transition-fast);">
-                                                <span
+                                                <span class="toggle-knob"
                                                     style="position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; border-radius: var(--radius-full); transition: var(--transition-fast);"></span>
                                             </span>
                                         </label>
@@ -407,12 +401,12 @@
                                                 style="font-size: var(--text-sm); color: var(--text-tertiary); margin: 0;">
                                                 Get weekly summary reports via email</p>
                                         </div>
-                                        <label
+                                        <label class="toggle-switch"
                                             style="position: relative; display: inline-block; width: 48px; height: 24px;">
                                             <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
-                                            <span
+                                            <span class="toggle-slider"
                                                 style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--color-primary-600); border-radius: var(--radius-full); transition: var(--transition-fast);">
-                                                <span
+                                                <span class="toggle-knob"
                                                     style="position: absolute; content: ''; height: 18px; width: 18px; left: 26px; bottom: 3px; background-color: white; border-radius: var(--radius-full); transition: var(--transition-fast);"></span>
                                             </span>
                                         </label>
@@ -493,12 +487,302 @@
                                 <p>You downloaded "MFL Inspection Report - Line 101" on Jan 15, 2024</p>
                             </div>
                         </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"
+                                style="background: var(--color-secondary-100); color: var(--color-secondary-600);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <div class="activity-content" style="flex: 1;">
+                                <h4>New team member added</h4>
+                                <p>Sarah Johnson was added to your team on Jan 12, 2024</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"
+                                style="background: var(--color-primary-100); color: var(--color-primary-600);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                            </div>
+                            <div class="activity-content" style="flex: 1;">
+                                <h4>Inspection report generated</h4>
+                                <p>New inspection report for Line 204 was generated on Jan 8, 2024</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"
+                                style="background: var(--color-success-100); color: var(--color-success-600);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="activity-content" style="flex: 1;">
+                                <h4>Scheduled maintenance completed</h4>
+                                <p>System maintenance was completed successfully on Jan 5, 2024</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- 2FA Confirmation Modal -->
+    <div id="twoFAModal"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 9999; align-items: center; justify-content: center;">
+        <div
+            style="background: var(--bg-primary); border-radius: var(--radius-xl); padding: var(--space-6); max-width: 400px; width: 90%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+            <h3 id="twoFAModalTitle"
+                style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin: 0 0 var(--space-3) 0;">
+                Enable Two-Factor Authentication?</h3>
+            <p id="twoFAModalMessage"
+                style="color: var(--text-secondary); margin: 0 0 var(--space-6) 0; line-height: 1.6;">You will receive a
+                verification code via email to complete the setup.</p>
+            <div style="display: flex; gap: var(--space-3); justify-content: flex-end;">
+                <button id="twoFAModalCancel" class="btn btn-secondary"
+                    style="padding: var(--space-2) var(--space-4);">Cancel</button>
+                <button id="twoFAModalConfirm" class="btn btn-primary"
+                    style="padding: var(--space-2) var(--space-4);">OK</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Handle View All button for Recent Activity
+        document.addEventListener('DOMContentLoaded', function () {
+            const viewAllBtn = document.querySelector('[data-view-all="activity"]');
+            const activityList = document.querySelector('.activity-list');
+
+            if (viewAllBtn && activityList) {
+                // Initially show only first 3 items
+                const allItems = activityList.querySelectorAll('.activity-item');
+                let isExpanded = false;
+
+                // Hide items beyond the first 3
+                function updateVisibility() {
+                    allItems.forEach((item, index) => {
+                        if (index >= 3 && !isExpanded) {
+                            item.style.display = 'none';
+                        } else {
+                            item.style.display = 'flex';
+                        }
+                    });
+                }
+
+                // Initial state
+                updateVisibility();
+
+                // Toggle on click
+                viewAllBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    isExpanded = !isExpanded;
+
+                    if (isExpanded) {
+                        viewAllBtn.textContent = 'Show Less';
+                    } else {
+                        viewAllBtn.textContent = 'View All';
+                    }
+
+                    updateVisibility();
+                });
+            }
+        });
+    </script>
+    <script>
+        // Handle toggle switches and 2FA button
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all toggle switches
+            const toggleSwitches = document.querySelectorAll('.toggle-switch');
+
+            toggleSwitches.forEach(function (toggleSwitch) {
+                const checkbox = toggleSwitch.querySelector('input[type="checkbox"]');
+                const slider = toggleSwitch.querySelector('.toggle-slider');
+                const knob = toggleSwitch.querySelector('.toggle-knob');
+
+                if (checkbox && slider && knob) {
+                    // Add click handler to the entire label
+                    toggleSwitch.addEventListener('click', function (e) {
+                        // Let the checkbox handle the click naturally
+                        // Then update the visual state
+                        setTimeout(function () {
+                            if (checkbox.checked) {
+                                slider.style.backgroundColor = 'var(--color-primary-600)';
+                                knob.style.left = '26px';
+                            } else {
+                                slider.style.backgroundColor = 'var(--bg-tertiary)';
+                                knob.style.left = '3px';
+                            }
+
+                            // Show notification
+                            const preferenceDiv = toggleSwitch.closest('div[style*="padding: var(--space-3)"]');
+                            if (preferenceDiv) {
+                                const titleElement = preferenceDiv.querySelector('p[style*="font-weight"]');
+                                const title = titleElement ? titleElement.textContent.trim() : 'Setting';
+                                const status = checkbox.checked ? 'enabled' : 'disabled';
+
+                                if (typeof showNotification === 'function') {
+                                    showNotification(title + ' ' + status, 'success');
+                                }
+                            }
+                        }, 10);
+                    });
+                }
+            });
+
+            // Handle 2FA Enable button with custom modal
+            const twoFAButton = document.querySelector('[data-2fa-toggle]');
+            const twoFAModal = document.getElementById('twoFAModal');
+            const twoFAModalTitle = document.getElementById('twoFAModalTitle');
+            const twoFAModalMessage = document.getElementById('twoFAModalMessage');
+            const twoFAModalConfirm = document.getElementById('twoFAModalConfirm');
+            const twoFAModalCancel = document.getElementById('twoFAModalCancel');
+            let is2FAEnabled = false;
+
+            // Function to show modal
+            function showTwoFAModal(title, message, onConfirm) {
+                twoFAModalTitle.textContent = title;
+                twoFAModalMessage.textContent = message;
+                twoFAModal.style.display = 'flex';
+
+                // Handle confirm
+                twoFAModalConfirm.onclick = function () {
+                    twoFAModal.style.display = 'none';
+                    onConfirm();
+                };
+
+                // Handle cancel
+                twoFAModalCancel.onclick = function () {
+                    twoFAModal.style.display = 'none';
+                };
+
+                // Close on background click
+                twoFAModal.onclick = function (e) {
+                    if (e.target === twoFAModal) {
+                        twoFAModal.style.display = 'none';
+                    }
+                };
+            }
+
+            if (twoFAButton) {
+                twoFAButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    if (!is2FAEnabled) {
+                        // Show enable confirmation
+                        showTwoFAModal(
+                            'Enable Two-Factor Authentication?',
+                            'You will receive a verification code via email to complete the setup.',
+                            function () {
+                                is2FAEnabled = true;
+                                twoFAButton.textContent = 'Disable';
+                                twoFAButton.classList.remove('btn-primary');
+                                twoFAButton.classList.add('btn-secondary');
+
+                                if (typeof showNotification === 'function') {
+                                    showNotification('Two-Factor Authentication enabled successfully', 'success');
+                                } else {
+                                    alert('Two-Factor Authentication enabled successfully');
+                                }
+                            }
+                        );
+                    } else {
+                        // Show disable confirmation
+                        showTwoFAModal(
+                            'Disable Two-Factor Authentication?',
+                            'This will reduce your account security. Are you sure you want to continue?',
+                            function () {
+                                is2FAEnabled = false;
+                                twoFAButton.textContent = 'Enable';
+                                twoFAButton.classList.remove('btn-secondary');
+                                twoFAButton.classList.add('btn-primary');
+
+                                if (typeof showNotification === 'function') {
+                                    showNotification('Two-Factor Authentication disabled', 'info');
+                                } else {
+                                    alert('Two-Factor Authentication disabled');
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- Notification Dropdown -->
+    <div id="notificationDropdown"
+        style="display: none; position: fixed; top: 80px; right: 20px; width: 320px; background: var(--bg-primary); border: 1px solid var(--border-primary); box-shadow: var(--shadow-xl); z-index: 10000; overflow: hidden;">
+        <div style="padding: 16px; border-bottom: 1px solid var(--border-primary); background: var(--bg-secondary);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 0;">🔔 Notifications</h3>
+        </div>
+        <div style="max-height: 320px; overflow-y: auto;">
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-primary-50); color: var(--color-primary-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">📄 New
+                        Report
+                        Available</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">INS-2026-001 report is ready
+                    </p>
+                </div>
+            </div>
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-success-50); color: var(--color-success-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">✅
+                        Inspection
+                        Completed</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Line 12A finished successfully
+                    </p>
+                </div>
+            </div>
+            <div
+                style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary);">
+                <div
+                    style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-warning-50); color: var(--color-warning-600);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                    <h4 style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 0 0 4px 0;">📅
+                        Scheduled
+                        Inspection</h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Line 8B starts tomorrow</p>
+                </div>
+            </div>
+        </div>
+        <div
+            style="padding: 12px; border-top: 1px solid var(--border-primary); text-align: center; background: var(--bg-secondary);">
+            <a href="#"
+                style="font-size: 14px; color: var(--color-primary-600); font-weight: 500; text-decoration: none; display: block;">View
+                All Notifications →</a>
+        </div>
+    </div>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dashboard.js"></script>
 </body>
