@@ -305,8 +305,8 @@
 
 
 .chart-container {
-    height: 250px !important;
-    /* Reduced from 300px/400px */
+    height: 320px !important;
+    min-height: 320px !important;
 }
 
 /* Typography Adjustments */

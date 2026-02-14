@@ -9,6 +9,9 @@
     <meta name="keywords" content="pipeline blog, ILI insights, integrity management, pipeline industry news">
     <title>Blog | PipelinePro - Industry Insights & News</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -101,9 +104,24 @@
 
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="index.html" class="nav-link dropdown-toggle" id="homeDropdown"
+                                aria-expanded="false">
+                                <span>Home</span>
+                                <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="index-2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </li>
                         <li><a href="about.html" class="nav-link">About Us</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li><a href="blog.html" class="nav-link active">Blog</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
@@ -126,7 +144,25 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <!-- Client Login Dropdown -->
+                    <div class="dropdown login-dropdown">
+                        <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
+                            aria-expanded="false">
+                            <span>Login</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a href="client-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'client'); window.location.href='client-dashboard.html'; return false;">Client
+                                Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'admin'); window.location.href='admin-dashboard.html'; return false;">Admin
+                                Login</a>
+                        </div>
+                    </div>
                     <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
                         aria-controls="mobile-nav">
                         <span></span>
@@ -143,12 +179,24 @@
     <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
         <div class="container">
             <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span>Home</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html" class="mobile-submenu-link">Home 1</a></li>
+                        <li><a href="index-2.html" class="mobile-submenu-link">Home 2</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+                <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
                 <li><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -192,8 +240,8 @@
                             <article class="blog-card blog-card-horizontal reveal blog-post" data-category="Technology">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop"
-                                            alt="Smart pigging technology" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+                                            alt="AI-Powered Defect Recognition" loading="lazy">
                                         <span class="badge badge-primary">Featured</span>
                                     </div>
                                     <div class="blog-content">
@@ -225,8 +273,8 @@
                                 data-category="Regulations">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop"
-                                            alt="Pipeline regulations" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800"
+                                            alt="Pipeline regulatory compliance documentation" loading="lazy">
                                         <span class="badge badge-secondary">Regulations</span>
                                     </div>
                                     <div class="blog-content">
@@ -254,8 +302,8 @@
                                 data-category="Best Practices">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
-                                            alt="Pipeline maintenance" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800"
+                                            alt="Risk-based dig program analysis" loading="lazy">
                                         <span class="badge badge-primary">Best Practices</span>
                                     </div>
                                     <div class="blog-content">
@@ -283,8 +331,8 @@
                                 data-category="Case Studies">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
-                                            alt="Case study" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800"
+                                            alt="Industrial Control Room Consultation" loading="lazy">
                                         <span class="badge badge-success">Case Studies</span>
                                     </div>
                                     <div class="blog-content">
@@ -311,8 +359,8 @@
                             <article class="blog-card blog-card-horizontal reveal blog-post" data-category="Technology">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=600&fit=crop"
-                                            alt="Corrosion protection" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+                                            alt="Corroded industrial pipe" loading="lazy">
                                         <span class="badge badge-primary">Technology</span>
                                     </div>
                                     <div class="blog-content">
@@ -340,8 +388,8 @@
                                 data-category="Best Practices">
                                 <div class="blog-card-inner">
                                     <div class="blog-image">
-                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=600&fit=crop"
-                                            alt="Data analytics" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                                            alt="Data analytics and monitoring for pipeline integrity" loading="lazy">
                                         <span class="badge badge-warning">Best Practices</span>
                                     </div>
                                     <div class="blog-content">
@@ -423,7 +471,7 @@
 
                         <!-- Categories -->
                         <div class="card reveal" style="margin-bottom: var(--space-6);">
-                            <div style="padding: var(--space-6);">
+                            <div style="padding: var(--space-5);">
                                 <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Categories</h3>
                                 <ul style="display: flex; flex-direction: column; gap: var(--space-3);">
                                     <li><a href="#" class="category-link"
@@ -447,12 +495,13 @@
 
                         <!-- Popular Posts -->
                         <div class="card reveal" style="margin-bottom: var(--space-6);">
-                            <div style="padding: var(--space-6);">
+                            <div style="padding: var(--space-5);">
                                 <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Popular Posts</h3>
                                 <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=future-smart-pigging"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="AI-Powered Defect Recognition"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -462,9 +511,10 @@
                                                 2026</span>
                                         </div>
                                     </a>
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=phmsa-updates"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="Regulatory Documents"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -474,9 +524,10 @@
                                                 28, 2025</span>
                                         </div>
                                     </a>
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=optimizing-dig-program"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="Risk analysis dashboard"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -493,7 +544,7 @@
                         <!-- Newsletter -->
                         <div class="card reveal"
                             style="background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700)); color: white;">
-                            <div style="padding: var(--space-6);">
+                            <div style="padding: var(--space-5);">
                                 <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2);">Newsletter</h3>
                                 <p
                                     style="color: rgba(255,255,255,0.9); font-size: var(--text-sm); margin-bottom: var(--space-4);">
@@ -538,6 +589,8 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="coming-soon.html">Events</a></li>
                         <li><a href="404.html">Careers</a></li>

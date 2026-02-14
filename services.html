@@ -10,6 +10,9 @@
         content="pipeline services, ILI, inline inspection, integrity management, cathodic protection">
     <title>Our Services | PipelinePro - Pipeline Inspection Solutions</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -41,9 +44,24 @@
 
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="index.html" class="nav-link dropdown-toggle" id="homeDropdown"
+                                aria-expanded="false">
+                                <span>Home</span>
+                                <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="index-2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </li>
                         <li><a href="about.html" class="nav-link">About Us</a></li>
                         <li><a href="services.html" class="nav-link active">Services</a></li>
+                        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li><a href="blog.html" class="nav-link">Blog</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
@@ -66,7 +84,25 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <!-- Client Login Dropdown -->
+                    <div class="dropdown login-dropdown">
+                        <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
+                            aria-expanded="false">
+                            <span>Login</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a href="client-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'client'); window.location.href='client-dashboard.html'; return false;">Client
+                                Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'admin'); window.location.href='admin-dashboard.html'; return false;">Admin
+                                Login</a>
+                        </div>
+                    </div>
                     <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
                         aria-controls="mobile-nav">
                         <span></span>
@@ -83,20 +119,128 @@
     <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
         <div class="container">
             <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span>Home</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html" class="mobile-submenu-link">Home 1</a></li>
+                        <li><a href="index-2.html" class="mobile-submenu-link">Home 2</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
                 <li><a href="services.html" class="mobile-nav-link active">Services</a></li>
+                <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </div>
     </nav>
 
     <main id="main-content" style="padding-top: 72px;">
+        <!-- Services Hero -->
+        <section class="hero hero-v2"
+            style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-primary); padding: var(--space-8) 0; position: relative; overflow: hidden;">
+            <div class="hero-pattern"
+                style="opacity: 0.04; background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&h=600&fit=crop'); background-size: cover; background-position: center; position: absolute; inset: 0; pointer-events: none;">
+            </div>
+            <div class="container" style="max-width: 1440px; position: relative; z-index: 1;">
+                <div
+                    style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--space-12); align-items: center;">
+                    <div class="hero-content reveal">
+                        <span class="section-label"
+                            style="color: var(--color-primary-600); border-color: var(--color-primary-200); margin-bottom: var(--space-6);">Industry
+                            Best Standards</span>
+                        <h1 class="hero-title"
+                            style="color: var(--text-primary); font-size: clamp(2.5rem, 4.5vw, 4rem); margin-bottom: var(--space-4); text-align: left;">
+                            Comprehensive <span>Inspection</span> & Integrity Services
+                        </h1>
+                        <p class="hero-description"
+                            style="color: var(--text-secondary); font-size: var(--text-lg); line-height: 1.7; text-align: left; margin-bottom: var(--space-8);">
+                            Delivering high-resolution inline inspection, specialized integrity management, and
+                            precision engineering solutions for global energy infrastructure leaders. We combine
+                            advanced MFL and UT technologies with expert analysis to protect your vital assets.
+                        </p>
+                        <div class="hero-actions" style="justify-content: flex-start; gap: var(--space-4);">
+                            <a href="#services" class="btn btn-primary btn-lg">Explore Our Capabilities</a>
+                            <a href="#tech-specs" class="btn btn-outline btn-lg">Get Technical Specs</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-info-specs reveal"
+                        style="background: var(--bg-primary); padding: var(--space-5); border-radius: var(--radius-xl); border: 1px solid var(--border-primary); box-shadow: var(--shadow-lg);">
+                        <h3
+                            style="font-size: var(--text-lg); font-weight: var(--font-bold); margin-bottom: var(--space-6); color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="var(--color-primary-600)" stroke-width="2.5">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                            Core Service Pillars
+                        </h3>
+                        <ul style="list-style: none; display: grid; gap: var(--space-4);">
+                            <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                                <div
+                                    style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-500); margin-top: 6px; flex-shrink: 0;">
+                                </div>
+                                <div>
+                                    <strong
+                                        style="display: block; font-size: var(--text-sm); color: var(--text-primary);">Advanced
+                                        ILI Solutions</strong>
+                                    <span
+                                        style="font-size: var(--text-xs); color: var(--text-secondary);">High-resolution
+                                        MFL and ultrasonic assessment for all pipe diameters.</span>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                                <div
+                                    style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-500); margin-top: 6px; flex-shrink: 0;">
+                                </div>
+                                <div>
+                                    <strong
+                                        style="display: block; font-size: var(--text-sm); color: var(--text-primary);">Integrity
+                                        Assurance</strong>
+                                    <span style="font-size: var(--text-xs); color: var(--text-secondary);">Strategic
+                                        risk modeling and PHMSA-compliant management programs.</span>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                                <div
+                                    style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-500); margin-top: 6px; flex-shrink: 0;">
+                                </div>
+                                <div>
+                                    <strong
+                                        style="display: block; font-size: var(--text-sm); color: var(--text-primary);">Detailed
+                                        Dig Analytics</strong>
+                                    <span style="font-size: var(--text-xs); color: var(--text-secondary);">Precision
+                                        excavation reports with 3D anomaly visualization.</span>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                                <div
+                                    style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-500); margin-top: 6px; flex-shrink: 0;">
+                                </div>
+                                <div>
+                                    <strong
+                                        style="display: block; font-size: var(--text-sm); color: var(--text-primary);">Regulatory
+                                        Compliance</strong>
+                                    <span style="font-size: var(--text-xs); color: var(--text-secondary);">Automated
+                                        documentation for API 1163 and NACE industry standards.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Grid -->
-        <section class="section">
-            <div class="container">
+        <section id="services" class="section">
+            <div class="container" style="max-width: 1400px;">
                 <div class="services-grid">
                     <!-- Service 1: ILI -->
                     <article class="service-card reveal">
@@ -255,9 +399,106 @@
             </div>
         </section>
 
+        <!-- Technical Specifications Section -->
+        <section id="tech-specs" class="section"
+            style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-primary);">
+            <div class="container" style="max-width: 1400px;">
+                <div class="section-header reveal">
+                    <span class="section-label">Technical Overview</span>
+                    <h2 class="section-title">Equipment Technical Specifications</h2>
+                    <p class="section-description">Detailed performance characteristics of our industrial inspection
+                        assets.</p>
+                </div>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-10);">
+                    <div class="spec-card reveal"
+                        style="background: var(--bg-primary); padding: var(--space-5); border-radius: var(--radius-lg); border: 1px solid var(--border-primary);">
+                        <h4 style="color: var(--color-primary-600); margin-bottom: var(--space-4);">MFL Inspection Tools
+                        </h4>
+                        <table style="width: 100%; font-size: var(--text-sm); border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Pipe Diameters</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">4" to 56"
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Min Bend Radius</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">1.5D</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Anomaly Detection</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">0.1t -
+                                    0.9t</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Max Pressure</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">150 Bar
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="spec-card reveal"
+                        style="background: var(--bg-primary); padding: var(--space-5); border-radius: var(--radius-lg); border: 1px solid var(--border-primary);">
+                        <h4 style="color: var(--color-primary-600); margin-bottom: var(--space-4);">Ultrasonic (UT)
+                            Tools</h4>
+                        <table style="width: 100%; font-size: var(--text-sm); border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Measurement Accuracy</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">± 0.1 mm
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Sensor Density</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">64-128
+                                    probes</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Tool Velocity</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">1.5 m/s
+                                    max</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Wall Thickness</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">Up to 35
+                                    mm</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="spec-card reveal"
+                        style="background: var(--bg-primary); padding: var(--space-5); border-radius: var(--radius-lg); border: 1px solid var(--border-primary);">
+                        <h4 style="color: var(--color-primary-600); margin-bottom: var(--space-4);">Geometry & Mapping
+                        </h4>
+                        <table style="width: 100%; font-size: var(--text-sm); border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">XYZ Accuracy</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">± 1m /
+                                    1000m</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Deformation Res.</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">0.5% of ID
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-primary);">
+                                <td style="padding: 8px 0; color: var(--text-secondary);">IMU Sensitivity</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">± 0.01 deg
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; color: var(--text-secondary);">Recording Time</td>
+                                <td style="padding: 8px 0; text-align: right; font-weight: var(--font-bold);">250+ Hours
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Process Section -->
-        <section class="section" style="background-color: var(--bg-secondary);">
-            <div class="container">
+        <section class="section">
+            <div class="container" style="max-width: 1400px;">
                 <div class="section-header reveal">
                     <span class="section-label">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -315,7 +556,7 @@
         <!-- CTA -->
         <section class="cta">
             <div class="cta-pattern"></div>
-            <div class="container">
+            <div class="container" style="max-width: 1400px;">
                 <div class="cta-content reveal">
                     <h2 class="cta-title">Ready to Get Started?</h2>
                     <p class="cta-description">Contact us today to discuss your pipeline inspection needs and receive a
@@ -356,6 +597,8 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="coming-soon.html">Events</a></li>
                         <li><a href="404.html">Careers</a></li>

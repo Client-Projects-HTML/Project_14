@@ -15,7 +15,7 @@ const BLOG_DATA = {
         author: 'Dr. Emily Rodriguez',
         authorRole: 'Chief Technology Officer',
         authorImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
         tags: ['Artificial Intelligence', 'Machine Learning', 'Smart Pigging', 'ILI', 'Defect Recognition', 'Technology'],
         content: `
             <p style="margin-bottom: var(--space-6);">The pipeline inspection industry is undergoing a revolutionary transformation with the integration of artificial intelligence and machine learning technologies. At PipelinePro, we've been at the forefront of this evolution, developing AI-powered systems that are dramatically improving the accuracy and efficiency of defect recognition in inline inspection data.</p>
@@ -44,7 +44,7 @@ const BLOG_DATA = {
         author: 'Marcus Thorne',
         authorRole: 'Regulatory Compliance Expert',
         authorImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
         tags: ['PHMSA', 'Regulations', 'Compliance', 'Safety'],
         content: `
             <p style="margin-bottom: var(--space-6);">As we enter 2026, the Pipeline and Hazardous Materials Safety Administration (PHMSA) has introduced several key updates to its safety requirements. Staying compliant is not just a regulatory necessity but a core component of a robust safety culture.</p>
@@ -68,11 +68,16 @@ const BLOG_DATA = {
         author: 'Sarah Mitchell',
         authorRole: 'Integrity Manager',
         authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200',
         tags: ['Dig Program', 'Risk Assessment', 'Prioritization', 'Corrosion Management'],
         content: `
             <p style="margin-bottom: var(--space-6);">Managing an excavation and repair program (dig program) is one of the most resource-intensive aspects of pipeline operations. Moving from a purely reactive model to a risk-based approach can significantly improve efficiency and safety.</p>
             
+            <div style="margin: var(--space-8) 0; border-radius: var(--radius-xl); overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Data Analytics Visualization" style="width: 100%; height: auto; display: block;">
+                <p style="font-size: var(--text-sm); color: var(--text-tertiary); margin-top: var(--space-3); text-align: center;">Advanced data visualization helps in identifying high-risk areas across the pipeline network.</p>
+            </div>
+
             <h2 style="font-size: var(--text-2xl); margin: var(--space-8) 0 var(--space-4);">Prioritizing Anomalies</h2>
             <p style="margin-bottom: var(--space-6);">Not all anomalies are created equal. By integrating ILI data with cathodic protection (CP) readings, soil data, and historical performance, we can build a comprehensive risk profile for every identified issue, allowing limited resources to be focused on the most critical sites.</p>
             
@@ -92,7 +97,7 @@ const BLOG_DATA = {
         author: 'Michael Torres',
         authorRole: 'VP Operations',
         authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
         tags: ['Case Study', 'Integrity Assessment', 'Major Project'],
         content: `
             <p style="margin-bottom: var(--space-6);">This case study examines a multi-phase integrity assessment conducted for a 500km transmission line. The project required the integration of multiple inspection technologies and advanced data analysis to ensure long-term operational safety.</p>
@@ -116,7 +121,7 @@ const BLOG_DATA = {
         author: 'Dr. Emily Rodriguez',
         authorRole: 'Chief Technology Officer',
         authorImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200',
         tags: ['Smart Pigging', 'Technology', 'Innovation'],
         content: `
             <p style="margin-bottom: var(--space-6);">2026 marks a significant milestone in smart pigging technology. New sensor designs and miniaturized electronics are allowing us to inspect pipelines that were previously considered "unpiggable."</p>
@@ -140,7 +145,7 @@ const BLOG_DATA = {
         author: 'Marcus Thorne',
         authorRole: 'Regulatory Compliance Expert',
         authorImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
         tags: ['PHMSA', 'Safety', 'Compliance'],
         content: `
             <p style="margin-bottom: var(--space-6);">The recently released PHMSA safety mandates introduce comprehensive changes to how gas and liquid transmission pipelines are monitored and maintained. Understanding these changes is critical for ongoing operations.</p>
@@ -164,7 +169,7 @@ const BLOG_DATA = {
         author: 'Sarah Mitchell',
         authorRole: 'Integrity Manager',
         authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200',
         tags: ['Data Analysis', 'Dig Program', 'Efficiency'],
         content: `
             <p style="margin-bottom: var(--space-6);">The core of any successful integrity program is how the data is used to drive actions. A truly data-driven dig program uses advanced analytics to maximize the value of every excavation.</p>
@@ -188,7 +193,7 @@ const BLOG_DATA = {
         author: 'Sarah Mitchell',
         authorRole: 'Integrity Manager',
         authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
-        image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?w=1200&h=600&fit=crop',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
         tags: ['Big Data', 'Analytics', 'Pipeline Integrity', 'Best Practices'],
         content: `
             <p style="margin-bottom: var(--space-6);">The integration of big data analytics into pipeline integrity management is revolutionizing how we monitor and maintain our infrastructure. By leveraging vast amounts of historical inspection data, we can now identify patterns and trends that were previously invisible.</p>

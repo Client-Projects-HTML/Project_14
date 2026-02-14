@@ -579,140 +579,78 @@
     // View All Inline Functionality
     // ============================================
     const ViewAllInline = {
-        currentContainer: null,
-
         init() {
-            console.log('ViewAllInline.init() called');
+            // Find all buttons with data-view-all and set up their behavior
             document.querySelectorAll('[data-view-all]').forEach(btn => {
-                console.log('Found view-all button:', btn);
+                // Prevent duplicate initialization
+                if (btn.dataset.initialized) return;
+                btn.dataset.initialized = 'true';
+
+                const limit = parseInt(btn.dataset.limit) || 3;
+
+                // Set initial state
+                this.updateVisibility(btn, limit, false);
+
                 btn.addEventListener('click', (e) => {
-                    console.log('View All clicked:', btn.dataset.viewAll);
                     e.preventDefault();
-                    const type = btn.dataset.viewAll;
-                    this.showInline(type, btn);
+                    e.stopPropagation();
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                    this.updateVisibility(btn, limit, !isExpanded);
                 });
             });
         },
 
-        showInline(type, triggerBtn) {
-            // Close any existing container
-            this.closeInline();
+        updateVisibility(btn, limit, isExpanded) {
+            const card = btn.closest('.section-card');
+            if (!card) return;
 
-            // Create inline container (using CSS class)
-            const container = document.createElement('div');
-            container.className = 'view-all-inline';
+            // Find the list container - could be an activity-list or a tbody
+            const listContainer = card.querySelector('.activity-list') || card.querySelector('tbody');
+            if (!listContainer) return;
 
-            let title = '';
-            let items = [];
+            // Get children that are actual items (divs or trs)
+            const items = Array.from(listContainer.children).filter(child =>
+                child.classList.contains('activity-item') ||
+                child.classList.contains('activity-row') ||
+                child.tagName === 'TR'
+            );
 
-            if (type === 'activity') {
-                title = 'All Recent Activity';
-                items = [
-                    { icon: '✓', color: 'var(--color-success-100)', textColor: 'var(--color-success-600)', title: 'Password changed successfully', desc: 'Your password was updated on Jan 20, 2024 at 10:30 AM' },
-                    { icon: '👤', color: 'var(--color-primary-100)', textColor: 'var(--color-primary-600)', title: 'Profile information updated', desc: 'Your profile details were modified on Jan 18, 2024 at 2:15 PM' },
-                    { icon: '⬇', color: 'var(--color-warning-100)', textColor: 'var(--color-warning-700)', title: 'Report downloaded', desc: 'You downloaded "MFL Inspection Report - Line 101" on Jan 15, 2024' },
-                    { icon: '✓', color: 'var(--color-success-100)', textColor: 'var(--color-success-600)', title: 'Email notifications enabled', desc: 'You enabled email notifications on Jan 12, 2024' },
-                    { icon: '👤', color: 'var(--color-primary-100)', textColor: 'var(--color-primary-600)', title: 'Profile picture updated', desc: 'Your profile picture was changed on Jan 10, 2024' },
-                    { icon: '✓', color: 'var(--color-success-100)', textColor: 'var(--color-success-600)', title: 'Inspection completed', desc: 'Line 12A finished successfully on Jan 8, 2024' },
-                    { icon: '⚠', color: 'var(--color-warning-100)', textColor: 'var(--color-warning-700)', title: 'System alert', desc: 'High memory usage detected on Jan 5, 2024' },
-                    { icon: '✓', color: 'var(--color-success-100)', textColor: 'var(--color-success-600)', title: 'Order confirmed', desc: 'Your order #ORD-9921 was confirmed on Jan 3, 2024' }
-                ];
-            } else if (type === 'users') {
-                title = 'All Recent Registrations';
-                items = [
-                    { icon: 'SJ', color: 'var(--color-primary-50)', textColor: 'var(--color-primary-700)', title: 'Sarah Jenkins', desc: 'Client - Registered Feb 06, 2026 - Pending' },
-                    { icon: 'MK', color: 'var(--color-success-50)', textColor: 'var(--color-success-700)', title: 'Mike K.', desc: 'Inspector - Registered Feb 05, 2026 - Verified' },
-                    { icon: 'AB', color: 'var(--color-warning-50)', textColor: 'var(--color-warning-700)', title: 'Alex B.', desc: 'Client - Registered Feb 05, 2026 - Review' },
-                    { icon: 'JD', color: 'var(--color-primary-50)', textColor: 'var(--color-primary-700)', title: 'John Doe', desc: 'Admin - Registered Feb 04, 2026 - Approved' },
-                    { icon: 'SM', color: 'var(--color-warning-50)', textColor: 'var(--color-warning-700)', title: 'Sarah Miller', desc: 'Client - Registered Feb 03, 2026 - Pending' },
-                    { icon: 'RJ', color: 'var(--color-success-50)', textColor: 'var(--color-success-700)', title: 'Robert Johnson', desc: 'Inspector - Registered Feb 02, 2026 - Verified' }
-                ];
-            } else if (type === 'orders') {
-                title = 'All Recent Orders';
-                items = [
-                    { icon: '📦', color: 'var(--color-primary-50)', textColor: 'var(--color-primary-700)', title: 'ORD-9921', desc: 'Chevron Corp. - $12,500 - Pending' },
-                    { icon: '📦', color: 'var(--color-success-50)', textColor: 'var(--color-success-700)', title: 'ORD-9920', desc: 'ExxonMobil - $8,200 - Paid' },
-                    { icon: '📦', color: 'var(--color-warning-50)', textColor: 'var(--color-warning-700)', title: 'ORD-9919', desc: 'Shell Oil - $15,000 - Processing' },
-                    { icon: '📦', color: 'var(--color-success-50)', textColor: 'var(--color-success-700)', title: 'ORD-9918', desc: 'BP America - $9,500 - Paid' },
-                    { icon: '📦', color: 'var(--color-primary-50)', textColor: 'var(--color-primary-700)', title: 'ORD-9917', desc: 'TotalEnergies - $11,000 - Pending' }
-                ];
-            } else if (type === 'messages') {
-                title = 'All Messages';
-                items = [
-                    { icon: '✉', color: 'var(--color-primary-100)', textColor: 'var(--color-primary-600)', title: 'Tech Support Request', desc: 'From: Dr. Sarah Jenkins - System access issue - 15 mins ago' },
-                    { icon: '✉', color: 'var(--bg-secondary)', textColor: 'var(--text-primary)', title: 'New Inquiry', desc: 'From: PetroCorp - Quote for 500km MFL - 1 hour ago' },
-                    { icon: '✉', color: 'var(--color-warning-100)', textColor: 'var(--color-warning-700)', title: 'Quote Follow-up', desc: 'From: ExxonMobil - MFL Inspection quote follow-up - 2 hours ago' },
-                    { icon: '✉', color: 'var(--color-success-100)', textColor: 'var(--color-success-600)', title: 'Report Ready', desc: 'From: Chevron Corp. - Inspection report ready - 3 hours ago' },
-                    { icon: '✉', color: 'var(--color-primary-100)', textColor: 'var(--color-primary-600)', title: 'Schedule Change', desc: 'From: Shell Oil - Inspection rescheduled - 5 hours ago' }
-                ];
+            if (items.length <= limit) {
+                btn.style.display = 'none';
+                return;
             }
 
-            let itemsHtml = items.map(item => `
-                <div class="activity-item">
-                    <div class="activity-icon" style="background-color: ${item.color}; color: ${item.textColor};">
-                        ${item.icon.startsWith('<') ? item.icon : `<span style="font-weight: bold; font-size: 12px;">${item.icon}</span>`}
-                    </div>
-                    <div class="activity-content">
-                        <h4>${item.title}</h4>
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            container.innerHTML = `
-                <div class="view-all-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
-                    <h3 style="font-size: var(--text-base); font-weight: var(--font-semibold);">${title}</h3>
-                    <button class="inline-close">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-                <div class="activity-list" style="display: flex; flex-direction: column;">
-                    ${itemsHtml}
-                </div>
-            `;
-
-            // Find parent section and insert INSIDE it (within the same card)
-            let parentSection = triggerBtn.closest('.section-card');
-            if (parentSection) {
-                // Find the table container or first child and insert after it
-                const tableContainer = parentSection.querySelector('.table-container');
-                const existingInline = parentSection.querySelector('.view-all-inline');
-
-                // Remove any existing inline container first
-                if (existingInline) {
-                    existingInline.remove();
-                }
-
-                // Insert the new container inside the card, after the table
-                if (tableContainer) {
-                    tableContainer.after(container);
+            // Update items visibility
+            items.forEach((item, index) => {
+                if (index >= limit) {
+                    if (isExpanded) {
+                        // Show: use flex for activity items, table-row for TRs
+                        if (item.classList.contains('activity-item')) {
+                            item.style.display = 'flex';
+                        } else if (item.tagName === 'TR') {
+                            item.style.display = 'table-row';
+                        } else {
+                            item.style.display = '';
+                        }
+                    } else {
+                        // Hide
+                        item.style.display = 'none';
+                    }
                 } else {
-                    parentSection.appendChild(container);
+                    // Always show the first few items
+                    if (item.classList.contains('activity-item')) {
+                        item.style.display = 'flex';
+                    } else if (item.tagName === 'TR') {
+                        item.style.display = 'table-row';
+                    } else {
+                        item.style.display = '';
+                    }
                 }
-            } else {
-                const dashboardContent = document.querySelector('.dashboard-content > div');
-                if (dashboardContent) {
-                    dashboardContent.appendChild(container);
-                }
-            }
+            });
 
-            this.currentContainer = container;
-
-            // Add close event
-            container.querySelector('.inline-close').addEventListener('click', () => this.closeInline());
-
-            // Scroll to container
-            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        },
-
-        closeInline() {
-            if (this.currentContainer) {
-                this.currentContainer.remove();
-                this.currentContainer = null;
-            }
+            // Update button text and state
+            btn.textContent = isExpanded ? 'Show Less' : 'View All';
+            btn.setAttribute('aria-expanded', isExpanded.toString());
         }
     };
 
@@ -720,30 +658,36 @@
     // Reports Toggle Functions
     // ============================================
     function toggleDetailedReports(event) {
-        event.preventDefault();
+        if (event) event.preventDefault();
         const additionalSection = document.getElementById('additionalDetailedReports');
-        const link = event.target;
+        const link = event ? event.target : null;
+        if (!additionalSection) return;
 
-        if (additionalSection.style.display === 'none') {
+        const isHidden = window.getComputedStyle(additionalSection).display === 'none';
+
+        if (isHidden) {
             additionalSection.style.display = 'block';
-            link.textContent = 'Show Less';
+            if (link) link.textContent = 'Show Less';
         } else {
             additionalSection.style.display = 'none';
-            link.textContent = 'View All';
+            if (link) link.textContent = 'View All';
         }
     }
 
     function toggleSummaryReports(event) {
-        event.preventDefault();
+        if (event) event.preventDefault();
         const additionalSection = document.getElementById('additionalSummaryReports');
-        const link = event.target;
+        const link = event ? event.target : null;
+        if (!additionalSection) return;
 
-        if (additionalSection.style.display === 'none') {
+        const isHidden = window.getComputedStyle(additionalSection).display === 'none';
+
+        if (isHidden) {
             additionalSection.style.display = 'block';
-            link.textContent = 'Show Less';
+            if (link) link.textContent = 'Show Less';
         } else {
             additionalSection.style.display = 'none';
-            link.textContent = 'View All';
+            if (link) link.textContent = 'View All';
         }
     }
 

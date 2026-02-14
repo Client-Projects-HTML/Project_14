@@ -9,6 +9,9 @@
     <meta name="keywords" content="contact pipeline inspection, get quote, pipeline services contact">
     <title>Contact Us | PipelinePro - Get in Touch</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -40,9 +43,24 @@
 
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="index.html" class="nav-link dropdown-toggle" id="homeDropdown"
+                                aria-expanded="false">
+                                <span>Home</span>
+                                <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="index-2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </li>
                         <li><a href="about.html" class="nav-link">About Us</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li><a href="blog.html" class="nav-link">Blog</a></li>
                         <li><a href="contact.html" class="nav-link active">Contact</a></li>
                     </ul>
@@ -65,7 +83,25 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <!-- Client Login Dropdown -->
+                    <div class="dropdown login-dropdown">
+                        <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
+                            aria-expanded="false">
+                            <span>Login</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a href="client-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'client'); window.location.href='client-dashboard.html'; return false;">Client
+                                Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'admin'); window.location.href='admin-dashboard.html'; return false;">Admin
+                                Login</a>
+                        </div>
+                    </div>
                     <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
                         aria-controls="mobile-nav">
                         <span></span>
@@ -82,12 +118,24 @@
     <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
         <div class="container">
             <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span>Home</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html" class="mobile-submenu-link">Home 1</a></li>
+                        <li><a href="index-2.html" class="mobile-submenu-link">Home 2</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+                <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -382,6 +430,8 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="coming-soon.html">Events</a></li>
                         <li><a href="404.html">Careers</a></li>

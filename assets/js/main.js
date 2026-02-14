@@ -236,7 +236,7 @@
             }
 
             // Close mobile menu on link click
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-submenu-link');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => this.closeMobileMenu());
             });
@@ -248,6 +248,37 @@
                     !this.menuToggle?.contains(e.target)) {
                     this.closeMobileMenu();
                 }
+            });
+
+            // Mobile sub-menu toggle
+            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+            mobileDropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = toggle.parentElement;
+                    const isExpanded = dropdown.classList.contains('active');
+
+                    // Close other mobile dropdowns if any
+                    document.querySelectorAll('.mobile-dropdown').forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('active');
+                            const otherToggle = d.querySelector('.mobile-dropdown-toggle');
+                            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+                            const arrow = d.querySelector('.dropdown-arrow');
+                            if (arrow) arrow.style.transform = 'rotate(180deg)';
+                        }
+                    });
+
+                    dropdown.classList.toggle('active');
+                    toggle.setAttribute('aria-expanded', (!isExpanded).toString());
+
+                    // Rotate arrow
+                    const arrow = toggle.querySelector('.dropdown-arrow');
+                    if (arrow) {
+                        arrow.style.transform = dropdown.classList.contains('active') ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
             });
 
             // Handle scroll
@@ -294,6 +325,57 @@
                     }
                 }
             });
+        }
+    };
+
+    // ============================================
+    // Dropdown Manager
+    // ============================================
+    const DropdownManager = {
+        init() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (!toggle) return;
+
+                toggle.addEventListener('click', (e) => {
+                    const isAnchorToggle = toggle.tagName === 'A' && toggle.getAttribute('href');
+                    const clickedArrow = !!e.target.closest('.dropdown-arrow');
+
+                    // For anchor toggles: normal click navigates, arrow click toggles dropdown
+                    if (isAnchorToggle && !clickedArrow) {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    this.closeAll();
+                    if (!isExpanded) {
+                        this.setExpanded(toggle, true);
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    this.closeAll();
+                }
+            });
+        },
+
+        closeAll() {
+            const toggles = document.querySelectorAll('.dropdown-toggle');
+            toggles.forEach(toggle => this.setExpanded(toggle, false));
+        },
+
+        setExpanded(toggle, state) {
+            toggle.setAttribute('aria-expanded', state);
+            const menu = toggle.nextElementSibling;
+            if (menu && menu.classList.contains('dropdown-menu')) {
+                menu.style.display = state ? 'block' : '';
+            }
         }
     };
 
@@ -496,7 +578,10 @@
 
         handleClick(e, anchor) {
             const targetId = anchor.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#') {
+                e.preventDefault();
+                return;
+            }
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
@@ -818,6 +903,7 @@
         CounterAnimation.init();
         AccessibilityManager.init();
         RoleNavigationManager.init();
+        DropdownManager.init();
 
         // Log initialization
         console.log('🚀 Pipeline Inspection Services - Application initialized');

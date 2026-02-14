@@ -8,6 +8,9 @@
         content="Analytics Dashboard - View detailed analytics and insights for your pipeline inspections.">
     <title>Analytics | PipelinePro Client Portal</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -19,6 +22,20 @@
     <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="stylesheet" href="assets/css/dashboard-custom.css">
     <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+    <style>
+        /* Keep analytics charts fully inside cards without clipping */
+        .analytics-grid .chart-container {
+            height: 100% !important;
+            min-height: 0 !important;
+            box-sizing: border-box;
+            padding: var(--space-4) !important;
+        }
+
+        .analytics-grid .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 
     <script>
         (function () {
@@ -402,8 +419,8 @@
                                 <option value="lastYear">Last Year</option>
                             </select>
                         </div>
-                        <div class="h-48 relative">
-                            <div class="chart-container h-full min-h-0">
+                        <div class="relative" style="height: clamp(300px, 44vh, 380px);">
+                            <div class="chart-container">
                                 <canvas id="inspectionsTrendChart"></canvas>
                             </div>
                         </div>
@@ -422,8 +439,8 @@
                                 <option value="dents">Dents</option>
                             </select>
                         </div>
-                        <div class="h-48 relative">
-                            <div class="chart-container h-full min-h-0">
+                        <div class="relative" style="height: clamp(300px, 44vh, 380px);">
+                            <div class="chart-container">
                                 <canvas id="defectDistributionChart"></canvas>
                             </div>
                         </div>
@@ -437,8 +454,8 @@
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Pipeline Health Overview</h2>
                         </div>
-                        <div class="h-48 relative">
-                            <div class="chart-container h-full min-h-0">
+                        <div class="relative" style="height: clamp(300px, 44vh, 380px);">
+                            <div class="chart-container">
                                 <canvas id="pipelineHealthChart"></canvas>
                             </div>
                         </div>
@@ -449,8 +466,8 @@
                         <div class="section-header-flex">
                             <h2 class="section-title-sm">Monthly Comparison</h2>
                         </div>
-                        <div class="h-48 relative">
-                            <div class="chart-container h-full min-h-0">
+                        <div class="relative" style="height: clamp(300px, 44vh, 380px);">
+                            <div class="chart-container">
                                 <canvas id="monthlyComparisonChart"></canvas>
                             </div>
                         </div>
@@ -1311,3 +1328,4 @@
 </body>
 
 </html>
+

@@ -7,6 +7,9 @@
     <meta name="description" content="Login - Access your PipelinePro dashboard and inspection data.">
     <title>Login | PipelinePro Client Portal</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -84,6 +87,35 @@
 
         .forgot-password:hover {
             text-decoration: underline;
+        }
+
+        .forgot-dialog {
+            border: none;
+            border-radius: var(--radius-xl);
+            padding: 0;
+            width: min(92vw, 420px);
+            background-color: var(--bg-primary);
+            box-shadow: var(--shadow-xl);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+
+        .forgot-dialog::backdrop {
+            background: rgba(15, 23, 42, 0.55);
+        }
+
+        .forgot-dialog-content {
+            padding: var(--space-6);
+        }
+
+        .forgot-dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-3);
+            margin-top: var(--space-5);
         }
 
         .auth-separator {
@@ -413,9 +445,31 @@
                     <p>Sign in to access your dashboard</p>
                 </div>
 
+                <div class="login-options">
+                    <button type="button" onclick="handleAuth('client')" class="btn btn-outline login-btn outline">
+                        <div class="icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <span>Client Login</span>
+                    </button>
+                    <button type="button" onclick="handleAuth('admin')" class="btn btn-outline login-btn outline">
+                        <div class="icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <span>Admin Login</span>
+                    </button>
+                </div>
 
 
-                <form class="auth-form" data-validate>
+
+                <form class="auth-form" onsubmit="handleSignIn(event)">
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com"
@@ -437,27 +491,7 @@
                             password?</a>
                     </div>
 
-                    <div class="login-options">
-                        <button type="button" onclick="handleAuth('client')" class="btn btn-outline login-btn outline">
-                            <div class="icon-circle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <span>Client Login</span>
-                        </button>
-                        <button type="button" onclick="handleAuth('admin')" class="btn btn-outline login-btn outline">
-                            <div class="icon-circle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                </svg>
-                            </div>
-                            <span>Admin Login</span>
-                        </button>
-                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-full">Sign In</button>
                 </form>
 
                 <div class="auth-footer" style="margin-top: var(--space-6);">
@@ -468,6 +502,23 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+    <dialog id="forgotPasswordDialog" class="forgot-dialog" aria-labelledby="forgotDialogTitle">
+        <form method="dialog" class="forgot-dialog-content" onsubmit="return sendPasswordReset(event)">
+            <h3 id="forgotDialogTitle">Reset Password</h3>
+            <p style="margin-top: var(--space-2); color: var(--text-secondary);">
+                Enter your email to receive a password reset link.
+            </p>
+            <div class="form-group" style="margin-top: var(--space-4);">
+                <label for="resetEmail">Email Address</label>
+                <input type="email" id="resetEmail" class="form-input" placeholder="you@company.com" required>
+            </div>
+            <div class="forgot-dialog-actions">
+                <button type="button" class="btn btn-ghost" onclick="closeForgotPasswordDialog()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Send Link</button>
+            </div>
+        </form>
+    </dialog>
+
     <script>
         function handleAuth(role) {
             // Save role to localStorage
@@ -481,14 +532,48 @@
             }
         }
 
-        // On page load, clear role if we're on the login page
+        function handleSignIn(event) {
+            event.preventDefault();
+            const form = event.target;
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const role = localStorage.getItem('userRole') || 'client';
+            window.location.href = role === 'admin' ? 'admin-dashboard.html' : 'client-dashboard.html';
+        }
+
+        // On page load, check if we have a role, but don't clear it
         document.addEventListener('DOMContentLoaded', function () {
-            localStorage.removeItem('userRole');
+            const role = localStorage.getItem('userRole');
+            if (role) {
+                // Optionally highlight the selected role button
+                console.log('Current role:', role);
+            }
         });
 
         // Forgot password handler
         function handleForgotPassword() {
-            alert('Password reset link has been sent to your email address.\n\nPlease check your inbox and follow the instructions to reset your password.');
+            const dialog = document.getElementById('forgotPasswordDialog');
+            if (dialog) dialog.showModal();
+        }
+
+        function closeForgotPasswordDialog() {
+            const dialog = document.getElementById('forgotPasswordDialog');
+            if (dialog) dialog.close();
+        }
+
+        function sendPasswordReset(event) {
+            event.preventDefault();
+            const resetEmail = document.getElementById('resetEmail');
+            if (!resetEmail || !resetEmail.checkValidity()) {
+                resetEmail?.reportValidity();
+                return false;
+            }
+            closeForgotPasswordDialog();
+            return false;
         }
     </script>
 </body>

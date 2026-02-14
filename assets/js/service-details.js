@@ -6,7 +6,7 @@ const SERVICES_DATA = {
     'ili': {
         title: 'Inline Inspection (ILI)',
         description: 'Advanced smart pigging technology for comprehensive internal pipeline assessment and anomaly detection.',
-        heroImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop',
         overviewTitle: 'State-of-the-Art Pipeline Inspection',
         overviewText1: 'Our Inline Inspection (ILI) services utilize cutting-edge smart pigging technology to provide comprehensive internal assessments of your pipeline infrastructure. We detect and characterize metal loss, cracks, geometry anomalies, and other defects with industry-leading accuracy.',
         overviewText2: 'With over 15 years of experience and 25,000+ kilometers of pipeline inspected, PipelinePro delivers reliable data that forms the foundation of effective integrity management programs.',
@@ -41,7 +41,7 @@ const SERVICES_DATA = {
     'dig-reports': {
         title: 'Dig Report Generation',
         description: 'Comprehensive excavation reports with detailed anomaly analysis, repair recommendations, and regulatory compliance.',
-        heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1200&h=800',
         overviewTitle: 'Expert Dig Planning & Verification',
         overviewText1: 'Our Dig Report Generation service bridges the gap between inspection data and field action. We provide highly detailed, actionable excavation plans that prioritize safety and efficiency, ensuring your repair teams have precisely what they need.',
         overviewText2: 'Each report is meticulously reviewed by our senior integrity engineers to ensure 100% compliance with PHMSA and other regulatory standards.',
@@ -76,7 +76,7 @@ const SERVICES_DATA = {
     'integrity': {
         title: 'Integrity Management',
         description: 'Strategic pipeline integrity programs including risk assessment, corrosion management, and regulatory compliance planning.',
-        heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop',
         overviewTitle: 'Holistic Pipeline Integrity Strategies',
         overviewText1: 'PipelinePro provides comprehensive Integrity Management Programs (IMP) that ensure your assets operate safely, reliably, and within all legal parameters. We help you move from reactive maintenance to proactive asset lifecycle management.',
         overviewText2: 'Our experts specialize in the development and implementation of documented IM programs tailored to your specific pipeline network and operating environment.',
@@ -111,7 +111,7 @@ const SERVICES_DATA = {
     'cp': {
         title: 'Cathodic Protection',
         description: 'Complete cathodic protection system design, installation, and monitoring to prevent external corrosion of your pipeline assets.',
-        heroImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200&h=800',
         overviewTitle: 'Expert External Corrosion Control',
         overviewText1: 'Our Cathodic Protection (CP) services provide the primary defense against external corrosion. We design, install, and maintain impressed current and sacrificial anode systems that shield your pipeline from environmental degradation.',
         overviewText2: 'From soil resistivity surveys to complex interference analysis, we ensure your CP systems provide optimal protection while minimizing operating costs.',
@@ -146,7 +146,7 @@ const SERVICES_DATA = {
     'coating': {
         title: 'Coating Inspection',
         description: 'Advanced coating assessment and quality control services to ensure long-term pipeline protection and integrity.',
-        heroImage: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200&h=800',
         overviewTitle: 'Integrity Starts at the Surface',
         overviewText1: 'A high-perfomance coating is the first line of defense against corrosion. Our coating inspection services ensure that new applications meet manufacturer standards and that existing coatings are still performing effectively.',
         overviewText2: 'Our NACE-certified coating inspectors provide independent verification of surface preparation, application environment, and final dry film thickness.',
@@ -181,7 +181,7 @@ const SERVICES_DATA = {
     'data': {
         title: 'Data Analysis & Reporting',
         description: 'Expert analysis of inspection data with comprehensive reporting, trend analysis, and actionable recommendations.',
-        heroImage: 'https://images.unsplash.com/photo-1551288049-bbda02313650?w=600&h=500&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=800',
         overviewTitle: 'Transforming Data Into Intelligence',
         overviewText1: 'Raw inspection data is only valuable when it is analyzed correctly. Our data analysts use proprietary tools to filter signal from noise, identifying critical threats that automated systems might overlook.',
         overviewText2: 'We provide clear, executive-level summaries alongside deep technical analysis, allowing your team to make confident decisions about asset management.',

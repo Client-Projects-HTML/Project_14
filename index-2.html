@@ -84,7 +84,7 @@
                 <nav class="nav" role="navigation" aria-label="Main navigation">
                     <ul class="nav-list">
                         <li class="dropdown">
-                            <a href="index.html" class="nav-link active dropdown-toggle" id="homeDropdown"
+                            <a href="index-2.html" class="nav-link active dropdown-toggle" id="homeDropdown"
                                 aria-expanded="false">
                                 <span>Home</span>
                                 <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
@@ -127,6 +127,7 @@
                         </svg>
                     </button>
 
+                    <!-- Client Login Dropdown -->
                     <div class="dropdown login-dropdown">
                         <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
                             aria-expanded="false">
@@ -180,7 +181,6 @@
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
                 <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
-
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
             </ul>
         </div>
@@ -188,55 +188,50 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-pattern" aria-hidden="true"></div>
+        <!-- Hero Section (Alternative Version) -->
+        <section class="hero hero-v2" aria-labelledby="hero-title"
+            style="text-align: center; padding: var(--space-20) 0;">
+            <div class="hero-pattern" aria-hidden="true" style="opacity: 0.15;"></div>
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <h1 id="hero-title" class="hero-title reveal">
-                            Advanced <span>Pipeline Inspection</span> <br> Solutions for the Energy Industry
-                        </h1>
-                        <p class="hero-description reveal">
-                            Comprehensive inline inspection (ILI), integrity management, and dig report generation
-                            services. Protecting your pipeline infrastructure with cutting-edge technology and expert
-                            analysis.
-                        </p>
-                        <div class="hero-actions reveal">
-                            <a href="services.html" class="btn btn-primary btn-lg">
-                                Explore Services
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </a>
-                            <a href="contact.html" class="btn btn-outline btn-lg">Get a Quote</a>
-                        </div>
-
-                        <!-- Hero Stats -->
-                        <div class="hero-stats reveal">
-                            <div class="stat-item">
-                                <div class="stat-value" data-counter="25000" data-suffix="+">0</div>
-                                <div class="stat-label">Kilometers Inspected</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value" data-counter="500" data-suffix="+">0</div>
-                                <div class="stat-label">Projects Completed</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value" data-counter="98" data-suffix="%">0</div>
-                                <div class="stat-label">Client Satisfaction</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value" data-counter="15" data-suffix="+">0</div>
-                                <div class="stat-label">Years Experience</div>
-                            </div>
-                        </div>
+                <div class="hero-content-v2" style="max-width: 800px; margin: 0 auto;">
+                    <span class="section-label reveal" style="margin: 0 auto var(--space-6);">Direct Industry
+                        Leadership</span>
+                    <h1 id="hero-title" class="hero-title reveal" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+                        Pioneering <span>Next-Gen</span> Pipeline Integrity
+                    </h1>
+                    <p class="hero-description reveal"
+                        style="font-size: var(--text-lg); margin-bottom: var(--space-10);">
+                        Delivering ultra-high resolution inline inspection and specialized integrity management for
+                        global energy leaders. High-precision data for critical infrastructure decisions.
+                    </p>
+                    <div class="hero-actions reveal" style="justify-content: center; gap: var(--space-4);">
+                        <a href="services.html" class="btn btn-primary btn-lg">View Our Tech</a>
+                        <a href="contact.html" class="btn btn-outline btn-lg">Talk to an Expert</a>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="hero-image reveal">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800&h=600"
-                            alt="Pipeline inspection equipment in operation" loading="eager" width="800" height="600">
+        <!-- Stats Section (Stand-alone for Home 2) -->
+        <section class="section stats-section" style="padding-top: 0; margin-top: calc(var(--space-10) * -1);">
+            <div class="container">
+                <div class="hero-stats reveal"
+                    style="background: var(--bg-primary); border: 1px solid var(--border-primary); padding: var(--space-8); border-radius: var(--radius-2xl); box-shadow: var(--shadow-xl); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                    <div class="stat-item">
+                        <div class="stat-value" data-counter="50000" data-suffix="+">0</div>
+                        <div class="stat-label">KM Inspected</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-counter="1200" data-suffix="+">0</div>
+                        <div class="stat-label">Successful Runs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-counter="20" data-suffix="+">0</div>
+                        <div class="stat-label">Global Patents</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-counter="100" data-suffix="%">0</div>
+                        <div class="stat-label">Safety Compliance</div>
                     </div>
                 </div>
             </div>
@@ -662,7 +657,7 @@
                         <div class="blog-card-inner">
                             <div class="blog-image">
                                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600&h=400"
-                                    alt="High-resolution smart pigging sensor technology" loading="lazy">
+                                    alt="Advances in Smart Pigging" loading="lazy">
                                 <span class="badge badge-primary">Technology</span>
                             </div>
                             <div class="blog-content">
@@ -692,7 +687,7 @@
                         <div class="blog-card-inner">
                             <div class="blog-image">
                                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600&h=400"
-                                    alt="Pipeline regulatory compliance documentation" loading="lazy">
+                                    alt="Pipeline integrity management" loading="lazy">
                                 <span class="badge badge-secondary">Regulations</span>
                             </div>
                             <div class="blog-content">

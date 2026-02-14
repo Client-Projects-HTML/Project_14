@@ -8,6 +8,9 @@
         content="The Future of Smart Pigging: AI-Powered Defect Recognition - Latest insights from PipelinePro">
     <title>The Future of Smart Pigging: AI-Powered Defect Recognition | PipelinePro Blog</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -63,10 +66,25 @@
 
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="index.html" class="nav-link dropdown-toggle" id="homeDropdown"
+                                aria-expanded="false">
+                                <span>Home</span>
+                                <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="index-2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </li>
                         <li><a href="about.html" class="nav-link">About Us</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
-                        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li><a href="blog.html" class="nav-link">Blog</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
@@ -88,8 +106,27 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
-                    <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+                    <!-- Client Login Dropdown -->
+                    <div class="dropdown login-dropdown">
+                        <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
+                            aria-expanded="false">
+                            <span>Login</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a href="client-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'client'); window.location.href='client-dashboard.html'; return false;">Client
+                                Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'admin'); window.location.href='admin-dashboard.html'; return false;">Admin
+                                Login</a>
+                        </div>
+                    </div>
+                    <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
+                        aria-controls="mobile-nav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -100,19 +137,31 @@
 
         <nav class="mobile-nav" id="mobile-nav">
             <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span>Home</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html" class="mobile-submenu-link">Home 1</a></li>
+                        <li><a href="index-2.html" class="mobile-submenu-link">Home 2</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
-                <li><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
+                <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
+                <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content">
         <!-- Article Header -->
-        <section class="hero" style="padding: calc(72px + var(--space-16)) 0 var(--space-8);">
+        <section class="hero" style="padding: calc(72px + var(--space-8)) 0 var(--space-6);">
             <div class="hero-pattern"></div>
             <div class="container">
                 <div class="reveal">
@@ -120,7 +169,7 @@
                         <span class="badge badge-primary" id="articleCategory">Technology</span>
                         <span class="badge badge-secondary" id="articleFeatured">Featured</span>
                     </div>
-                    <h1 style="font-size: var(--text-5xl); margin-bottom: var(--space-4); max-width: 900px;"
+                    <h1 style="font-size: var(--text-3xl); margin-bottom: var(--space-3); max-width: 800px;"
                         id="articleTitle">The Future of Smart Pigging:
                         AI-Powered Defect Recognition</h1>
                     <div class="blog-meta" style="justify-content: flex-start;">
@@ -142,8 +191,8 @@
                     <article>
                         <!-- Featured Image -->
                         <div class="reveal" style="margin-bottom: var(--space-8);">
-                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&h=600&fit=crop"
-                                alt="AI-powered pipeline inspection"
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop"
+                                alt="Industrial Pipeline Inspection"
                                 style="width: 100%; border-radius: var(--radius-xl);" loading="eager">
                         </div>
 
@@ -330,9 +379,10 @@
                                 <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Related Articles
                                 </h3>
                                 <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=future-smart-pigging"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="AI-Powered Defect Recognition"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -342,9 +392,10 @@
                                                 15, 2026</span>
                                         </div>
                                     </a>
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=optimizing-dig-program"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="Risk-based dig program analysis"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -354,9 +405,10 @@
                                                 10, 2026</span>
                                         </div>
                                     </a>
-                                    <a href="#" style="display: flex; gap: var(--space-3);">
-                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop"
-                                            alt=""
+                                    <a href="blog-details.html?id=advances-pigging-2026"
+                                        style="display: flex; gap: var(--space-3);">
+                                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=200&h=200"
+                                            alt="Corrosion Detection"
                                             style="width: 60px; height: 60px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0;">
                                         <div>
                                             <h4
@@ -415,6 +467,8 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="coming-soon.html">Events</a></li>
                         <li><a href="404.html">Careers</a></li>

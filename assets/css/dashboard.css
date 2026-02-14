@@ -460,7 +460,8 @@
     position: relative;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
+    padding-bottom: var(--space-7);
 }
 
 .chart-container canvas {

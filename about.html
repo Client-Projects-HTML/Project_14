@@ -9,6 +9,9 @@
     <meta name="keywords" content="about pipeline inspection, pipeline company, ILI experts, integrity management">
     <title>About Us | PipelinePro - Industrial Pipeline Inspection Services</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +22,31 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .story-compact {
+            padding-top: var(--space-12);
+            padding-bottom: var(--space-12);
+        }
+
+        .story-compact .about-grid {
+            gap: var(--space-5);
+        }
+
+        .story-compact .about-content .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: var(--space-3);
+        }
+
+        .story-compact .about-content p {
+            font-size: clamp(1rem, 1.2vw, 1.125rem);
+            line-height: 1.6;
+            margin-bottom: var(--space-3) !important;
+        }
+
+        .story-compact .hero-stats {
+            margin-top: var(--space-5) !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,9 +70,24 @@
 
                 <nav class="nav" role="navigation" aria-label="Main navigation">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="index.html" class="nav-link dropdown-toggle" id="homeDropdown"
+                                aria-expanded="false">
+                                <span>Home</span>
+                                <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="index-2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </li>
                         <li><a href="about.html" class="nav-link active">About Us</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li><a href="blog.html" class="nav-link">Blog</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
@@ -67,7 +110,25 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                    <!-- Client Login Dropdown -->
+                    <div class="dropdown login-dropdown">
+                        <a href="login.html" class="btn btn-primary btn-sm dropdown-toggle" id="loginDropdown"
+                            aria-expanded="false">
+                            <span>Login</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a href="client-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'client'); window.location.href='client-dashboard.html'; return false;">Client
+                                Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"
+                                onclick="localStorage.setItem('userRole', 'admin'); window.location.href='admin-dashboard.html'; return false;">Admin
+                                Login</a>
+                        </div>
+                    </div>
                     <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"
                         aria-controls="mobile-nav">
                         <span></span>
@@ -84,25 +145,37 @@
     <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
         <div class="container">
             <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span>Home</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html" class="mobile-submenu-link">Home 1</a></li>
+                        <li><a href="index-2.html" class="mobile-submenu-link">Home 2</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html" class="mobile-nav-link active">About Us</a></li>
                 <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+                <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
                 <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
                 <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-                <li><a href="login.html" class="mobile-nav-link">Login</a></li>
             </ul>
         </div>
     </nav>
 
     <main id="main-content" style="padding-top: 72px;">
         <!-- Our Story -->
-        <section class="section" aria-labelledby="story-title">
+        <section class="section story-compact" aria-labelledby="story-title">
             <div class="container">
                 <div class="about-grid">
                     <div class="about-image reveal">
                         <div class="about-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=700&fit=crop"
-                                alt="PipelinePro headquarters" loading="lazy" width="600" height="700">
+                            <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=800"
+                                alt="Industrial excellence and innovation" loading="lazy">
                         </div>
                     </div>
 
@@ -216,7 +289,7 @@
 
                 <div class="services-grid">
                     <article class="card reveal" style="text-align: center;">
-                        <div style="padding: var(--space-8);">
+                        <div style="padding: var(--space-4);">
                             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face"
                                 alt="James Anderson"
                                 style="width: 120px; height: 120px; border-radius: var(--radius-full); margin: 0 auto var(--space-4); object-fit: cover;"
@@ -231,7 +304,7 @@
                     </article>
 
                     <article class="card reveal" style="text-align: center;">
-                        <div style="padding: var(--space-8);">
+                        <div style="padding: var(--space-4);">
                             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face"
                                 alt="Dr. Emily Rodriguez"
                                 style="width: 120px; height: 120px; border-radius: var(--radius-full); margin: 0 auto var(--space-4); object-fit: cover;"
@@ -247,7 +320,7 @@
                     </article>
 
                     <article class="card reveal" style="text-align: center;">
-                        <div style="padding: var(--space-8);">
+                        <div style="padding: var(--space-4);">
                             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
                                 alt="Michael Chen"
                                 style="width: 120px; height: 120px; border-radius: var(--radius-full); margin: 0 auto var(--space-4); object-fit: cover;"
@@ -433,6 +506,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="coming-soon.html">Events</a></li>
