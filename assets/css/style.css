@@ -24,17 +24,17 @@
    1. CSS Variables & Theme Settings
    ============================================ */
 :root {
-    /* Primary Colors - Industrial Blue */
-    --color-primary-50: #eff6ff;
-    --color-primary-100: #dbeafe;
-    --color-primary-200: #bfdbfe;
-    --color-primary-300: #93c5fd;
-    --color-primary-400: #60a5fa;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #2563eb;
-    --color-primary-700: #1d4ed8;
-    --color-primary-800: #1e40af;
-    --color-primary-900: #1e3a8a;
+    /* Primary Colors - Soft Lime */
+    --color-primary-50: #fefee6;
+    --color-primary-100: #fdfdb3;
+    --color-primary-200: #faf880;
+    --color-primary-300: #f4ec4e;
+    --color-primary-400: #eade26;
+    --color-primary-500: #D9D872;
+    --color-primary-600: #C5C45E;
+    --color-primary-700: #a39c18;
+    --color-primary-800: #857d1b;
+    --color-primary-900: #71681c;
 
     /* Secondary Colors - Industrial Orange */
     --color-secondary-50: #fff7ed;
@@ -110,21 +110,21 @@
 
     /* Background Colors */
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
+    --bg-secondary: #F9F9E6;
     --bg-tertiary: #f1f5f9;
-    --bg-dark: #0f172a;
+    --bg-dark: #1F2937;
 
     /* Text Colors */
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-tertiary: #64748b;
-    --text-light: #94a3b8;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --text-tertiary: #9ca3af;
+    --text-light: #d1d5db;
     --text-white: #ffffff;
 
     /* Border Colors */
-    --border-primary: #e2e8f0;
+    --border-primary: #E5E7EB;
     --border-secondary: #cbd5e1;
-    --border-focus: #3b82f6;
+    --border-focus: #D9D872;
 
     /* Spacing Scale (8px base) */
     /* Spacing Scale (Revised for compactness) */
@@ -551,9 +551,10 @@ p {
     font-size: var(--text-sm);
     font-weight: var(--font-medium);
     line-height: var(--leading-tight);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-base);
+    border-radius: var(--radius-xl);
+    transition: all 0.3s ease;
     min-height: 38px;
+    box-shadow: var(--shadow-sm);
 }
 
 .btn:focus-visible {
@@ -562,25 +563,28 @@ p {
 }
 
 .btn-primary {
-    background-color: var(--color-primary-600);
-    color: var(--text-white);
+    background-color: var(--color-primary-500);
+    color: var(--text-primary);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-primary-700);
+    background-color: var(--color-primary-600);
+    color: var(--text-primary);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-    background-color: var(--color-secondary-600);
-    color: var(--text-white);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--color-primary-500);
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-secondary-700);
+    background-color: var(--color-primary-50);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-600);
 }
 
 .btn-outline {
@@ -620,12 +624,13 @@ p {
     background-color: var(--bg-primary);
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
-    transition: all var(--transition-base);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
@@ -737,8 +742,8 @@ p {
 }
 
 .badge-primary {
-    background-color: var(--color-primary-100);
-    color: var(--color-primary-700);
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-900);
 }
 
 .badge-secondary {
@@ -829,12 +834,12 @@ p {
 .logo-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-white);
+    color: var(--text-primary);
 }
 
 /* Navigation */
@@ -858,24 +863,9 @@ p {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--color-primary-600);
+    color: var(--color-primary-500);
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-primary-600);
-    transition: width var(--transition-base);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
 
 /* Mobile Menu Toggle */
 .menu-toggle {
@@ -1192,7 +1182,7 @@ p {
 }
 
 .hero-title span {
-    color: var(--color-primary-600);
+    color: var(--color-primary-500);
 }
 
 .hero-description {
@@ -1248,7 +1238,7 @@ p {
 .stat-value {
     font-size: var(--text-3xl);
     font-weight: var(--font-bold);
-    color: var(--color-primary-600);
+    color: var(--color-primary-500);
 }
 
 .stat-label {
@@ -1304,8 +1294,11 @@ p {
     background-color: var(--bg-primary);
     border: 1px solid var(--border-primary);
     border-radius: var(--radius-xl);
-    padding: var(--space-4);
+    padding: var(--space-6);
     transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .service-card:hover {
@@ -1334,7 +1327,28 @@ p {
 
 .service-description {
     color: var(--text-secondary);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.service-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-8) 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.service-card ul li {
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.service-card ul li::before {
+    content: "•";
+    color: var(--color-primary-500);
+    font-weight: bold;
 }
 
 .service-link {
@@ -1344,6 +1358,7 @@ p {
     font-weight: var(--font-medium);
     color: var(--color-primary-600);
     transition: gap var(--transition-fast);
+    margin-top: auto;
 }
 
 .service-link:hover {
@@ -1567,7 +1582,17 @@ p {
     background-color: var(--bg-primary);
     border: 1px solid var(--border-primary);
     border-radius: var(--radius-xl);
-    padding: var(--space-4);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all var(--transition-base);
+}
+
+.testimonial-card:hover {
+    border-color: var(--color-primary-200);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
 }
 
 .testimonial-rating {
@@ -1588,6 +1613,7 @@ p {
     display: flex;
     align-items: center;
     gap: var(--space-4);
+    margin-top: auto;
 }
 
 .testimonial-avatar {

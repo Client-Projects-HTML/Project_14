@@ -27,16 +27,16 @@
     --border-focus: #60a5fa;
 
     /* Primary Colors - Adjusted for dark mode */
-    --color-primary-50: #172554;
-    --color-primary-100: #1e3a8a;
-    --color-primary-200: #1e40af;
-    --color-primary-300: #1d4ed8;
-    --color-primary-400: #2563eb;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #60a5fa;
-    --color-primary-700: #93c5fd;
-    --color-primary-800: #bfdbfe;
-    --color-primary-900: #dbeafe;
+    --color-primary-50: #292816;
+    --color-primary-100: #424018;
+    --color-primary-200: #5c581a;
+    --color-primary-300: #857d1b;
+    --color-primary-400: #a39c18;
+    --color-primary-500: #C5C45E;
+    --color-primary-600: #D9D872;
+    --color-primary-700: #eade26;
+    --color-primary-800: #faf880;
+    --color-primary-900: #fdfdb3;
 
     /* Semantic Colors - Adjusted for dark mode */
     /* Success */
@@ -626,4 +626,23 @@
     --color-warning-100: rgba(217, 119, 6, 0.25);
     --color-warning-600: #fcd34d;
     --color-warning-700: #fbbf24;
+}
+
+/* CTA Section Visibility Fixes */
+[data-theme="dark"] .cta {
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-300));
+}
+
+[data-theme="dark"] .cta-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .cta .btn-white {
+    background-color: var(--text-white);
+    color: var(--color-primary-700);
+}
+
+[data-theme="dark"] .cta .btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-white);
 }
